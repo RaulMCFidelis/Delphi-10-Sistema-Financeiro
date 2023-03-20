@@ -2,13 +2,13 @@ program Sistema_Financas;
 
 uses
   Vcl.Forms,
-  Uprincipal in 'Uprincipal.pas' {frmprincipal};
+  Uprincipal in 'Uprincipal.pas' {Form1};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(Tfrmprincipal, frmprincipal);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
