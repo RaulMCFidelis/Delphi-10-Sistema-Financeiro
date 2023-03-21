@@ -150,49 +150,41 @@ object frmCadastroBasico: TfrmCadastroBasico
       Caption = 'Inserir'
       ImageIndex = 5
       ShortCut = 114
-      OnExecute = actinserirExecute
     end
     object acteditar: TAction
       Caption = 'Editar'
       ImageIndex = 6
       ShortCut = 115
-      OnExecute = acteditarExecute
     end
     object actexcluir: TAction
       Caption = 'Excluir'
       ImageIndex = 2
       ShortCut = 116
-      OnExecute = actexcluirExecute
     end
     object actsalvar: TAction
       Caption = 'Salvar'
       ImageIndex = 14
       ShortCut = 117
-      OnExecute = actsalvarExecute
     end
     object actcancelar: TAction
       Caption = 'Cancelar'
       ImageIndex = 7
       ShortCut = 118
-      OnExecute = actcancelarExecute
     end
     object actpesquisar: TAction
       Caption = 'Pesquisar'
       ImageIndex = 12
       ShortCut = 112
-      OnExecute = actpesquisarExecute
     end
     object actimprimir: TAction
       Caption = 'Imprimir'
       ImageIndex = 1
       ShortCut = 120
-      OnExecute = actimprimirExecute
     end
     object actfechar: TAction
       Caption = 'Fechar'
       ImageIndex = 15
       ShortCut = 16499
-      OnExecute = actfecharExecute
     end
   end
   object ImageListcadastro: TImageList
