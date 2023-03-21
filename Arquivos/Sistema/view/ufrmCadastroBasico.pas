@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids,
   Vcl.DBGrids, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
   Vcl.ExtCtrls, System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList,
-  Vcl.PlatformDefaultStyleActnCtrls;
+  Vcl.PlatformDefaultStyleActnCtrls, Datasnap.DBClient;
 
 type
   TfrmCadastroBasico = class(TForm)
@@ -38,6 +38,7 @@ type
     procedure actpesquisarExecute(Sender: TObject);
     procedure actimprimirExecute(Sender: TObject);
     procedure actfecharExecute(Sender: TObject);
+    procedure actcancelarUpdate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,9 +52,16 @@ implementation
 
 {$R *.dfm}
 
+uses ModConexao;
+
 procedure TfrmCadastroBasico.actcancelarExecute(Sender: TObject);
 begin
-//
+TClientDataSet(dsTabela).Cancel;
+end;
+
+procedure TfrmCadastroBasico.actcancelarUpdate(Sender: TObject);
+begin
+  TAction(actcancelar).Enabled := TAction(actsalvar).Enabled = true;
 end;
 
 procedure TfrmCadastroBasico.acteditarExecute(Sender: TObject);

@@ -62,6 +62,8 @@ object frmCadastroBasico: TfrmCadastroBasico
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Cadastro'
+      ExplicitLeft = 8
+      ExplicitTop = 22
     end
     object tbsPesquisa: TTabSheet
       Caption = 'Pesquisa'
@@ -84,6 +86,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     TitleFont.Style = []
   end
   object dsTabela: TDataSource
+    DataSet = DataModule1.cdscaixa
     Enabled = False
     Left = 672
     Top = 40
@@ -131,6 +134,7 @@ object frmCadastroBasico: TfrmCadastroBasico
           item
             Action = actimprimir
             Caption = 'I&mprimir'
+            Default = True
             ImageIndex = 1
             ShortCut = 120
           end
@@ -154,27 +158,32 @@ object frmCadastroBasico: TfrmCadastroBasico
     end
     object acteditar: TAction
       Caption = 'Editar'
+      Enabled = False
       ImageIndex = 6
       ShortCut = 115
       OnExecute = acteditarExecute
     end
     object actexcluir: TAction
       Caption = 'Excluir'
+      Enabled = False
       ImageIndex = 2
       ShortCut = 116
       OnExecute = actexcluirExecute
     end
     object actsalvar: TAction
       Caption = 'Salvar'
+      Enabled = False
       ImageIndex = 14
       ShortCut = 117
       OnExecute = actsalvarExecute
     end
     object actcancelar: TAction
       Caption = 'Cancelar'
+      Enabled = False
       ImageIndex = 7
       ShortCut = 118
       OnExecute = actcancelarExecute
+      OnUpdate = actcancelarUpdate
     end
     object actpesquisar: TAction
       Caption = 'Pesquisar'
