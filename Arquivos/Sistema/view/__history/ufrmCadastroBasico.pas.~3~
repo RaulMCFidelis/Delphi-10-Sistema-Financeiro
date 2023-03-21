@@ -1,0 +1,37 @@
+unit ufrmCadastroBasico;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TfrmCadastroBasico = class(TForm)
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadastroBasico: TfrmCadastroBasico;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmCadastroBasico.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #27 then
+    close;
+if key = #13 then then
+    Perform (WM_NEXTDLGCTL, 0, 0);
+end;
+
+end.
