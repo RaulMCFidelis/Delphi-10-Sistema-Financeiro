@@ -49,7 +49,6 @@ type
     procedure actimprimirUpdate(Sender: TObject);
   private
     { Private declarations }
-    procedure LimparTudo;
   public
     { Public declarations }
   end;
@@ -65,8 +64,9 @@ uses ModConexao;
 
 procedure TfrmCadastroBasico.actcancelarExecute(Sender: TObject);
 begin
-LimparTudo;
 TClientDataSet(dsTabela.DataSet).Cancel;
+if PageControl1.ActivePage = tbscadastro then
+    PageControl1.ActivePage := tbspesquisa;
 
 end;
 
@@ -77,10 +77,7 @@ end;
 
 procedure TfrmCadastroBasico.acteditarExecute(Sender: TObject);
 begin
-if PageControl1.ActivePage = tbsPesquisa then
-  PageControl1.ActivePage := tbsCadastro;
-  TClientDataSet(dsTabela.DataSet).Edit;
-
+//
 end;
 
 procedure TfrmCadastroBasico.acteditarUpdate(Sender: TObject);
@@ -92,24 +89,7 @@ end;
 
 procedure TfrmCadastroBasico.actexcluirExecute(Sender: TObject);
 begin
-if Application.MessageBox('Deseja Realmente Excluir o Registro?', 'Pergunta', MB_YESNO+MB_ICONQUESTION) = mrYes then
-  begin
-    try
-      TclientDataSet(dsTabela.DataSet).Delete;
-      TclientDataSet(dsTabela.DataSet).ApplyUpdates(0);
-
-      Application.MessageBox('Registro Excluido com Sucesso!', 'Informação', 0+64);
-      TClientDataSet(dsTabela.DataSet).Open;
-
-      except on E : Exception do
-
-      raise Exception.Create('Error ao Excluir o Registro: '+E.Message);
-
-
-
-    end;
-  end;
-
+//
 end;
 
 procedure TfrmCadastroBasico.actexcluirUpdate(Sender: TObject);
@@ -125,7 +105,7 @@ end;
 
 procedure TfrmCadastroBasico.actimprimirExecute(Sender: TObject);
 begin
-ShowMessage('Em Desenvolvimento');
+//
 end;
 
 procedure TfrmCadastroBasico.actimprimirUpdate(Sender: TObject);
@@ -139,8 +119,6 @@ procedure TfrmCadastroBasico.actinserirExecute(Sender: TObject);
 begin
 if PageControl1.ActivePage = tbsPesquisa then
 PageControl1.ActivePage := tbsCadastro;
-if not TClientDataSet(dsTabela.DataSet).active then
-
   TClientDataSet(dsTabela.DataSet).Open;
   TClientDataSet(dsTabela.DataSet).Insert;
 end;
@@ -160,22 +138,26 @@ procedure TfrmCadastroBasico.actsalvarExecute(Sender: TObject);
 begin
 try
 
+
     TClientDataSet(dsTabela.DataSet).Post;
     TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
 
     case dsTabela.State of
-    dsEdit : Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
-    dsInsert : Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
+    dsEdit : Application.MessageBox('Registro Atualizado com Sucesso', 'Informação', MB_OK+MB_ICONINFORMATION);
+    dsInsert : Application.MessageBox('Registro Inserido com Sucesso', 'Informação', MB_OK+MB_ICONINFORMATION);
     end;
 
+    if PageControl1.ActivePage = tbsCadastro then
+      PageControl1.ActivePage := tbsPesquisa;
 
       //Limpar os campos
-      LimparTudo;
         TClientDataSet(dsTabela.DataSet).Open;
 
 
+
+
 except on E : Exception do
-raise Exception.Create('Erro ao Salvar Registro: '+E.Message);
+raise Exception.Create('Erro ao salcar Registro: '+E.Message);
 
 end;
 
@@ -200,21 +182,6 @@ if key = #27 then
     close;
 if key = #13 then
     Perform (WM_NEXTDLGCTL, 0, 0);
-end;
-
-procedure TfrmCadastroBasico.LimparTudo;
-var
-  i: Integer;
-
-begin
-for i  := 0 to ComponentCount -1 do
-  begin
-    if Components[i] is TCustomEdit then
-    TCustomEdit(components[i]).Clear;
-  end;
-  if PageControl1.ActivePage = tbsCadastro then
-      PageControl1.ActivePage := tbsPesquisa;
-
 end;
 
 procedure TfrmCadastroBasico.tbsPesquisaShow(Sender: TObject);

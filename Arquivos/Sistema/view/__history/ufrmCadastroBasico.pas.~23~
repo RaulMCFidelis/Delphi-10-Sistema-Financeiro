@@ -15,12 +15,13 @@ type
     StatusBar1: TStatusBar;
     Panel1: TPanel;
     ActionToolBar1: TActionToolBar;
-    tbsCadastro: TPageControl;
-    TabSheet1: TTabSheet;
+    PageControl1: TPageControl;
+    tbscadastro: TTabSheet;
     tbsPesquisa: TTabSheet;
     DBGrid1: TDBGrid;
-    ActionManagercadastro: TActionManager;
     ImageListcadastro: TImageList;
+    Label1: TLabel;
+    ActionManagercadastro: TActionManager;
     actinserir: TAction;
     acteditar: TAction;
     actexcluir: TAction;
@@ -29,7 +30,6 @@ type
     actpesquisar: TAction;
     actimprimir: TAction;
     actfechar: TAction;
-    ClientDataSet1: TClientDataSet;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure actinserirExecute(Sender: TObject);
     procedure acteditarExecute(Sender: TObject);
@@ -40,6 +40,13 @@ type
     procedure actimprimirExecute(Sender: TObject);
     procedure actfecharExecute(Sender: TObject);
     procedure actcancelarUpdate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure tbsPesquisaShow(Sender: TObject);
+    procedure actinserirUpdate(Sender: TObject);
+    procedure actsalvarUpdate(Sender: TObject);
+    procedure actexcluirUpdate(Sender: TObject);
+    procedure acteditarUpdate(Sender: TObject);
+    procedure actimprimirUpdate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,14 +60,19 @@ implementation
 
 {$R *.dfm}
 
+uses ModConexao;
+
 procedure TfrmCadastroBasico.actcancelarExecute(Sender: TObject);
 begin
-TClientDataSet(dsTabela).Cancel;
+TClientDataSet(dsTabela.DataSet).Cancel;
+if PageControl1.ActivePage = tbscadastro then
+    PageControl1.ActivePage := tbspesquisa;
+
 end;
 
 procedure TfrmCadastroBasico.actcancelarUpdate(Sender: TObject);
 begin
-  TAction(actcancelar.Enabled := TAction(actsalvar).Enabled = true;
+  actcancelar.Enabled := actsalvar.Enabled = true;
 end;
 
 procedure TfrmCadastroBasico.acteditarExecute(Sender: TObject);
@@ -68,9 +80,22 @@ begin
 //
 end;
 
+procedure TfrmCadastroBasico.acteditarUpdate(Sender: TObject);
+begin
+if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+
+acteditar.Enabled := dsTabela.State in [dsBrowse];
+end;
+
 procedure TfrmCadastroBasico.actexcluirExecute(Sender: TObject);
 begin
 //
+end;
+
+procedure TfrmCadastroBasico.actexcluirUpdate(Sender: TObject);
+begin
+if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+  actexcluir.Enabled := dsTabela.State in [dsBrowse];
 end;
 
 procedure TfrmCadastroBasico.actfecharExecute(Sender: TObject);
@@ -83,19 +108,48 @@ begin
 //
 end;
 
+procedure TfrmCadastroBasico.actimprimirUpdate(Sender: TObject);
+begin
+if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+
+actimprimir.Enabled := dsTabela.State in [dsBrowse];
+end;
+
 procedure TfrmCadastroBasico.actinserirExecute(Sender: TObject);
 begin
-//
+if PageControl1.ActivePage = tbsPesquisa then
+PageControl1.ActivePage := tbsCadastro;
+  TClientDataSet(dsTabela.DataSet).Open;
+  TClientDataSet(dsTabela.DataSet).Insert;
+end;
+
+procedure TfrmCadastroBasico.actinserirUpdate(Sender: TObject);
+begin
+  actinserir.Enabled := dsTabela.State in [dsBrowse,dsInactive];
 end;
 
 procedure TfrmCadastroBasico.actpesquisarExecute(Sender: TObject);
 begin
-//
+    TClientDataSet(dsTabela.DataSet).Close;
+      TClientDataSet(dsTabela.DataSet).Open;
 end;
 
 procedure TfrmCadastroBasico.actsalvarExecute(Sender: TObject);
 begin
-//
+    TClientDataSet(dsTabela.DataSet).Post
+      TClientDataSet(dsTabela.DataSet).AppyUpdates(0);
+end;
+
+procedure TfrmCadastroBasico.actsalvarUpdate(Sender: TObject);
+begin
+actsalvar.Enabled := dsTabela.State in [dsinsert,dsedit];
+end;
+
+procedure TfrmCadastroBasico.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    TClientDataSet(dsTabela.DataSet).Cancel;
+      TClientDataSet(dsTabela.DataSet).Close;
 end;
 
 procedure TfrmCadastroBasico.FormKeyPress(Sender: TObject; var Key: Char);
@@ -104,6 +158,11 @@ if key = #27 then
     close;
 if key = #13 then
     Perform (WM_NEXTDLGCTL, 0, 0);
+end;
+
+procedure TfrmCadastroBasico.tbsPesquisaShow(Sender: TObject);
+begin
+  PageControl1.ActivePage := tbsPesquisa;
 end;
 
 end.

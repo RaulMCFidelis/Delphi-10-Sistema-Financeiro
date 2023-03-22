@@ -65,8 +65,9 @@ uses ModConexao;
 
 procedure TfrmCadastroBasico.actcancelarExecute(Sender: TObject);
 begin
-LimparTudo;
 TClientDataSet(dsTabela.DataSet).Cancel;
+if PageControl1.ActivePage = tbscadastro then
+    PageControl1.ActivePage := tbspesquisa;
 
 end;
 
@@ -168,9 +169,10 @@ try
     dsInsert : Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
     end;
 
+    if PageControl1.ActivePage = tbsCadastro then
+      PageControl1.ActivePage := tbsPesquisa;
 
       //Limpar os campos
-      LimparTudo;
         TClientDataSet(dsTabela.DataSet).Open;
 
 
@@ -212,8 +214,6 @@ for i  := 0 to ComponentCount -1 do
     if Components[i] is TCustomEdit then
     TCustomEdit(components[i]).Clear;
   end;
-  if PageControl1.ActivePage = tbsCadastro then
-      PageControl1.ActivePage := tbsPesquisa;
 
 end;
 

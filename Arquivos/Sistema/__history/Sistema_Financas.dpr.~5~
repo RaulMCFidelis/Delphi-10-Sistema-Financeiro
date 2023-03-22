@@ -13,7 +13,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Light');
+  TStyleManager.TrySetStyle('Amakrits');
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;

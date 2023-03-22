@@ -70,6 +70,10 @@ object frmCadastroBasico: TfrmCadastroBasico
     TabOrder = 2
     object tbscadastro: TTabSheet
       Caption = 'Cadastro'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 183
     end
     object tbsPesquisa: TTabSheet
       Caption = 'Pesquisa'
@@ -103,7 +107,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Left = 480
     Top = 256
     Bitmap = {
-      494C010110001800400020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100018003C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

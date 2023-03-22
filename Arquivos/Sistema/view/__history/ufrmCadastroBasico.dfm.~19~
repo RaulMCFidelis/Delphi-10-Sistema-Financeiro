@@ -31,6 +31,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Width = 772
     Height = 19
     Panels = <>
+    ExplicitTop = 372
   end
   object Panel1: TPanel
     Left = 0
@@ -39,6 +40,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Height = 41
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 331
     object ActionToolBar1: TActionToolBar
       Left = 1
       Top = 1
@@ -68,13 +70,16 @@ object frmCadastroBasico: TfrmCadastroBasico
     ActivePage = tbsPesquisa
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 211
     object tbscadastro: TTabSheet
       Caption = 'Cadastro'
+      ExplicitHeight = 183
     end
     object tbsPesquisa: TTabSheet
       Caption = 'Pesquisa'
       ImageIndex = 1
       OnShow = tbsPesquisaShow
+      ExplicitHeight = 183
     end
   end
   object DBGrid1: TDBGrid
@@ -103,7 +108,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Left = 480
     Top = 256
     Bitmap = {
-      494C010110001800400020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800380020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2780,7 +2785,6 @@ object frmCadastroBasico: TfrmCadastroBasico
           end
           item
             Action = actcancelar
-            Caption = '&Cancelar'
             ImageIndex = 7
             ShortCut = 118
           end
@@ -2859,7 +2863,6 @@ object frmCadastroBasico: TfrmCadastroBasico
       ImageIndex = 1
       ShortCut = 120
       OnExecute = actimprimirExecute
-      OnUpdate = actimprimirUpdate
     end
     object actfechar: TAction
       Caption = 'Fechar'
