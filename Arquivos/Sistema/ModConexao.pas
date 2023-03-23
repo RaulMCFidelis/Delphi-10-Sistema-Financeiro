@@ -7,7 +7,7 @@ uses
   Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider;
 
 type
-  TDataModule1 = class(TDataModule)
+  TdmDados = class(TDataModule)
     SQLConnection: TSQLConnection;
     sdscaixa: TSQLDataSet;
     dspcontas_pagar: TDataSetProvider;
@@ -64,7 +64,7 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  dmDados: TdmDados;
 
 implementation
 

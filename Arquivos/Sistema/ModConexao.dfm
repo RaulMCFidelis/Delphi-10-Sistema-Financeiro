@@ -1,4 +1,4 @@
-object DataModule1: TDataModule1
+object dmDados: TdmDados
   OldCreateOrder = False
   Height = 423
   Width = 673
@@ -38,6 +38,7 @@ object DataModule1: TDataModule1
       'BlobSize=-1'
       'ErrorResourceFile='
       'Database=financeiro')
+    Connected = True
     Left = 24
     Top = 16
   end
@@ -246,30 +247,31 @@ object DataModule1: TDataModule1
     Top = 272
   end
   object cdsusuarios: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspusuarios'
     Left = 224
     Top = 272
     object cdsusuariosid: TIntegerField
-      FieldName = 'id'
+      FieldName = 'Id'
       Required = True
     end
     object cdsusuariosnome: TStringField
-      FieldName = 'nome'
+      FieldName = 'Nome'
       Required = True
       Size = 50
     end
     object cdsusuarioslogin: TStringField
-      FieldName = 'login'
+      FieldName = 'Login'
       Required = True
     end
     object cdsusuariossenha: TStringField
-      FieldName = 'senha'
+      FieldName = 'Senha'
       Required = True
     end
     object cdsusuariosstatus: TStringField
-      FieldName = 'status'
+      FieldName = 'Status'
       Required = True
       FixedChar = True
       Size = 1
