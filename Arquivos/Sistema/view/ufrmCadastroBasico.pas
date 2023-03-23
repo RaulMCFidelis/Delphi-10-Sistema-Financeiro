@@ -143,6 +143,8 @@ end;
 
 procedure TfrmCadastroBasico.acinserirExecute(Sender: TObject);
 begin
+iMode := 0;
+
 if PageControl1.ActivePage = tbsPesquisa then
 PageControl1.ActivePage := tbsCadastro;
 if not TClientDataSet(dsTabela.DataSet).active then
@@ -171,14 +173,14 @@ try
     TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
 
     case dsTabela.State of
-    dsEdit : Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
-    dsInsert : Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
+    0 : Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
+    1 : Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
     end;
 
 
       //Limpar os campos
       LimparTudo;
-        TClientDataSet(dsTabela.DataSet).Open;
+      TClientDataSet(dsTabela.DataSet).Open;
 
 
 except on E : Exception do

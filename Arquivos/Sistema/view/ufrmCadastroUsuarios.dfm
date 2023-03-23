@@ -3,14 +3,6 @@ inherited frmcadastrousuario: Tfrmcadastrousuario
   Caption = 'Cadastro de Usu'#225'rio'
   PixelsPerInch = 96
   TextHeight = 13
-  inherited Panel1: TPanel
-    ExplicitTop = 384
-    ExplicitWidth = 709
-    inherited StatusBar1: TStatusBar
-      ExplicitTop = 50
-      ExplicitWidth = 707
-    end
-  end
   inherited PageControl1: TPageControl
     ActivePage = tbscadastro
     inherited tbscadastro: TTabSheet
@@ -64,6 +56,10 @@ inherited frmcadastrousuario: Tfrmcadastrousuario
       end
     end
     inherited tbspesquisa: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       inherited DbgDados: TDBGrid
         Columns = <
           item
@@ -101,7 +97,7 @@ inherited frmcadastrousuario: Tfrmcadastrousuario
   end
   inherited ImageListcadastro: TImageList
     Bitmap = {
-      494C0101100018004C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800500020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
