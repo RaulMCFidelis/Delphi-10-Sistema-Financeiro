@@ -12,13 +12,12 @@ uses
 type
   TfrmCadastroBasico = class(TForm)
     dsTabela: TDataSource;
-    StatusBar1: TStatusBar;
     Panel1: TPanel;
     ActionToolBar1: TActionToolBar;
     PageControl1: TPageControl;
     tbscadastro: TTabSheet;
     tbsPesquisa: TTabSheet;
-    DBGrid1: TDBGrid;
+    dbgDados: TDBGrid;
     ImageListcadastro: TImageList;
     Label1: TLabel;
     ActionManagercadastro: TActionManager;
@@ -30,6 +29,9 @@ type
     actpesquisar: TAction;
     actimprimir: TAction;
     actfechar: TAction;
+    editpesquisar: TEdit;
+    btnfiltrar: TButton;
+    StatusBar1: TStatusBar;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure actinserirExecute(Sender: TObject);
     procedure acteditarExecute(Sender: TObject);

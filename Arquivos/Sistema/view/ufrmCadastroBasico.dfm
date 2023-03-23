@@ -3,7 +3,7 @@ object frmCadastroBasico: TfrmCadastroBasico
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastro'
-  ClientHeight = 572
+  ClientHeight = 454
   ClientWidth = 772
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,27 +18,13 @@ object frmCadastroBasico: TfrmCadastroBasico
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 136
-    Top = 136
-    Width = 92
-    Height = 13
-    Caption = 'Conteudo Pesquisa'
-  end
-  object StatusBar1: TStatusBar
-    Left = 0
-    Top = 553
-    Width = 772
-    Height = 19
-    Panels = <>
-  end
   object Panel1: TPanel
     Left = 0
-    Top = 512
+    Top = 392
     Width = 772
-    Height = 41
+    Height = 62
     Align = alBottom
-    TabOrder = 1
+    TabOrder = 0
     object ActionToolBar1: TActionToolBar
       Left = 1
       Top = 1
@@ -58,34 +44,78 @@ object frmCadastroBasico: TfrmCadastroBasico
       Font.Style = []
       ParentFont = False
       Spacing = 0
+      ExplicitLeft = 0
+      ExplicitTop = -7
+    end
+    object StatusBar1: TStatusBar
+      Left = 1
+      Top = 42
+      Width = 770
+      Height = 19
+      Panels = <>
+      ExplicitLeft = 384
+      ExplicitTop = 8
+      ExplicitWidth = 0
     end
   end
   object PageControl1: TPageControl
     Left = 0
     Top = 0
     Width = 772
-    Height = 392
+    Height = 98
     ActivePage = tbsPesquisa
     Align = alClient
-    TabOrder = 2
+    TabOrder = 1
+    ExplicitHeight = 392
     object tbscadastro: TTabSheet
       Caption = 'Cadastro'
+      ExplicitHeight = 364
     end
     object tbsPesquisa: TTabSheet
       Caption = 'Pesquisa'
       ImageIndex = 1
       OnShow = tbsPesquisaShow
+      ExplicitHeight = 73
+      object Label1: TLabel
+        Left = 16
+        Top = 16
+        Width = 60
+        Height = 16
+        Caption = 'Pesquisar:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object editpesquisar: TEdit
+        Left = 16
+        Top = 38
+        Width = 333
+        Height = 21
+        TabOrder = 0
+      end
+      object btnfiltrar: TButton
+        Left = 355
+        Top = 36
+        Width = 75
+        Height = 25
+        Caption = 'Filtrar'
+        TabOrder = 1
+      end
     end
   end
-  object DBGrid1: TDBGrid
+  object dbgDados: TDBGrid
     Left = 0
-    Top = 392
+    Top = 98
     Width = 772
-    Height = 120
+    Height = 294
     Align = alBottom
     DataSource = dsTabela
     DrawingStyle = gdsGradient
-    TabOrder = 3
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -103,7 +133,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Left = 480
     Top = 256
     Bitmap = {
-      494C010110001800400020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800440020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2771,12 +2801,6 @@ object frmCadastroBasico: TfrmCadastroBasico
             Caption = 'E&xcluir'
             ImageIndex = 2
             ShortCut = 116
-          end
-          item
-            Action = actsalvar
-            Caption = '&Salvar'
-            ImageIndex = 14
-            ShortCut = 117
           end
           item
             Action = actcancelar
