@@ -68,11 +68,12 @@ end;
 
 procedure TfrmPrincipal.imgusuariosClick(Sender: TObject);
 begin
-frmcadastrousuario := Tfrmcadastrousuario.Create(nil);
+frmcadastrousuarios := Tfrmcadastrousuarios.Create(nil);
  try
-    frmcadastrousuario.ShowModal;
+    frmcadastrousuarios.ShowModal;
+
   finally
-   FreeAndNil (frmcadastrousuario);
+   FreeAndNil(frmcadastrousuarios);
   end;
 end;
 

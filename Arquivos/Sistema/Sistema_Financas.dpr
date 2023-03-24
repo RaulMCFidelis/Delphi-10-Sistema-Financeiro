@@ -7,8 +7,8 @@ uses
   Vcl.Styles,
   ModConexao in 'ModConexao.pas' {dmDados: TDataModule},
   ufrmCadastroBasico in 'view\ufrmCadastroBasico.pas' {frmCadastroBasico},
-  ufrmCadastroUsuarios in 'view\ufrmCadastroUsuarios.pas' {frmcadastrousuario},
-  UFuncoes in 'classes\UFuncoes.pas';
+  UFuncoes in 'classes\UFuncoes.pas',
+  ufrmCadastroUsuarios in 'view\ufrmCadastroUsuarios.pas' {frmcadastrousuarios};
 
 {$R *.res}
 

@@ -57,7 +57,7 @@ type
     procedure acimprimirUpdate(Sender: TObject);
     procedure acsalvarUpdate(Sender: TObject);
   private
-    { Private declarations }
+    iModo: integer;
     procedure LimparTudo;
   public
     { Public declarations }
@@ -85,6 +85,8 @@ end;
 
 procedure TfrmCadastroBasico.aceditarExecute(Sender: TObject);
 begin
+iModo := 1;
+
 if PageControl1.ActivePage = tbsPesquisa then
   PageControl1.ActivePage := tbsCadastro;
   TClientDataSet(dsTabela.DataSet).Edit;
@@ -136,18 +138,18 @@ end;
 
 procedure TfrmCadastroBasico.acimprimirUpdate(Sender: TObject);
 begin
-if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+  if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
 
 acimprimir.Enabled := dsTabela.State in [dsBrowse];
 end;
 
 procedure TfrmCadastroBasico.acinserirExecute(Sender: TObject);
 begin
-iMode := 0;
+iModo := 0;
 
 if PageControl1.ActivePage = tbsPesquisa then
 PageControl1.ActivePage := tbsCadastro;
-if not TClientDataSet(dsTabela.DataSet).active then
+if not TClientDataSet(dsTabela.DataSet).Active then
 
   TClientDataSet(dsTabela.DataSet).Open;
   TClientDataSet(dsTabela.DataSet).Insert;
@@ -167,14 +169,15 @@ end;
 
 procedure TfrmCadastroBasico.acsalvarExecute(Sender: TObject);
 begin
+
 try
 
-    TClientDataSet(dsTabela.DataSet).Post;
-    TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
+TClientDataSet(dsTabela.DataSet).Post;
+TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
 
-    case dsTabela.State of
-    0 : Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
-    1 : Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
+    case iModo of
+    0 : Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
+    1 : Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
     end;
 
 
@@ -187,6 +190,7 @@ except on E : Exception do
 raise Exception.Create('Erro ao Salvar Registro: '+E.Message);
 
 end;
+
 end;
 
 procedure TfrmCadastroBasico.acsalvarUpdate(Sender: TObject);

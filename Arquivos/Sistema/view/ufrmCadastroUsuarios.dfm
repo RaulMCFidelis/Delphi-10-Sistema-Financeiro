@@ -1,103 +1,68 @@
-inherited frmcadastrousuario: Tfrmcadastrousuario
-  ActiveControl = edtnome
-  Caption = 'Cadastro de Usu'#225'rio'
+inherited frmcadastrousuarios: Tfrmcadastrousuarios
+  Caption = 'Cadastro de Usu'#225'rios'
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
     ActivePage = tbscadastro
     inherited tbscadastro: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 701
       ExplicitHeight = 356
       object Label2: TLabel
-        Left = 24
-        Top = 27
+        Left = 16
+        Top = 24
         Width = 31
         Height = 13
         Caption = 'Nome:'
       end
       object Label3: TLabel
-        Left = 24
-        Top = 77
+        Left = 16
+        Top = 72
         Width = 29
         Height = 13
         Caption = 'Login:'
       end
       object Label4: TLabel
-        Left = 19
-        Top = 120
+        Left = 16
+        Top = 128
         Width = 34
         Height = 13
         Caption = 'Senha:'
       end
       object edtnome: TEdit
-        Left = 61
-        Top = 24
-        Width = 273
+        Left = 56
+        Top = 21
+        Width = 260
         Height = 21
         MaxLength = 50
         TabOrder = 0
       end
       object edtlogin: TEdit
-        Left = 59
-        Top = 74
-        Width = 275
+        Left = 56
+        Top = 69
+        Width = 258
         Height = 21
         MaxLength = 20
         TabOrder = 1
       end
       object edtsenha: TEdit
-        Left = 59
-        Top = 117
-        Width = 275
+        Left = 56
+        Top = 125
+        Width = 257
         Height = 21
+        Color = clBtnFace
         MaxLength = 20
         PasswordChar = '*'
         TabOrder = 2
       end
     end
-    inherited tbspesquisa: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      inherited DbgDados: TDBGrid
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'Id'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'Nome'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'Login'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'Senha'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'Status'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'Data de Cadastro'
-            Visible = True
-          end>
-      end
-    end
   end
   inherited ImageListcadastro: TImageList
+    Left = 600
+    Top = 296
     Bitmap = {
-      494C010110001800500020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800600020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2743,5 +2708,9 @@ inherited frmcadastrousuario: Tfrmcadastrousuario
       FC0000FFC000FFFFC00003FFFC0000FFFF0003FFC000FFFFF0000FFFFF0003FF
       FFC00FFFFF01FFFFFC003FFFFFC00FFF00000000000000000000000000000000
       000000000000}
+  end
+  inherited actacoes: TActionList
+    Left = 576
+    Top = 216
   end
 end

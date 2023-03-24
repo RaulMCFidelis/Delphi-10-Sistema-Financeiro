@@ -43,7 +43,7 @@ object dmDados: TdmDados
     Top = 16
   end
   object sdscaixa: TSQLDataSet
-    CommandText = 'SELECT*FROM CAIXA'
+    CommandText = 'SELECT * FROM CAIXA'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -159,7 +159,7 @@ object dmDados: TdmDados
     Top = 80
   end
   object sdsconstas_pagar: TSQLDataSet
-    CommandText = 'SELECT*FROM CONTAS_PAGAR'
+    CommandText = 'SELECT * FROM CONTAS_PAGAR'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -234,7 +234,7 @@ object dmDados: TdmDados
     end
   end
   object sdscontas_receber: TSQLDataSet
-    CommandText = 'SELECT*FROM CONTAS_RECEBER'
+    CommandText = 'SELECT * FROM CONTAS_RECEBER'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -255,6 +255,7 @@ object dmDados: TdmDados
     Top = 272
     object cdsusuariosid: TIntegerField
       FieldName = 'Id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsusuariosnome: TStringField
@@ -269,19 +270,22 @@ object dmDados: TdmDados
     object cdsusuariossenha: TStringField
       FieldName = 'Senha'
       Required = True
+      Visible = False
     end
     object cdsusuariosstatus: TStringField
       FieldName = 'Status'
       Required = True
+      Visible = False
       FixedChar = True
       Size = 1
     end
     object cdsusuariosdt_cadastro: TDateField
+      DisplayLabel = 'Data Cadastro'
       FieldName = 'dt_cadastro'
     end
   end
   object sdsusuarios: TSQLDataSet
-    CommandText = 'SELECT*FROM USUARIOS'
+    CommandText = 'SELECT * FROM USUARIOS'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
