@@ -1,0 +1,39 @@
+unit Uprincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls;
+
+type
+  Tfrmprincipal = class(TForm)
+    Label1: TLabel;
+    imgusuarios: TImage;
+    imgreceber: TImage;
+    imgpagar: TImage;
+    imgcaixa: TImage;
+    imgconreceber: TImage;
+    imgconpagar: TImage;
+    Label3: TLabel;
+    Label4: TLabel;
+    imgrelpagar: TImage;
+    imgnavegador: TImage;
+    imgconfig: TImage;
+    imgrelreceber: TImage;
+    imgrelcaixa: TImage;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmprincipal: Tfrmprincipal;
+
+implementation
+
+{$R *.dfm}
+
+end.
