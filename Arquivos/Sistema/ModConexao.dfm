@@ -38,10 +38,12 @@ object dmDados: TdmDados
       'Encrypted=False'
       'BlobSize=-1'
       'ErrorResourceFile=')
+    Connected = True
     Left = 24
     Top = 16
   end
   object sdscaixa: TSQLDataSet
+    Active = True
     CommandText = 'SELECT * FROM CAIXA'
     MaxBlobSize = -1
     Params = <>
@@ -55,6 +57,7 @@ object dmDados: TdmDados
     Top = 144
   end
   object cdscaixa: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspcaixa'
@@ -62,6 +65,7 @@ object dmDados: TdmDados
     Top = 80
     object cdscaixaid: TIntegerField
       FieldName = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdscaixanumero_doc: TStringField
@@ -90,6 +94,7 @@ object dmDados: TdmDados
     end
   end
   object cdscontas_pagar: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspcontas_pagar'
@@ -97,6 +102,7 @@ object dmDados: TdmDados
     Top = 144
     object cdscontas_pagarid: TIntegerField
       FieldName = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdscontas_pagarnumero_doc: TStringField
@@ -158,6 +164,7 @@ object dmDados: TdmDados
     Top = 80
   end
   object sdsconstas_pagar: TSQLDataSet
+    Active = True
     CommandText = 'SELECT * FROM CONTAS_PAGAR'
     MaxBlobSize = -1
     Params = <>
@@ -171,6 +178,7 @@ object dmDados: TdmDados
     Top = 208
   end
   object cdscontas_receber: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspcontas_receber'
@@ -178,6 +186,7 @@ object dmDados: TdmDados
     Top = 208
     object cdscontas_receberid: TIntegerField
       FieldName = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdscontas_receberdocumento: TStringField
@@ -233,6 +242,7 @@ object dmDados: TdmDados
     end
   end
   object sdscontas_receber: TSQLDataSet
+    Active = True
     CommandText = 'SELECT * FROM CONTAS_RECEBER'
     MaxBlobSize = -1
     Params = <>
@@ -246,6 +256,7 @@ object dmDados: TdmDados
     Top = 272
   end
   object cdsusuarios: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspusuarios'
@@ -253,6 +264,7 @@ object dmDados: TdmDados
     Top = 272
     object cdsusuariosid: TIntegerField
       FieldName = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsusuariosnome: TStringField
@@ -280,6 +292,7 @@ object dmDados: TdmDados
     end
   end
   object sdsusuarios: TSQLDataSet
+    Active = True
     CommandText = 'SELECT * FROM USUARIOS'
     MaxBlobSize = -1
     Params = <>
