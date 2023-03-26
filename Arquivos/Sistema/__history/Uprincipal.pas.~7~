@@ -1,0 +1,56 @@
+unit Uprincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls, Vcl.ComCtrls;
+
+type
+  TfrmPrincipal = class(TForm)
+    Label1: TLabel;
+    imgusuarios: TImage;
+    imgreceber: TImage;
+    imgpagar: TImage;
+    imgcaixa: TImage;
+    imgconreceber: TImage;
+    imgconpagar: TImage;
+    Label3: TLabel;
+    Label4: TLabel;
+    imgrelpagar: TImage;
+    imgconfig: TImage;
+    imgnavegador: TImage;
+    imgrelreceber: TImage;
+    imgrelcaixa: TImage;
+    BalloonHint1: TBalloonHint;
+    StatusBar1: TStatusBar;
+    Timer1: TTimer;
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+if Application.MessageBox('Deseja Realmente Sair', 'Informação', MB_YESNO+MB_ICONQUESTION) = mrYes then
+
+Application.Terminate;
+end;
+
+procedure TfrmPrincipal.Timer1Timer(Sender: TObject);
+begin
+    StatusBar1.Panels.Items[0].Text := DateTimeToStr(now);
+end;
+
+end.

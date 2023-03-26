@@ -5,24 +5,32 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, Vcl.ComCtrls, Vcl.Buttons;
 
 type
-  Tfrmprincipal = class(TForm)
+  TfrmPrincipal = class(TForm)
     Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     imgusuarios: TImage;
-    Image1: TImage;
-    Image2: TImage;
-    Image3: TImage;
-    Image4: TImage;
-    Image5: TImage;
-    Image6: TImage;
-    Image7: TImage;
-    Image8: TImage;
-    Image9: TImage;
-    Image10: TImage;
+    imgreceber: TImage;
+    imgpagar: TImage;
+    imgcaixa: TImage;
+    imgconreceber: TImage;
+    imgconpagar: TImage;
+    Label3: TLabel;
+    Label4: TLabel;
+    imgrelpagar: TImage;
+    imgconfig: TImage;
+    imgnavegador: TImage;
+    imgrelreceber: TImage;
+    imgrelcaixa: TImage;
+    BalloonHint1: TBalloonHint;
+    StatusBar1: TStatusBar;
+    Timer1: TTimer;
+    BitBtn1: TBitBtn;
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure imgusuariosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,10 +38,48 @@ type
   end;
 
 var
-  frmprincipal: Tfrmprincipal;
+  frmPrincipal: TfrmPrincipal;
 
 implementation
 
 {$R *.dfm}
+
+uses ufrmCadastroBasico, ufrmCadastroUsuarios;
+
+procedure TfrmPrincipal.BitBtn1Click(Sender: TObject);
+begin
+  frmCadastroBasico := TfrmCadastroBasico.Create(nil);
+  try
+    frmCadastroBasico.ShowModal;
+  finally
+   FreeAndNil (frmCadastroBasico);
+  end;
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+if Application.MessageBox('Deseja Realmente Sair', 'Informação', MB_YESNO+MB_ICONQUESTION) = mrYes then
+
+Application.Terminate
+
+else
+Abort;
+end;
+
+procedure TfrmPrincipal.imgusuariosClick(Sender: TObject);
+begin
+frmcadastrousuarios := Tfrmcadastrousuarios.Create(nil);
+ try
+    frmcadastrousuarios.ShowModal;
+
+  finally
+   FreeAndNil(frmcadastrousuarios);
+  end;
+end;
+
+procedure TfrmPrincipal.Timer1Timer(Sender: TObject);
+begin
+    StatusBar1.Panels.Items[0].Text := DateTimeToStr(now);
+end;
 
 end.
