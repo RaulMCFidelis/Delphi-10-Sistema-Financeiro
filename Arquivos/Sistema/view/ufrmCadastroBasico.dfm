@@ -107,16 +107,14 @@ object frmCadastroBasico: TfrmCadastroBasico
     TabOrder = 1
     object tbscadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object tbspesquisa: TTabSheet
       Caption = 'Pesquisa'
       ImageIndex = 2
+      ExplicitLeft = 8
+      ExplicitTop = 22
       object Label1: TLabel
-        Left = 16
+        Left = 174
         Top = 16
         Width = 60
         Height = 16
@@ -128,8 +126,21 @@ object frmCadastroBasico: TfrmCadastroBasico
         Font.Style = []
         ParentFont = False
       end
+      object Label4: TLabel
+        Left = 3
+        Top = 16
+        Width = 65
+        Height = 16
+        Caption = 'Selecionar:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
       object btnfiltrar: TButton
-        Left = 355
+        Left = 517
         Top = 36
         Width = 75
         Height = 25
@@ -151,18 +162,27 @@ object frmCadastroBasico: TfrmCadastroBasico
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
       end
-      object editpesquisar: TEdit
-        Left = 16
+      object edtpesquisar: TEdit
+        Left = 174
         Top = 38
         Width = 333
         Height = 21
         TabOrder = 2
       end
+      object cbxfiltros: TComboBoxEx
+        Left = 3
+        Top = 38
+        Width = 145
+        Height = 22
+        ItemsEx = <>
+        Style = csExDropDownList
+        TabOrder = 3
+      end
     end
   end
   object dsTabela: TDataSource
     DataSet = dmDados.cdscaixa
-    Left = 520
+    Left = 632
     Top = 40
   end
   object ImageListcadastro: TImageList
@@ -171,7 +191,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Left = 424
     Top = 208
     Bitmap = {
-      494C010110001800640020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800680020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

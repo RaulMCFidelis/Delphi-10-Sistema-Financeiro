@@ -1,4 +1,4 @@
-object frmbadastrobasico: Tfrmbadastrobasico
+object frmCadastroBasico: TfrmCadastroBasico
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
@@ -25,8 +25,6 @@ object frmbadastrobasico: Tfrmbadastrobasico
     Height = 70
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 376
-    ExplicitWidth = 759
     object Inserir: TSpeedButton
       Left = 20
       Top = 6
@@ -97,8 +95,6 @@ object frmbadastrobasico: Tfrmbadastrobasico
       Width = 707
       Height = 19
       Panels = <>
-      ExplicitTop = 42
-      ExplicitWidth = 770
     end
   end
   object PageControl1: TPageControl
@@ -106,24 +102,19 @@ object frmbadastrobasico: Tfrmbadastrobasico
     Top = 0
     Width = 709
     Height = 384
-    ActivePage = tbsPesquisa
+    ActivePage = tbspesquisa
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 772
-    ExplicitHeight = 98
     object tbscadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitWidth = 764
-      ExplicitHeight = 70
-    end
-    object tbsPesquisa: TTabSheet
-      Caption = 'Pesquisa'
-      ImageIndex = 1
-      OnShow = tbsPesquisaShow
       ExplicitLeft = 0
-      ExplicitTop = 22
-      ExplicitWidth = 673
-      ExplicitHeight = 68
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+    end
+    object tbspesquisa: TTabSheet
+      Caption = 'Pesquisa'
+      ImageIndex = 2
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -137,40 +128,40 @@ object frmbadastrobasico: Tfrmbadastrobasico
         Font.Style = []
         ParentFont = False
       end
-      object editpesquisar: TEdit
-        Left = 16
-        Top = 38
-        Width = 333
-        Height = 21
-        TabOrder = 0
-      end
       object btnfiltrar: TButton
         Left = 355
         Top = 36
         Width = 75
         Height = 25
         Caption = 'Filtrar'
-        TabOrder = 1
+        TabOrder = 0
       end
       object DbgDados: TDBGrid
         Left = 0
-        Top = 236
+        Top = 120
         Width = 701
-        Height = 120
+        Height = 236
         Align = alBottom
         DataSource = dsTabela
         DrawingStyle = gdsGradient
-        TabOrder = 2
+        TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
       end
+      object editpesquisar: TEdit
+        Left = 16
+        Top = 38
+        Width = 333
+        Height = 21
+        TabOrder = 2
+      end
     end
   end
   object dsTabela: TDataSource
-    DataSet = DataModule1.cdscaixa
+    DataSet = dmDados.cdscaixa
     Left = 520
     Top = 40
   end
@@ -180,7 +171,7 @@ object frmbadastrobasico: Tfrmbadastrobasico
     Left = 424
     Top = 208
     Bitmap = {
-      494C010110001800480020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800640020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

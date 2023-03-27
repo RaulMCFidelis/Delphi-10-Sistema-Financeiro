@@ -17,7 +17,7 @@ type
     tbscadastro: TTabSheet;
     ImageListcadastro: TImageList;
     Label1: TLabel;
-    editpesquisar: TEdit;
+    edtpesquisar: TEdit;
     btnfiltrar: TButton;
     StatusBar1: TStatusBar;
     actacoes: TActionList;
@@ -39,6 +39,8 @@ type
     SpeedButton7: TSpeedButton;
     DbgDados: TDBGrid;
     tbspesquisa: TTabSheet;
+    Label4: TLabel;
+    cbxfiltros: TComboBoxEx;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure tbsPesquisarShow(Sender: TObject);
@@ -232,6 +234,7 @@ for i  := 0 to ComponentCount -1 do
   tbsCadastro.TabVisible := false;
   PageControl1.ActivePage := tbsPesquisa;
   end;
+    edtpesquisar.SetFocus;
 end;
 
 procedure TfrmCadastroBasico.tbsPesquisarShow(Sender: TObject);
