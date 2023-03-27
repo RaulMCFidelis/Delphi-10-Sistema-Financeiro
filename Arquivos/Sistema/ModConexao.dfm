@@ -256,7 +256,6 @@ object dmDados: TdmDados
     Top = 272
   end
   object cdsusuarios: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspusuarios'

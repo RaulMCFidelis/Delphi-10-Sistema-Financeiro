@@ -12,7 +12,7 @@ type
   Tfrmcadastrousuarios = class(TfrmCadastroBasico)
     Label2: TLabel;
     Label3: TLabel;
-    Label4: TLabel;
+    Labe4: TLabel;
     edtnome: TEdit;
     edtlogin: TEdit;
     edtsenha: TEdit;
@@ -39,10 +39,10 @@ if GetLoginCadastrado(trim(edtlogin.Text)) then
    Application.MessageBox('Nome de Login já Cadastrado!', 'Atenção', MB_OK+MB_ICONWARNING);
    edtlogin.SetFocus;
 
-  if Trim(edtNome.Text) = '' then
+  if Trim(edtnome.Text) = '' then
   begin
     Application.MessageBox('Preencha o Campo Nome!', 'Atenção', MB_OK+MB_ICONWARNING);
-    edtNome.SetFocus;
+    edtnome.SetFocus;
     Abort;
   end;
 
