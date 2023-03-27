@@ -70,6 +70,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses UFuncoes, ufrmCadastroUsuarios;
 {$R *.dfm}
 
 end.

@@ -88,15 +88,17 @@ begin
 iModo := 1;
 
 if PageControl1.ActivePage = tbsPesquisa then
-  PageControl1.ActivePage := tbsCadastro;
-  TClientDataSet(dsTabela.DataSet).Edit;
+   tbsCadastro.TabVisible := true;
+   tbsPesquisa.TabVisible := false;
+   PageControl1.ActivePage := tbsCadastro;
+   TClientDataSet(dsTabela.DataSet).Edit;
 end;
 
 procedure TfrmCadastroBasico.aceditarUpdate(Sender: TObject);
 begin
-if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+if not TClientDataSet(dsTabela.DataSet).IsEmpty then
 
-aceditar.Enabled := dsTabela.State in [dsBrowse];
+aceditar.Enabled := true;
 end;
 
 procedure TfrmCadastroBasico.acexcluirExecute(Sender: TObject);
@@ -148,6 +150,8 @@ begin
 iModo := 0;
 
 if PageControl1.ActivePage = tbsPesquisa then
+tbsCadastro.TabVisible := true;
+tbsPesquisa.TabVisible := false;
 PageControl1.ActivePage := tbsCadastro;
 if not TClientDataSet(dsTabela.DataSet).Active then
 
@@ -224,8 +228,10 @@ for i  := 0 to ComponentCount -1 do
     TCustomEdit(components[i]).Clear;
   end;
   if PageControl1.ActivePage = tbsCadastro then
-      PageControl1.ActivePage := tbsPesquisa;
-
+  begin
+  tbsCadastro.TabVisible := false;
+  PageControl1.ActivePage := tbsPesquisa;
+  end;
 end;
 
 procedure TfrmCadastroBasico.tbsPesquisarShow(Sender: TObject);
