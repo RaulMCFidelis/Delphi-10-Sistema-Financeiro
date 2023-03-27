@@ -17,6 +17,7 @@ type
     edtlogin: TEdit;
     edtsenha: TEdit;
     procedure acsalvarExecute(Sender: TObject);
+    procedure aceditarExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,10 +33,18 @@ implementation
 
 uses ModConexao, UFuncoes;
 
+procedure Tfrmcadastrousuarios.aceditarExecute(Sender: TObject);
+begin
+  inherited;
+  edtnome.Text := DmDados.cdsusuariosnome.AsString;
+  edtlogin.Text := DmDados.cdsusuarioslogin.AsString;
+  edtsenha.Text := DmDados.cdsusuariossenha.AsString;
+end;
+
 procedure Tfrmcadastrousuarios.acsalvarExecute(Sender: TObject);
 begin
 
-if GetLoginCadastrado(trim(edtlogin.Text)) then
+if (dsTabela.State in [dsInsert]) and (GetLoginCadastrado(trim(edtlogin.Text))) then
    Application.MessageBox('Nome de Login já Cadastrado!', 'Atenção', MB_OK+MB_ICONWARNING);
    edtlogin.SetFocus;
 
@@ -60,6 +69,9 @@ if GetLoginCadastrado(trim(edtlogin.Text)) then
     edtsenha.SetFocus;
     Abort;
   end;
+
+  if dsTabela.State in [dsInsert] then
+
 
   dmDados.cdsusuariosid.AsInteger := GetId('ID', 'USUARIOS');
   dmdados.cdsusuariosnome.AsString := trim(edtnome.Text);

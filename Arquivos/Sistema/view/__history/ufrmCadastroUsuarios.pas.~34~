@@ -12,11 +12,12 @@ type
   Tfrmcadastrousuarios = class(TfrmCadastroBasico)
     Label2: TLabel;
     Label3: TLabel;
-    Label4: TLabel;
+    Labe4: TLabel;
     edtnome: TEdit;
     edtlogin: TEdit;
     edtsenha: TEdit;
     procedure acsalvarExecute(Sender: TObject);
+    procedure aceditarExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,6 +33,14 @@ implementation
 
 uses ModConexao, UFuncoes;
 
+procedure Tfrmcadastrousuarios.aceditarExecute(Sender: TObject);
+begin
+  inherited;
+  edtnome.Text := DmDados.cdsusuariosnome.AsString;
+  edtlogin.Text := DmDados.cdsusuarioslogin.AsString;
+  edtsenha.Text := DmDados.cdsusuariossenha.AsString;
+end;
+
 procedure Tfrmcadastrousuarios.acsalvarExecute(Sender: TObject);
 begin
 
@@ -39,10 +48,10 @@ if GetLoginCadastrado(trim(edtlogin.Text)) then
    Application.MessageBox('Nome de Login já Cadastrado!', 'Atenção', MB_OK+MB_ICONWARNING);
    edtlogin.SetFocus;
 
-  if Trim(edtNome.Text) = '' then
+  if Trim(edtnome.Text) = '' then
   begin
     Application.MessageBox('Preencha o Campo Nome!', 'Atenção', MB_OK+MB_ICONWARNING);
-    edtNome.SetFocus;
+    edtnome.SetFocus;
     Abort;
   end;
 
@@ -60,6 +69,9 @@ if GetLoginCadastrado(trim(edtlogin.Text)) then
     edtsenha.SetFocus;
     Abort;
   end;
+
+  if dsTabela.State in [dsInsert] then
+
 
   dmDados.cdsusuariosid.AsInteger := GetId('ID', 'USUARIOS');
   dmdados.cdsusuariosnome.AsString := trim(edtnome.Text);

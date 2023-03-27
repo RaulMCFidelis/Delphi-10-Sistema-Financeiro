@@ -262,30 +262,36 @@ object dmDados: TdmDados
     Left = 224
     Top = 272
     object cdsusuariosid: TIntegerField
+      DisplayLabel = 'Id'
       FieldName = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsusuariosnome: TStringField
+      DisplayLabel = 'Nome'
       FieldName = 'nome'
       Required = True
       Size = 50
     end
     object cdsusuarioslogin: TStringField
+      DisplayLabel = 'Login'
       FieldName = 'login'
       Required = True
     end
     object cdsusuariossenha: TStringField
+      DisplayLabel = 'Senha'
       FieldName = 'senha'
       Required = True
     end
     object cdsusuariosstatus: TStringField
+      DisplayLabel = 'Status'
       FieldName = 'status'
       Required = True
       FixedChar = True
       Size = 1
     end
     object cdsusuariosdt_cadastro: TDateField
+      DisplayLabel = 'Data de Cadastro'
       FieldName = 'dt_cadastro'
       Required = True
     end
