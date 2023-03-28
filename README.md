@@ -1,2 +1,2 @@
-# Delphi-XE8-Sistema-Financeiro
+# Delphi-10-Sistema-Financeiro
  
