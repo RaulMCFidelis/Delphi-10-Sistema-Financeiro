@@ -53,6 +53,7 @@ object dmDados: TdmDados
   end
   object dspcontas_pagar: TDataSetProvider
     DataSet = sdsconstas_pagar
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 120
     Top = 144
   end
@@ -160,6 +161,7 @@ object dmDados: TdmDados
   end
   object dspcaixa: TDataSetProvider
     DataSet = sdscaixa
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 120
     Top = 80
   end
@@ -174,6 +176,7 @@ object dmDados: TdmDados
   end
   object dspcontas_receber: TDataSetProvider
     DataSet = sdscontas_receber
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 120
     Top = 208
   end
@@ -252,6 +255,7 @@ object dmDados: TdmDados
   end
   object dspusuarios: TDataSetProvider
     DataSet = sdsusuarios
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 120
     Top = 272
   end

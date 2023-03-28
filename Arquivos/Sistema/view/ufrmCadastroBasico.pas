@@ -169,8 +169,7 @@ end;
 
 procedure TfrmCadastroBasico.acpesquisarExecute(Sender: TObject);
 begin
-TClientDataSet(dsTabela.DataSet).Close;
-TClientDataSet(dsTabela.DataSet).Open;
+edtpesquisar.Clear;
 end;
 
 procedure TfrmCadastroBasico.acsalvarExecute(Sender: TObject);

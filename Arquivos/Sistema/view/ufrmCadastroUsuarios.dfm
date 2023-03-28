@@ -70,8 +70,6 @@ inherited frmcadastrousuarios: Tfrmcadastrousuarios
       end
     end
     inherited tbspesquisa: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       inherited DbgDados: TDBGrid
         Columns = <
           item
@@ -114,7 +112,7 @@ inherited frmcadastrousuarios: Tfrmcadastrousuarios
     Left = 552
     Top = 256
     Bitmap = {
-      494C010110001800700020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800780020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

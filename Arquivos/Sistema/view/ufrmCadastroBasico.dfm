@@ -111,8 +111,6 @@ object frmCadastroBasico: TfrmCadastroBasico
     object tbspesquisa: TTabSheet
       Caption = 'Pesquisa'
       ImageIndex = 2
-      ExplicitLeft = 8
-      ExplicitTop = 22
       object Label1: TLabel
         Left = 174
         Top = 16
@@ -174,7 +172,13 @@ object frmCadastroBasico: TfrmCadastroBasico
         Top = 38
         Width = 145
         Height = 22
-        ItemsEx = <>
+        ItemsEx = <
+          item
+            Caption = 'Nome'
+          end
+          item
+            Caption = 'Login'
+          end>
         Style = csExDropDownList
         TabOrder = 3
       end
@@ -191,7 +195,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Left = 424
     Top = 208
     Bitmap = {
-      494C010110001800680020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800700020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
