@@ -5,17 +5,18 @@ uses
   Uprincipal in 'Uprincipal.pas' {frmPrincipal},
   Vcl.Themes,
   Vcl.Styles,
-  ModConexao in 'ModConexao.pas' {DataModule1: TDataModule},
+  ModConexao in 'ModConexao.pas' {dmDados: TDataModule},
   ufrmCadastroBasico in 'view\ufrmCadastroBasico.pas' {frmCadastroBasico},
-  ufrmCadastroUsuarios in 'view\ufrmCadastroUsuarios.pas' {frmcadastrousuario};
+  UFuncoes in 'classes\UFuncoes.pas',
+  ufrmCadastroUsuarios in 'view\ufrmCadastroUsuarios.pas' {frmcadastrousuarios};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Light');
+  TStyleManager.TrySetStyle('Amakrits');
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TdmDados, dmDados);
   Application.Run;
 end.

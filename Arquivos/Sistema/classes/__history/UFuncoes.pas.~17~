@@ -10,7 +10,7 @@ uses
 
 function GetId(Campo, Tabela : String) : Integer;
 function GetLoginCadastrado(Login : String) : Boolean;
-procedure EditarDBGrid(DataSpurce : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
+
 implementation
 
 uses ModConexao, ufrmCadastroUsuarios;
@@ -50,20 +50,8 @@ function GetId(Campo, Tabela : String) : Integer;
       Free;
 
       end;
+
    end;
-
-      procedure EditarDBGrid(DataSpurce : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
-   begin
-     if not odd(DataSource.DataSet.RecNo) then
-      begin
-        if not (gdSelected in state) then
-         Sender.Canvas.Brush.Color := $00FFEFDF;
-         Sender.Canvas.FillRect(Rect);
-         Sender.DefaultDrawDataCell(Rect, Column);
-      end;
-   end;
-
-
 
        function StringParaFloat(s : string) : Extended;
 { Filtra uma string qualquer, convertendo as suas partes

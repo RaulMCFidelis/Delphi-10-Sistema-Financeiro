@@ -3,7 +3,8 @@ unit ufrmCadastroBasico;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids,
   Vcl.DBGrids, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
   Vcl.ExtCtrls, System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList,
@@ -58,8 +59,10 @@ type
     procedure accancelarUpdate(Sender: TObject);
     procedure acimprimirUpdate(Sender: TObject);
     procedure acsalvarUpdate(Sender: TObject);
+    procedure DbgDadosDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
-    iModo: integer;
+    iModo: Integer;
     procedure LimparTudo;
   public
     { Public declarations }
@@ -72,53 +75,54 @@ implementation
 
 {$R *.dfm}
 
-uses ModConexao;
+uses ModConexao, UFuncoes;
 
 procedure TfrmCadastroBasico.accancelarExecute(Sender: TObject);
 begin
-LimparTudo;
-TClientDataSet(dsTabela.DataSet).Cancel;
+  LimparTudo;
+  TClientDataSet(dsTabela.DataSet).Cancel;
 end;
 
 procedure TfrmCadastroBasico.accancelarUpdate(Sender: TObject);
 begin
-accancelar.Enabled := acsalvar.Enabled = true;
+  accancelar.Enabled := acsalvar.Enabled = true;
 end;
 
 procedure TfrmCadastroBasico.aceditarExecute(Sender: TObject);
 begin
-iModo := 1;
+  iModo := 1;
 
-if PageControl1.ActivePage = tbsPesquisa then
-   tbsCadastro.TabVisible := true;
-   tbsPesquisa.TabVisible := false;
-   PageControl1.ActivePage := tbsCadastro;
-   TClientDataSet(dsTabela.DataSet).Edit;
+  if PageControl1.ActivePage = tbspesquisa then
+    tbscadastro.TabVisible := true;
+  tbspesquisa.TabVisible := false;
+  PageControl1.ActivePage := tbscadastro;
+  TClientDataSet(dsTabela.DataSet).Edit;
 end;
 
 procedure TfrmCadastroBasico.aceditarUpdate(Sender: TObject);
 begin
-if not TClientDataSet(dsTabela.DataSet).IsEmpty then
+  if not TClientDataSet(dsTabela.DataSet).IsEmpty then
 
-aceditar.Enabled := true;
+    aceditar.Enabled := true;
 end;
 
 procedure TfrmCadastroBasico.acexcluirExecute(Sender: TObject);
 begin
-if Application.MessageBox('Deseja Realmente Excluir o Registro?', 'Pergunta', MB_YESNO+MB_ICONQUESTION) = mrYes then
+  if Application.MessageBox('Deseja Realmente Excluir o Registro?', 'Pergunta',
+    MB_YESNO + MB_ICONQUESTION) = mrYes then
   begin
     try
-      TclientDataSet(dsTabela.DataSet).Delete;
-      TclientDataSet(dsTabela.DataSet).ApplyUpdates(0);
+      TClientDataSet(dsTabela.DataSet).Delete;
+      TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
 
-      Application.MessageBox('Registro Excluido com Sucesso!', 'Informação', 0+64);
+      Application.MessageBox('Registro Excluido com Sucesso!',
+        'Informação', 0 + 64);
       TClientDataSet(dsTabela.DataSet).Open;
 
-      except on E : Exception do
+    except
+      on E: Exception do
 
-      raise Exception.Create('Error ao Excluir o Registro: '+E.Message);
-
-
+        raise Exception.Create('Error ao Excluir o Registro: ' + E.Message);
 
     end;
   end;
@@ -126,96 +130,107 @@ end;
 
 procedure TfrmCadastroBasico.acexcluirUpdate(Sender: TObject);
 begin
-if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
-  acexcluir.Enabled := dsTabela.State in [dsBrowse];
+  if (dsTabela.State in [dsBrowse]) and
+    (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+    acexcluir.Enabled := dsTabela.State in [dsBrowse];
 end;
 
 procedure TfrmCadastroBasico.acfecharExecute(Sender: TObject);
 begin
-close;
+  close;
 end;
 
 procedure TfrmCadastroBasico.acimprimirExecute(Sender: TObject);
 begin
-ShowMessage('Em Desenvolvimento');
+  ShowMessage('Em Desenvolvimento');
 end;
 
 procedure TfrmCadastroBasico.acimprimirUpdate(Sender: TObject);
 begin
-  if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+  if (dsTabela.State in [dsBrowse]) and
+    (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
 
-acimprimir.Enabled := dsTabela.State in [dsBrowse];
+    acimprimir.Enabled := dsTabela.State in [dsBrowse];
 end;
 
 procedure TfrmCadastroBasico.acinserirExecute(Sender: TObject);
 begin
-iModo := 0;
+  iModo := 0;
 
-if PageControl1.ActivePage = tbsPesquisa then
-tbsCadastro.TabVisible := true;
-tbsPesquisa.TabVisible := false;
-PageControl1.ActivePage := tbsCadastro;
-if not TClientDataSet(dsTabela.DataSet).Active then
+  if PageControl1.ActivePage = tbspesquisa then
+    tbscadastro.TabVisible := true;
+  tbspesquisa.TabVisible := false;
+  PageControl1.ActivePage := tbscadastro;
+  if not TClientDataSet(dsTabela.DataSet).Active then
 
-  TClientDataSet(dsTabela.DataSet).Open;
+    TClientDataSet(dsTabela.DataSet).Open;
   TClientDataSet(dsTabela.DataSet).Insert;
 
 end;
 
 procedure TfrmCadastroBasico.acinserirUpdate(Sender: TObject);
 begin
-acinserir.Enabled := dsTabela.State in [dsBrowse,dsInactive];
+  acinserir.Enabled := dsTabela.State in [dsBrowse, dsInactive];
 end;
 
 procedure TfrmCadastroBasico.acpesquisarExecute(Sender: TObject);
 begin
-edtpesquisar.Clear;
+  edtpesquisar.Clear;
 end;
 
 procedure TfrmCadastroBasico.acsalvarExecute(Sender: TObject);
 begin
 
-try
+  try
 
-TClientDataSet(dsTabela.DataSet).Post;
-TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
+    TClientDataSet(dsTabela.DataSet).Post;
+    TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
 
     case iModo of
-    0 : Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
-    1 : Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
+      0:
+        Application.MessageBox('Registro Inserido com Sucesso!', 'Informação',
+          MB_OK + MB_ICONINFORMATION);
+      1:
+        Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação',
+          MB_OK + MB_ICONINFORMATION);
     end;
 
+    // Limpar os campos
+    LimparTudo;
+    TClientDataSet(dsTabela.DataSet).Open;
 
-      //Limpar os campos
-      LimparTudo;
-      TClientDataSet(dsTabela.DataSet).Open;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao Salvar Registro: ' + E.Message);
 
-
-except on E : Exception do
-raise Exception.Create('Erro ao Salvar Registro: '+E.Message);
-
-end;
+  end;
 
 end;
 
 procedure TfrmCadastroBasico.acsalvarUpdate(Sender: TObject);
 begin
-acsalvar.Enabled := dsTabela.State in [dsinsert,dsedit];
+  acsalvar.Enabled := dsTabela.State in [dsinsert, dsedit];
+end;
+
+procedure TfrmCadastroBasico.DbgDadosDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  EditarDBGrid(dsTabela,dbgDados,State,Rect,Column);
 end;
 
 procedure TfrmCadastroBasico.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-    TClientDataSet(dsTabela.DataSet).Cancel;
-      TClientDataSet(dsTabela.DataSet).Close;
+  TClientDataSet(dsTabela.DataSet).Cancel;
+  TClientDataSet(dsTabela.DataSet).close;
 end;
 
 procedure TfrmCadastroBasico.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-if key = #27 then
+  if Key = #27 then
     close;
-if key = #13 then
-    Perform (WM_NEXTDLGCTL, 0, 0);
+  if Key = #13 then
+    Perform(WM_NEXTDLGCTL, 0, 0);
 end;
 
 procedure TfrmCadastroBasico.LimparTudo;
@@ -223,23 +238,22 @@ var
   i: Integer;
 
 begin
-for i  := 0 to ComponentCount -1 do
+  for i := 0 to ComponentCount - 1 do
   begin
     if Components[i] is TCustomEdit then
-    TCustomEdit(components[i]).Clear;
+      TCustomEdit(Components[i]).Clear;
   end;
-  if PageControl1.ActivePage = tbsCadastro then
+  if PageControl1.ActivePage = tbscadastro then
   begin
-  tbsCadastro.TabVisible := false;
-  PageControl1.ActivePage := tbsPesquisa;
+    tbscadastro.TabVisible := false;
+    PageControl1.ActivePage := tbspesquisa;
   end;
-    edtpesquisar.SetFocus;
+  edtpesquisar.SetFocus;
 end;
 
 procedure TfrmCadastroBasico.tbsPesquisarShow(Sender: TObject);
 begin
-  PageControl1.ActivePage := tbsPesquisa;
+  PageControl1.ActivePage := tbspesquisa;
 end;
 
 end.
-

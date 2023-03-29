@@ -7,15 +7,18 @@ uses
   Vcl.Styles,
   ModConexao in 'ModConexao.pas' {dmDados: TDataModule},
   ufrmCadastroBasico in 'view\ufrmCadastroBasico.pas' {frmCadastroBasico},
-  ufrmCadastroUsuarios in 'view\ufrmCadastroUsuarios.pas' {frmcadastrousuario};
+  UFuncoes in 'classes\UFuncoes.pas',
+  ufrmCadastroUsuarios in 'view\ufrmCadastroUsuarios.pas' {frmcadastrousuarios},
+  ufrmCadastroCaixa in 'view\ufrmCadastroCaixa.pas' {frmCadastroBasico1};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Light');
+  TStyleManager.TrySetStyle('Amakrits');
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmDados, dmDados);
+  Application.CreateForm(TfrmCadastroBasico1, frmCadastroBasico1);
   Application.Run;
 end.

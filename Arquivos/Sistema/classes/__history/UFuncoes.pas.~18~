@@ -59,7 +59,7 @@ function GetId(Campo, Tabela : String) : Integer;
         if not (gdSelected in state) then
          Sender.Canvas.Brush.Color := $00FFEFDF;
          Sender.Canvas.FillRect(Rect);
-         Sender.DefaultDrawDataCell(Rect, Column);
+         Sender.DefaultDrawDataCell(Rect, Column
       end;
    end;
 

@@ -47,6 +47,8 @@ procedure Tfrmcadastrousuarios.acpesquisarExecute(Sender: TObject);
 begin
   inherited;
 dmDados.cdsusuarios.Close;
+dmDados.cdsusuarios.CommandText := 'SELECT * FROM USUARIOS';
+dmDados.cdsusuarios.Open;
 end;
 
 procedure Tfrmcadastrousuarios.acsalvarExecute(Sender: TObject);
