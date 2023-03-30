@@ -65,31 +65,38 @@ object dmDados: TdmDados
     Left = 224
     Top = 80
     object cdscaixaid: TIntegerField
+      DisplayLabel = 'Id'
       FieldName = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdscaixanumero_doc: TStringField
+      DisplayLabel = 'Numero Doc.'
       FieldName = 'numero_doc'
       Required = True
     end
     object cdscaixadescricao: TStringField
+      DisplayLabel = 'Descricao'
       FieldName = 'descricao'
       Size = 200
     end
     object cdscaixavalor: TFMTBCDField
+      DisplayLabel = 'Valor'
       FieldName = 'valor'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdscaixatipo: TStringField
+      DisplayLabel = 'Tipo'
       FieldName = 'tipo'
       Required = True
       FixedChar = True
       Size = 1
     end
     object cdscaixadt_cadastro: TDateField
+      DisplayLabel = 'Data Cadastro'
       FieldName = 'dt_cadastro'
       Required = True
     end
@@ -102,57 +109,69 @@ object dmDados: TdmDados
     Left = 224
     Top = 144
     object cdscontas_pagarid: TIntegerField
+      DisplayLabel = 'Id'
       FieldName = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdscontas_pagarnumero_doc: TStringField
+      DisplayLabel = 'N'#250'mero Doc.'
       FieldName = 'numero_doc'
       Required = True
     end
     object cdscontas_pagardescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'descricao'
       Size = 200
     end
     object cdscontas_pagarparcela: TIntegerField
+      DisplayLabel = 'Parcela'
       FieldName = 'parcela'
       Required = True
     end
     object cdscontas_pagarvlr_parcela: TFMTBCDField
+      DisplayLabel = 'Valor da Parcela'
       FieldName = 'vlr_parcela'
       Required = True
       Precision = 20
       Size = 2
     end
     object cdscontas_pagarvlr_compra: TFMTBCDField
+      DisplayLabel = 'Valor da Compra'
       FieldName = 'vlr_compra'
       Required = True
       Precision = 20
       Size = 2
     end
     object cdscontas_pagarvlr_abatido: TFMTBCDField
+      DisplayLabel = 'Valor Abatido'
       FieldName = 'vlr_abatido'
       Required = True
       Precision = 20
       Size = 2
     end
     object cdscontas_pagardt_compra: TDateField
+      DisplayLabel = 'data da Compra'
       FieldName = 'dt_compra'
       Required = True
     end
     object cdscontas_pagardt_cadastro: TDateField
+      DisplayLabel = 'Data do Cadastro'
       FieldName = 'dt_cadastro'
       Required = True
     end
     object cdscontas_pagardt_vencimento: TDateField
+      DisplayLabel = 'Data de Vencimento'
       FieldName = 'dt_vencimento'
       Required = True
     end
     object cdscontas_pagardt_pagamento: TDateField
+      DisplayLabel = 'Data de Pagamento'
       FieldName = 'dt_pagamento'
       Required = True
     end
     object cdscontas_pagarstatus: TStringField
+      DisplayLabel = 'Status'
       FieldName = 'status'
       Required = True
       FixedChar = True
@@ -260,6 +279,7 @@ object dmDados: TdmDados
     Top = 272
   end
   object cdsusuarios: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspusuarios'
@@ -295,7 +315,7 @@ object dmDados: TdmDados
       Size = 1
     end
     object cdsusuariosdt_cadastro: TDateField
-      DisplayLabel = 'Data de Cadastro'
+      DisplayLabel = 'Data Cadastro'
       FieldName = 'dt_cadastro'
       Required = True
     end

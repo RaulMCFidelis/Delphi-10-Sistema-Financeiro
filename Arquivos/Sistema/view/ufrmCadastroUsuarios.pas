@@ -97,15 +97,15 @@ procedure Tfrmcadastrousuarios.btnfiltrarClick(Sender: TObject);
 begin
   if edtpesquisar.Text = '' then
   begin
-  Application.MessageBox('Informe um valor a serr a ser pesquisado', 'Atenção', MB_OK+MB_ICONWARNING);
+  Application.MessageBox('Informe um valor a ser pesquisado', 'Atenção', MB_OK+MB_ICONWARNING);
   edtpesquisar.SetFocus;
   Abort;
 
   inherited;
   DmDados.cdsusuarios.Close;
   case cbxfiltros.ItemIndex of
-   0 : DmDados.cdsusuarios.CommandText := 'SELECT + FROM UASUARIOS WHERE NOME LIKE '+QuotedStr('%'+edtpesquisar.Text+'%');
-   1 : DmDados.cdsusuarios.CommandText := 'SELECT + FROM UASUARIOS WHERE LOGIN LIKE '+QuotedStr('%'+edtpesquisar.Text+'%');
+   0 : DmDados.cdsusuarios.CommandText := 'SELECT + FROM USUARIOS WHERE NOME LIKE '+QuotedStr('%'+edtpesquisar.Text+'%');
+   1 : DmDados.cdsusuarios.CommandText := 'SELECT + FROM USUARIOS WHERE LOGIN LIKE '+QuotedStr('%'+edtpesquisar.Text+'%');
   end;
   DmDados.cdsusuarios.Open;
   end;

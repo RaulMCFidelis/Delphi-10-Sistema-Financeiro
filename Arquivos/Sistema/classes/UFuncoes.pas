@@ -10,7 +10,8 @@ uses
 
 function GetId(Campo, Tabela : String) : Integer;
 function GetLoginCadastrado(Login : String) : Boolean;
-procedure EditarDBGrid(DataSpurce : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
+procedure EditarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
+function StringParaFloat(s : string) : Extended;
 implementation
 
 uses ModConexao, ufrmCadastroUsuarios;
@@ -52,19 +53,6 @@ function GetId(Campo, Tabela : String) : Integer;
       end;
    end;
 
-      procedure EditarDBGrid(DataSpurce : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
-   begin
-     if not odd(DataSource.DataSet.RecNo) then
-      begin
-        if not (gdSelected in state) then
-         Sender.Canvas.Brush.Color := $00FFEFDF;
-         Sender.Canvas.FillRect(Rect);
-         Sender.DefaultDrawDataCell(Rect, Column);
-      end;
-   end;
-
-
-
        function StringParaFloat(s : string) : Extended;
 { Filtra uma string qualquer, convertendo as suas partes
   numéricas para sua representação decimal, por exemplo:
@@ -100,5 +88,17 @@ begin
      end;
    Result := StrToFloat(t);
 end;
+         procedure EditarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
+   begin
+     if not odd(DataSource.DataSet.RecNo) then
+     begin
+        if not (gdSelected in state) then
+        begin
+         Sender.Canvas.Brush.Color := $00FFEFDF;
+         Sender.Canvas.FillRect(Rect);
+         Sender.DefaultDrawDataCell(Rect, Column.Field, State);
+        end;
+     end;
+   end;
 
 end.

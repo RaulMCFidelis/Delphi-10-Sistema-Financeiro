@@ -19,9 +19,9 @@ object frmPrincipal: TfrmPrincipal
   object Label1: TLabel
     Left = 8
     Top = 8
-    Width = 81
+    Width = 170
     Height = 23
-    Caption = 'Cadastros'
+    Caption = 'Cadastros em Geral:'
     Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clHighlightText
@@ -733,6 +733,7 @@ object frmPrincipal: TfrmPrincipal
       650041646F626520496D616765526561647971C9653C0000000049454E44AE42
       6082}
     ShowHint = True
+    OnClick = imgcaixaClick
   end
   object imgconreceber: TImage
     Left = 464
@@ -1062,9 +1063,9 @@ object frmPrincipal: TfrmPrincipal
   object Label3: TLabel
     Left = 8
     Top = 144
-    Width = 81
+    Width = 181
     Height = 23
-    Caption = 'Relat'#243'rios'
+    Caption = 'Relat'#243'rios Financeiros'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clHighlightText
     Font.Height = -19
@@ -1075,9 +1076,9 @@ object frmPrincipal: TfrmPrincipal
   object Label4: TLabel
     Left = 8
     Top = 280
-    Width = 65
+    Width = 216
     Height = 23
-    Caption = 'Sistema'
+    Caption = 'Configura'#231#245'es do Sistema'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clHighlightText
     Font.Height = -19

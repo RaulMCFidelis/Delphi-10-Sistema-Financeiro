@@ -2,8 +2,8 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2023/03/20 20:13:22.000.972,=D:\OneDrive - SENAC - SP\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2023/03/20 20:15:26.000.509,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Uprincipal.pas=D:\OneDrive - SENAC - SP\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2023/03/20 20:15:26.000.509,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Uprincipal.dfm=D:\OneDrive - SENAC - SP\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/03/20 20:15:26.000.509,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Uprincipal.pas=D:\OneDrive - SENAC - SP\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2023/03/20 20:15:50.000.945,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Sistema_Financas.dproj=D:\OneDrive - SENAC - SP\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>2023/03/21 14:59:13.000.610,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas</Transaction>
     <Transaction>2023/03/21 14:59:47.000.938,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\ModConexao.pas</Transaction>
@@ -26,11 +26,14 @@
     <Transaction>2023/03/25 22:07:09.000.601,=F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
     <Transaction>2023/03/26 21:22:13.000.571,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.pas=</Transaction>
     <Transaction>2023/03/26 21:26:27.000.605,=F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
-    <Transaction>2023/03/26 21:30:01.000.859,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.dfm=F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
     <Transaction>2023/03/26 21:30:01.000.859,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.pas=F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
-    <Transaction>2023/03/29 17:08:51.835,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
-    <Transaction>2023/03/29 17:09:31.250,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroCaixa.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
-    <Transaction>2023/03/29 17:09:31.250,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroCaixa.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/26 21:30:01.000.859,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.dfm=F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
+    <Transaction>2023/03/29 17:08:51.000.835,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/29 17:09:31.000.250,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroCaixa.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
+    <Transaction>2023/03/29 17:09:31.000.250,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroCaixa.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/30 16:42:30.553,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/30 16:43:50.852,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroPagar.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/30 16:43:50.852,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroPagar.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="classes"/>
@@ -42,6 +45,8 @@
     <File Path="view\ufrmCadastroUsuarios.dfm"/>
     <File Path="view\ufrmCadastroCaixa.pas"/>
     <File Path="view\ufrmCadastroCaixa.dfm"/>
+    <File Path="view\ufrmCadastroPagar.pas"/>
+    <File Path="view\ufrmCadastroPagar.dfm"/>
     <File Path="ModConexao.pas"/>
     <File Path="ModConexao.dfm"/>
     <File Path="Uprincipal.pas"/>

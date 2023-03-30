@@ -1,0 +1,74 @@
+unit ufrmCadastroCaixa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmCadastroBasico, Data.DB,
+  System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, Vcl.StdCtrls,
+  Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.ExtCtrls, tpEdit;
+
+type
+  Tfrmcadastrocaixa = class(TfrmCadastroBasico)
+    Label2: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    edtnumerodoc: TEdit;
+    edtdescricao: TEdit;
+    RadioGroup: TRadioGroup;
+    edtvalor: TtpEdit;
+    procedure acsalvarExecute(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmcadastrocaixa: Tfrmcadastrocaixa;
+
+implementation
+
+{$R *.dfm}
+
+uses ModConexao, UFuncoes;
+
+procedure Tfrmcadastrocaixa.acsalvarExecute(Sender: TObject);
+begin
+  if Trim(edtnumerodoc.Text) = '' then
+  begin
+    Application.MessageBox('Preencha o Campo Número do Documento!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtnumerodoc.SetFocus;
+    Abort;
+  end;
+  if Trim(edtdescricao.Text) = '' then
+  begin
+    Application.MessageBox('Preencha o Campo Descrição!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtdescricao.SetFocus;
+    Abort;
+  end;
+
+  if StringParaFloat(edtvalor.Text) <= 0 then
+    begin
+    Application.MessageBox('Insira um Valor Maior que Zero!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtvalor.SetFocus;
+    Abort;
+    end;
+
+    dmDados.cdscaixaid.AsInteger := GetId('ID', 'CAIXA');
+    dmDados.cdscaixanumero_doc.AsString := trim(edtnumerodoc.Text);
+    dmDados.cdscaixadescricao.AsString := trim(edtdescricao.Text);
+    dmDados.cdscaixavalor.AsCurrency := StringParaFloat(edtvalor.Text);
+
+        case RadioGroup.ItemIndex of
+
+        0 : DmDados.cdscaixatipo.AsString := 'C';
+        1 : DmDados.cdscaixatipo.AsString := 'D';
+
+        end;
+
+  inherited;
+
+end;
+
+end.

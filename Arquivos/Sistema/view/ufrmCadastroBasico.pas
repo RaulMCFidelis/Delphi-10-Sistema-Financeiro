@@ -175,6 +175,7 @@ end;
 
 procedure TfrmCadastroBasico.acpesquisarExecute(Sender: TObject);
 begin
+  PageControl1.ActivePage := tbspesquisa;
   edtpesquisar.Clear;
 end;
 
@@ -215,7 +216,7 @@ end;
 procedure TfrmCadastroBasico.DbgDadosDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  EditarDBGrid(dsTabela,dbgDados,State,Rect,Column);
+   EditarDBGrid(dsTabela,dbgDados,State,Rect,Column);
 end;
 
 procedure TfrmCadastroBasico.FormClose(Sender: TObject;

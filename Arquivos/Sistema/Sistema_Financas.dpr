@@ -9,16 +9,16 @@ uses
   ufrmCadastroBasico in 'view\ufrmCadastroBasico.pas' {frmCadastroBasico},
   UFuncoes in 'classes\UFuncoes.pas',
   ufrmCadastroUsuarios in 'view\ufrmCadastroUsuarios.pas' {frmcadastrousuarios},
-  ufrmCadastroCaixa in 'view\ufrmCadastroCaixa.pas' {frmcadastrocaixa};
+  ufrmCadastroCaixa in 'view\ufrmCadastroCaixa.pas' {frmcadastrocaixa},
+  ufrmCadastroPagar in 'view\ufrmCadastroPagar.pas' {frmcadastropagar};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Amakrits');
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmDados, dmDados);
-  Application.CreateForm(Tfrmcadastrocaixa, frmcadastrocaixa);
+  Application.CreateForm(Tfrmcadastropagar, frmcadastropagar);
   Application.Run;
 end.
