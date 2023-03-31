@@ -1,9 +1,18 @@
 inherited frmcadastropagar: Tfrmcadastropagar
   Caption = 'Cadastro de Contas a Pagar'
+  ClientHeight = 516
+  ExplicitWidth = 320
+  ExplicitHeight = 555
   PixelsPerInch = 96
   TextHeight = 13
+  inherited Panel1: TPanel
+    Top = 446
+    ExplicitTop = 446
+  end
   inherited PageControl1: TPageControl
+    Height = 446
     ActivePage = tbscadastro
+    ExplicitHeight = 446
     inherited tbscadastro: TTabSheet
       TabVisible = True
       object Label2: TLabel
@@ -35,9 +44,61 @@ inherited frmcadastropagar: Tfrmcadastropagar
       object Label5: TLabel
         Left = 11
         Top = 104
-        Width = 84
+        Width = 102
         Height = 16
-        Caption = 'Qtde Parcelas:'
+        Caption = 'Qtde de Parcelas:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 11
+        Top = 144
+        Width = 102
+        Height = 16
+        Caption = 'Valor da Compra:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 9
+        Top = 184
+        Width = 98
+        Height = 16
+        Caption = 'Data da Compra:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 231
+        Top = 104
+        Width = 55
+        Height = 16
+        Caption = 'Varia'#231#227'o:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 392
+        Top = 108
+        Width = 27
+        Height = 16
+        Caption = 'dias.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -46,7 +107,7 @@ inherited frmcadastropagar: Tfrmcadastropagar
         ParentFont = False
       end
       object edtdocumento: TEdit
-        Left = 107
+        Left = 115
         Top = 23
         Width = 155
         Height = 21
@@ -54,24 +115,125 @@ inherited frmcadastropagar: Tfrmcadastropagar
         TabOrder = 0
       end
       object edtdescricao: TEdit
-        Left = 107
+        Left = 115
         Top = 63
         Width = 333
         Height = 21
         MaxLength = 200
         TabOrder = 1
       end
-      object Edit1: TEdit
-        Left = 107
+      object edtqtdeparcelas: TEdit
+        Left = 115
         Top = 103
-        Width = 123
+        Width = 94
         Height = 21
-        MaxLength = 200
+        NumbersOnly = True
         TabOrder = 2
+      end
+      object edtvlrcompra: TtpEdit
+        Left = 115
+        Top = 143
+        Width = 93
+        Height = 21
+        Alignment = taRightJustify
+        CharCase = ecUpperCase
+        TabOrder = 3
+        Text = '0,00'
+        Caracter = tcReal
+      end
+      object edtdtcompra: TtpEdit
+        Left = 115
+        Top = 183
+        Width = 93
+        Height = 21
+        Alignment = taRightJustify
+        CharCase = ecUpperCase
+        MaxLength = 8
+        TabOrder = 4
+        Check = ckDate
+        Caracter = tcNumeric
+      end
+      object edtvariacao: TEdit
+        Left = 292
+        Top = 103
+        Width = 94
+        Height = 21
+        NumbersOnly = True
+        TabOrder = 5
+      end
+      object DBGrid1: TDBGrid
+        Left = 115
+        Top = 264
+        Width = 212
+        Height = 89
+        DataSource = dsparcelas
+        DrawingStyle = gdsGradient
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick]
+        ParentColor = True
+        TabOrder = 6
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDrawColumnCell = DBGrid1DrawColumnCell
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'Parcela'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Valor'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Vencimento'
+            Visible = True
+          end>
+      end
+      object BitBtn1: TBitBtn
+        Left = 115
+        Top = 216
+        Width = 78
+        Height = 25
+        Caption = 'Gerar Parcelas'
+        TabOrder = 7
+        OnClick = BitBtn1Click
+      end
+      object BitBtn2: TBitBtn
+        Left = 231
+        Top = 216
+        Width = 82
+        Height = 25
+        Caption = 'Limpar Parcelas'
+        TabOrder = 8
+        OnClick = BitBtn2Click
       end
     end
     inherited tbspesquisa: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+      object Label10: TLabel [2]
+        Left = 3
+        Top = 116
+        Width = 197
+        Height = 14
+        Caption = 'Status: Cancelado, Ativo ou Baixado.'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Square721 BT'
+        Font.Style = []
+        ParentFont = False
+      end
       inherited DbgDados: TDBGrid
+        Top = 136
+        Height = 282
         Columns = <
           item
             Expanded = False
@@ -134,6 +296,15 @@ inherited frmcadastropagar: Tfrmcadastropagar
             Visible = True
           end>
       end
+      inherited cbxfiltros: TComboBoxEx
+        ItemsEx = <
+          item
+            Caption = 'Documento'
+          end
+          item
+            Caption = 'Descricao'
+          end>
+      end
     end
   end
   inherited dsTabela: TDataSource
@@ -143,7 +314,7 @@ inherited frmcadastropagar: Tfrmcadastropagar
     Left = 624
     Top = 136
     Bitmap = {
-      494C010110001800800020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800880020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2793,5 +2964,31 @@ inherited frmcadastropagar: Tfrmcadastropagar
   inherited actacoes: TActionList
     Left = 608
     Top = 232
+  end
+  object dsparcelas: TDataSource
+    DataSet = cdsparcelas
+    Left = 624
+    Top = 304
+  end
+  object cdsparcelas: TClientDataSet
+    PersistDataPacket.Data = {
+      5F0000009619E0BD0100000018000000030000000000030000005F0007506172
+      63656C6104000100000000000556616C6F720800040000000100075355425459
+      50450200490006004D6F6E6579000A56656E63696D656E746F04000600000000
+      000000}
+    Active = True
+    Aggregates = <>
+    Params = <>
+    Left = 528
+    Top = 272
+    object cdsparcelasParcela: TIntegerField
+      FieldName = 'Parcela'
+    end
+    object cdsparcelasValor: TCurrencyField
+      FieldName = 'Valor'
+    end
+    object cdsparcelasVencimento: TDateField
+      FieldName = 'Vencimento'
+    end
   end
 end

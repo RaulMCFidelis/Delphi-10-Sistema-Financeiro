@@ -188,12 +188,8 @@ begin
     TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
 
     case iModo of
-      0:
-        Application.MessageBox('Registro Inserido com Sucesso!', 'Informação',
-          MB_OK + MB_ICONINFORMATION);
-      1:
-        Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação',
-          MB_OK + MB_ICONINFORMATION);
+      0: Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK + MB_ICONINFORMATION);
+      1: Application.MessageBox('Registro Atualizado com Sucesso!', 'Informação', MB_OK + MB_ICONINFORMATION);
     end;
 
     // Limpar os campos

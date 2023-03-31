@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions/>
-  <Default.Personality>
-    <Projects ActiveProject="C:\Delphi\Arquivos\Sistema\Sistema_Financas.dproj"/>
-  </Default.Personality>
+	<Transactions/>
+	<Default.Personality>
+		<Projects ActiveProject="F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\componentes\Componente TP\TPComponent.dproj"/>
+	</Default.Personality>
 </BorlandProject>

@@ -14,15 +14,15 @@
     <Transaction>2023/03/23 13:18:04.000.963,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas</Transaction>
     <Transaction>2023/03/23 14:24:44.000.061,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas</Transaction>
     <Transaction>2023/03/23 14:42:13.000.059,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas</Transaction>
-    <Transaction>2023/03/23 14:44:20.000.954,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\view\ufrmCadastroUsuarios.pas</Transaction>
     <Transaction>2023/03/23 14:44:20.000.954,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\view\ufrmCadastroUsuarios.dfm</Transaction>
+    <Transaction>2023/03/23 14:44:20.000.954,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\view\ufrmCadastroUsuarios.pas</Transaction>
     <Transaction>2023/03/23 16:23:41.000.976,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas</Transaction>
     <Transaction>2023/03/23 16:23:59.000.113,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas</Transaction>
     <Transaction>2023/03/23 16:24:30.000.242,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\Unit1.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8\Arquivos\Sistema\classes\UFuncoes.pas</Transaction>
     <Transaction>2023/03/24 13:25:21.000.818,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.pas=</Transaction>
     <Transaction>2023/03/24 14:04:55.000.818,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
-    <Transaction>2023/03/24 14:05:59.000.133,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.dfm</Transaction>
     <Transaction>2023/03/24 14:05:59.000.133,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.pas</Transaction>
+    <Transaction>2023/03/24 14:05:59.000.133,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.dfm</Transaction>
     <Transaction>2023/03/25 22:07:09.000.601,=F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
     <Transaction>2023/03/26 21:22:13.000.571,F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroUsuarios.pas=</Transaction>
     <Transaction>2023/03/26 21:26:27.000.605,=F:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
@@ -31,9 +31,12 @@
     <Transaction>2023/03/29 17:08:51.000.835,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
     <Transaction>2023/03/29 17:09:31.000.250,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroCaixa.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
     <Transaction>2023/03/29 17:09:31.000.250,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroCaixa.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
-    <Transaction>2023/03/30 16:42:30.553,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
-    <Transaction>2023/03/30 16:43:50.852,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroPagar.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
-    <Transaction>2023/03/30 16:43:50.852,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroPagar.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
+    <Transaction>2023/03/30 16:42:30.000.553,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/30 16:43:50.000.852,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroPagar.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
+    <Transaction>2023/03/30 16:43:50.000.852,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroPagar.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/31 16:28:16.000.429,=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/31 16:28:45.000.093,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroReceber.pas=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.pas</Transaction>
+    <Transaction>2023/03/31 16:28:45.000.093,E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\view\ufrmCadastroReceber.dfm=E:\Plac\Curso de Delphi\Delphi-XE8\Delphi-XE8-Sistema-Financeiro\Arquivos\Sistema\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="classes"/>
@@ -47,6 +50,8 @@
     <File Path="view\ufrmCadastroCaixa.dfm"/>
     <File Path="view\ufrmCadastroPagar.pas"/>
     <File Path="view\ufrmCadastroPagar.dfm"/>
+    <File Path="view\ufrmCadastroReceber.pas"/>
+    <File Path="view\ufrmCadastroReceber.dfm"/>
     <File Path="ModConexao.pas"/>
     <File Path="ModConexao.dfm"/>
     <File Path="Uprincipal.pas"/>

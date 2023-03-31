@@ -1,0 +1,173 @@
+unit ufrmCadastroPagar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmCadastroBasico, Data.DB,
+  System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, Vcl.StdCtrls,
+  Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.ExtCtrls,
+  Datasnap.DBClient, tpEdit;
+
+type
+  Tfrmcadastropagar = class(TfrmCadastroBasico)
+    Label2: TLabel;
+    edtdocumento: TEdit;
+    Label3: TLabel;
+    edtdescricao: TEdit;
+    Label5: TLabel;
+    edtqtdeparcelas: TEdit;
+    Label6: TLabel;
+    edtvlrcompra: TtpEdit;
+    edtdtcompra: TtpEdit;
+    Label7: TLabel;
+    edtvariacao: TEdit;
+    Label8: TLabel;
+    DBGrid1: TDBGrid;
+    dsparcelas: TDataSource;
+    BitBtn1: TBitBtn;
+    cdsparcelas: TClientDataSet;
+    cdsparcelasParcela: TIntegerField;
+    cdsparcelasValor: TCurrencyField;
+    cdsparcelasVencimento: TDateField;
+    BitBtn2: TBitBtn;
+    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure acsalvarExecute(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmcadastropagar: Tfrmcadastropagar;
+
+implementation
+
+{$R *.dfm}
+
+uses ModConexao, UFuncoes;
+
+procedure Tfrmcadastropagar.acsalvarExecute(Sender: TObject);
+begin
+
+  if Trim(edtdocumento.Text) = '' then
+  begin
+    Application.MessageBox('Preencha o Campo Documento!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtdocumento.SetFocus;
+    Abort;
+  end;
+
+  //Cóigo do botão salvar
+
+  try
+
+
+    cdsparcelas.First;
+    while not cdsparcelas.Eof do
+      if dsTabela.State in [dsBrowse, dsInsert] then
+    begin
+    dmDados.cdscontas_pagar.Insert;
+    dmDados.cdscontas_pagarid.AsInteger := GetId('ID', 'CONTAS_PAGAR');
+    dmDados.cdscontas_pagarnumero_doc.AsString := trim(edtdocumento.Text);
+    dmDados.cdscontas_pagardescricao.AsString := trim(edtdescricao.Text);
+    dmDados.cdscontas_pagarParcela.AsInteger := cdsparcelasParcela.AsInteger;
+    dmDados.cdscontas_pagarvlr_parcela.AsCurrency := cdsparcelasValor.AsInteger;
+    dmDados.cdscontas_pagarvlr_compra.AsCurrency := StringParaFloat(edtvlrcompra.Text);
+    dmDados.cdscontas_pagardt_compra.AsDateTime := StrToDate(edtdtcompra.Text);
+    dmDados.cdscontas_pagardt_vencimento.AsDateTime := cdsparcelasVencimento.AsDateTime;
+    dmDados.cdscontas_pagardt_cadastro.AsDateTime := now;
+    dmDados.cdscontas_pagarstatus.AsString := 'A';
+    dmDados.cdscontas_recebervlr_abatido.AsCurrency := 0;
+    dmDados.cdscontas_pagardt_cadastro.AsDateTime := now;
+    dmDados.cdscontas_pagar.Post;
+    dmDados.cdscontas_pagar.ApplyUpdates(0);
+    cdsparcelas .Next;
+    end;
+
+    TClientDataSet(dsTabela.DataSet).Open;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao Salvar Registro: ' + E.Message);
+
+  end;
+
+ // Final do Código botão salvar
+
+ // inherited;
+
+end;
+
+procedure Tfrmcadastropagar.BitBtn1Click(Sender: TObject);
+  var I : Integer;
+
+begin
+
+    if edtdocumento.Text = '' then
+    begin
+    Application.MessageBox('Preencha o Campo Documento!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtdocumento.SetFocus;
+    Abort;
+    end;
+
+    if edtdescricao.Text = '' then
+    begin
+    Application.MessageBox('Preencha o Campo Descrição!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtdescricao.SetFocus;
+    Abort;
+    end;
+
+    if edtqtdeparcelas.Text = '' then
+    begin
+    Application.MessageBox('Preencha o Campo de Qtde de Parcelas!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtqtdeparcelas.SetFocus;
+    Abort;
+    end;
+
+     if StringParaFloat(edtvlrcompra.Text) = 0 then
+    begin
+    Application.MessageBox('Preencha o Valor da Compra!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtvlrcompra.SetFocus;
+    Abort;
+    end;
+
+    if edtdtcompra.Text = '' then
+    begin
+    Application.MessageBox('Preencha o Campo de Data da Compra!', 'Atenção', MB_OK+MB_ICONWARNING);
+    edtdtcompra.SetFocus;
+    Abort;
+    end;
+
+    cdsparcelas.EmptyDataSet;
+
+  for I := 1 to StrToInt(edtqtdeparcelas.Text) do
+  begin
+    cdsparcelas.Insert;
+    cdsparcelasParcela.AsInteger := I;
+    cdsparcelasValor.AsCurrency := StringParaFloat(edtvlrcompra.Text) / StrToInt(edtqtdeparcelas.Text);
+    cdsparcelasVencimento.AsDateTime := StrtoDate(edtdtcompra.Text) + (StrToInt(edtvariacao.Text) * I);
+    cdsparcelas.Post;
+  end;
+
+end;
+
+procedure Tfrmcadastropagar.BitBtn2Click(Sender: TObject);
+begin
+
+  cdsparcelas.EmptyDataSet
+
+end;
+
+procedure Tfrmcadastropagar.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+
+  EditarDBGrid(dsParcelas, DBgrid1, State, Rect, Column);
+
+end;
+
+end.

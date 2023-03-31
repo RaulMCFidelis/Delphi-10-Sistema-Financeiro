@@ -68,7 +68,6 @@ begin
    {Percorre os caracteres da string:}
    for i := Length(s) downto 0 do
   {Filtra a string, aceitando somente números e separador decimal:}
-
      if (s[i] in ['0'..'9', '-','+',',']) then
      begin
         if (s[i] = ',') and (not SeenDecimal) then

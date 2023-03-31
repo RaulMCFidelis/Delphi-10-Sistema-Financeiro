@@ -168,7 +168,6 @@ object dmDados: TdmDados
     object cdscontas_pagardt_pagamento: TDateField
       DisplayLabel = 'Data de Pagamento'
       FieldName = 'dt_pagamento'
-      Required = True
     end
     object cdscontas_pagarstatus: TStringField
       DisplayLabel = 'Status'
@@ -207,59 +206,74 @@ object dmDados: TdmDados
     Left = 224
     Top = 208
     object cdscontas_receberid: TIntegerField
+      DisplayLabel = 'Id'
       FieldName = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdscontas_receberdocumento: TStringField
+      DisplayLabel = 'Documento'
       FieldName = 'documento'
       Required = True
     end
     object cdscontas_receberdescricao: TStringField
+      DisplayLabel = 'Descricao'
       FieldName = 'descricao'
       Size = 200
     end
     object cdscontas_receberparcela: TIntegerField
+      DisplayLabel = 'Parcela'
       FieldName = 'parcela'
       Required = True
     end
     object cdscontas_recebervlr_parcela: TFMTBCDField
+      DisplayLabel = 'Valor da Parcela'
       FieldName = 'vlr_parcela'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdscontas_recebervlr_compra: TFMTBCDField
+      DisplayLabel = 'Valor da Compra'
       FieldName = 'vlr_compra'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdscontas_recebervlr_abatido: TFMTBCDField
+      DisplayLabel = 'Valor Abatido'
       FieldName = 'vlr_abatido'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdscontas_receberdt_compra: TDateField
+      DisplayLabel = 'Data da Compra'
       FieldName = 'dt_compra'
       Required = True
     end
     object cdscontas_receberdt_vencimento: TDateField
+      DisplayLabel = 'Data de Vencimento'
       FieldName = 'dt_vencimento'
       Required = True
     end
     object cdscontas_receberdt_cadastro: TDateField
+      DisplayLabel = 'Data do Cadastro'
       FieldName = 'dt_cadastro'
       Required = True
     end
     object cdscontas_receberstatus: TStringField
+      DisplayLabel = 'Status'
       FieldName = 'status'
       Required = True
       FixedChar = True
       Size = 10
     end
     object cdscontas_receberdt_pagamento: TDateField
+      DisplayLabel = 'Data de Pagamento'
       FieldName = 'dt_pagamento'
     end
   end

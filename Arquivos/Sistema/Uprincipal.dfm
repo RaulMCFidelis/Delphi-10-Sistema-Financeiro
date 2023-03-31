@@ -589,6 +589,7 @@ object frmPrincipal: TfrmPrincipal
       9F0000001974455874536F6674776172650041646F626520496D616765526561
       647971C9653C0000000049454E44AE426082}
     ShowHint = True
+    OnClick = imgpagarClick
   end
   object imgcaixa: TImage
     Left = 352

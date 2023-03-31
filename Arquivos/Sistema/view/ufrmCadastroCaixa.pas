@@ -8,8 +8,8 @@ uses
   System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, Vcl.StdCtrls,
   Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.ExtCtrls, tpEdit;
 
-type
-  Tfrmcadastrocaixa = class(TfrmCadastroBasico)
+  type
+    Tfrmcadastrocaixa = class(TfrmCadastroBasico)
     Label2: TLabel;
     Label3: TLabel;
     Label5: TLabel;
@@ -42,7 +42,6 @@ begin
   edtnumerodoc.Text := DmDados.cdscaixanumero_doc.AsString;
   edtdescricao.Text := DmDados.cdscaixadescricao.AsString;
   edtvalor.Text := FormatFloat(',#0.00',dmdados.cdscaixavalor.AsCurrency);
-  radiogroup.ItemIndex := ifthen(DMdados.cdscaixatipo.AsString = 'C',0,1);
 end;
 
 procedure Tfrmcadastrocaixa.acpesquisarExecute(Sender: TObject);

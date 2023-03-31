@@ -32,6 +32,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure imgusuariosClick(Sender: TObject);
     procedure imgcaixaClick(Sender: TObject);
+    procedure imgpagarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,7 +46,8 @@ implementation
 
 {$R *.dfm}
 
-uses ufrmCadastroBasico, ufrmCadastroUsuarios, ufrmCadastroCaixa;
+uses ufrmCadastroBasico, ufrmCadastroUsuarios, ufrmCadastroCaixa,
+  ufrmCadastroPagar;
 
 procedure TfrmPrincipal.BitBtn1Click(Sender: TObject);
 begin
@@ -75,6 +77,17 @@ begin
 
   finally
    FreeAndNil(frmcadastrocaixa);
+  end;
+end;
+
+procedure TfrmPrincipal.imgpagarClick(Sender: TObject);
+begin
+  frmcadastropagar := Tfrmcadastropagar.Create(nil);
+ try
+    frmcadastropagar.ShowModal;
+
+  finally
+   FreeAndNil(frmcadastropagar);
   end;
 end;
 

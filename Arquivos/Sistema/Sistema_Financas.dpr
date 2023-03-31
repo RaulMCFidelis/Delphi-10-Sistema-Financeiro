@@ -10,7 +10,8 @@ uses
   UFuncoes in 'classes\UFuncoes.pas',
   ufrmCadastroUsuarios in 'view\ufrmCadastroUsuarios.pas' {frmcadastrousuarios},
   ufrmCadastroCaixa in 'view\ufrmCadastroCaixa.pas' {frmcadastrocaixa},
-  ufrmCadastroPagar in 'view\ufrmCadastroPagar.pas' {frmcadastropagar};
+  ufrmCadastroPagar in 'view\ufrmCadastroPagar.pas' {frmcadastropagar},
+  ufrmCadastroReceber in 'view\ufrmCadastroReceber.pas' {frmcadastroreceber};
 
 {$R *.res}
 
@@ -19,6 +20,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmDados, dmDados);
-  Application.CreateForm(Tfrmcadastropagar, frmcadastropagar);
   Application.Run;
 end.
