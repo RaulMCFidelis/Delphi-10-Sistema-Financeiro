@@ -346,6 +346,7 @@ object frmPrincipal: TfrmPrincipal
       343A303073BF23320000001974455874536F6674776172650041646F62652049
       6D616765526561647971C9653C0000000049454E44AE426082}
     ShowHint = True
+    OnClick = imgreceberClick
   end
   object imgpagar: TImage
     Left = 240

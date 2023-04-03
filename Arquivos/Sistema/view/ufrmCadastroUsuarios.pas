@@ -20,6 +20,7 @@ type
     procedure aceditarExecute(Sender: TObject);
     procedure btnfiltrarClick(Sender: TObject);
     procedure acpesquisarExecute(Sender: TObject);
+    procedure acimprimirExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,7 +34,7 @@ implementation
 
 {$R *.dfm}
 
-uses ModConexao, UFuncoes;
+uses ModConexao, UFuncoes, udmRelatorios;
 
 procedure Tfrmcadastrousuarios.aceditarExecute(Sender: TObject);
 begin
@@ -41,6 +42,23 @@ begin
   edtnome.Text := DmDados.cdsusuariosnome.AsString;
   edtlogin.Text := DmDados.cdsusuarioslogin.AsString;
   edtsenha.Text := DmDados.cdsusuariossenha.AsString;
+end;
+
+procedure Tfrmcadastrousuarios.acimprimirExecute(Sender: TObject);
+begin
+
+dmrelatorios := TDmRelatorios.Create(nil);
+try
+//Caminho para o relatório
+dmrelatorios.frxReport.LoadFromFile(ExtractFilePath(Application.ExeName)+'relatorios\relCadUsuarios.fr3');
+dmrelatorios.frxReport.ShowReport(true);
+
+finally
+//Carregar o relatório
+FreeAndNil(DmRelatorios);
+
+end;
+
 end;
 
 procedure Tfrmcadastrousuarios.acpesquisarExecute(Sender: TObject);

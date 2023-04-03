@@ -10,7 +10,7 @@ uses
   Datasnap.DBClient, tpEdit;
 
 type
-  Tfrmcadastroreceber = class(Tfrmcadastrobasico)
+  Tfrmcadastroreceber = class(TfrmCadastroBasico)
     Label9: TLabel;
     Label3: TLabel;
     edtdocumento: TEdit;
@@ -87,8 +87,8 @@ procedure Tfrmcadastroreceber.acpesquisarExecute(Sender: TObject);
 begin
   inherited;
   dmDados.cdscontas_receber.Close;
-dmDados.cdscontas_receber.CommandText := 'SELECT * FROM CONTAS_RECEBER';
-dmDados.cdscontas_receber.Open;
+  dmDados.cdscontas_receber.CommandText := 'SELECT * FROM CONTAS_RECEBER';
+  dmDados.cdscontas_receber.Open;
 end;
 
 procedure Tfrmcadastroreceber.acsalvarExecute(Sender: TObject);
@@ -205,7 +205,7 @@ begin
     end;
 
     cdsParcelas.EmptyDataSet ;
- for I := 1 to Strtoint(edtQtdeParcelas.Text) do
+ for i := 1 to Strtoint(edtQtdeParcelas.Text) do
  begin
    cdsParcelas.Insert;
    cdsParcelasParcela.AsInteger := i;

@@ -1,5 +1,7 @@
 inherited frmcadastrousuarios: Tfrmcadastrousuarios
   Caption = 'Cadastro de Usu'#225'rios'
+  ExplicitWidth = 725
+  ExplicitHeight = 493
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
@@ -74,6 +76,10 @@ inherited frmcadastrousuarios: Tfrmcadastrousuarios
       end
     end
     inherited tbspesquisa: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 701
+      ExplicitHeight = 356
       inherited btnfiltrar: TButton
         OnClick = btnfiltrarClick
       end
@@ -119,7 +125,7 @@ inherited frmcadastrousuarios: Tfrmcadastrousuarios
     Left = 552
     Top = 256
     Bitmap = {
-      494C010110001800800020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800880020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -14,11 +14,11 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
   end
   inherited PageControl1: TPageControl
     Width = 693
-    ActivePage = tbscadastro
     ExplicitWidth = 693
     inherited tbscadastro: TTabSheet
       TabVisible = True
-      ExplicitLeft = 20
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 685
       ExplicitHeight = 356
       object Label2: TLabel
@@ -174,6 +174,7 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
         Height = 25
         Caption = 'Gerar Parcelas'
         TabOrder = 6
+        OnClick = BitBtn1Click
       end
       object BitBtn2: TBitBtn
         Left = 231
@@ -303,23 +304,24 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
       inherited cbxfiltros: TComboBoxEx
         ItemsEx = <
           item
-            Caption = 'Descricao'
+            Caption = 'Documento'
           end
           item
-            Caption = 'Documento'
+            Caption = 'Descricao'
           end>
       end
     end
   end
   inherited dsTabela: TDataSource
     DataSet = dmDados.cdscontas_receber
-    Left = 544
+    Left = 608
+    Top = 24
   end
   inherited ImageListcadastro: TImageList
     Left = 608
     Top = 136
     Bitmap = {
-      494C0101100018008C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800900020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
