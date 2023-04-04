@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, Data.SqlExpr, Data.DBXMySQL,
-  Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider;
+  Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider, Datasnap.Win.TConnect;
 
 type
   TdmDados = class(TDataModule)
@@ -57,6 +57,9 @@ type
     cdscaixavalor: TFMTBCDField;
     cdscaixatipo: TStringField;
     cdscaixadt_cadastro: TDateField;
+    sqlconsultas: TSQLQuery;
+    dspconsultar: TDataSetProvider;
+    LocalConnection: TLocalConnection;
   private
     { Private declarations }
   public

@@ -12,9 +12,16 @@ function GetId(Campo, Tabela : String) : Integer;
 function GetLoginCadastrado(Login : String) : Boolean;
 procedure EditarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
 function StringParaFloat(s : string) : Extended;
+function ReverterData(S: string) : string;
 implementation
 
 uses ModConexao, ufrmCadastroUsuarios;
+
+function reverterData(S: string) : string;
+begin
+  //Conversão de data em Delphi
+  result := copy(S,7,4)+'-'+copy(S,4,2)+'-'+copy(S,1,2);
+end;
 
 function GetId(Campo, Tabela : String) : Integer;
    begin

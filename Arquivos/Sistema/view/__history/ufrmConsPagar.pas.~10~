@@ -1,0 +1,81 @@
+unit ufrmConsPagar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons, tpEdit;
+
+type
+  Tfrm_cons_pagar = class(TForm)
+    cdsconsultas: TClientDataSet;
+    dsconsulta: TDataSource;
+    cdsconsultasid: TIntegerField;
+    cdsconsultasnumero_doc: TStringField;
+    cdsconsultasdescricao: TStringField;
+    cdsconsultasparcela: TIntegerField;
+    cdsconsultasvlr_parcela: TFMTBCDField;
+    cdsconsultasvlr_compra: TFMTBCDField;
+    cdsconsultasvlr_abatido: TFMTBCDField;
+    cdsconsultasdt_compra: TDateField;
+    cdsconsultasdt_cadastro: TDateField;
+    cdsconsultasdt_vencimento: TDateField;
+    cdsconsultasdt_pagamento: TDateField;
+    cdsconsultasstatus: TStringField;
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    txt_doc: TEdit;
+    RadioGroup1: TRadioGroup;
+    Label2: TLabel;
+    Label3: TLabel;
+    txt_dtinicio: TtpEdit;
+    txt_dtfinal: TtpEdit;
+    Label4: TLabel;
+    txt_parcela: TtpEdit;
+    RadioGroup2: TRadioGroup;
+    SpeedButton1: TSpeedButton;
+    GroupBox2: TGroupBox;
+    DBGrid1: TDBGrid;
+    Button1: TButton;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+  procedure Pesquisar;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_cons_pagar: Tfrm_cons_pagar;
+
+implementation
+
+{$R *.dfm}
+
+uses ModConexao;
+
+procedure Tfrm_cons_pagar.Button1Click(Sender: TObject);
+begin
+   Close;
+end;
+
+procedure Tfrm_cons_pagar.Pesquisar;
+var Sql : TStringList;
+
+  begin
+   Sql := TStringList.Create;
+
+
+  try
+    Sql.Add('SELECT * FROM CONTAS_PAGAR');
+     cdsconsultas.Close;
+     cdsconsultas.CommandText := Sql.Text;
+     cdsconsultas.Open;
+
+  finally
+    FreeAndNil(Sql);
+  end;
+  end;
+end.

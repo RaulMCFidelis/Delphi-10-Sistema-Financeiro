@@ -34,6 +34,8 @@ type
     procedure imgcaixaClick(Sender: TObject);
     procedure imgpagarClick(Sender: TObject);
     procedure imgreceberClick(Sender: TObject);
+    procedure imgconreceberClick(Sender: TObject);
+    procedure imgconpagarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,7 +50,8 @@ implementation
 {$R *.dfm}
 
 uses ufrmCadastroBasico, ufrmCadastroUsuarios, ufrmCadastroCaixa,
-  ufrmCadastroPagar, ufrmCadastroReceber;
+  ufrmCadastroPagar, ufrmCadastroReceber, ufrmConsPagar, UFuncoes,
+  ufrmConsReceber, ModConexao;
 
 procedure TfrmPrincipal.BitBtn1Click(Sender: TObject);
 begin
@@ -78,6 +81,28 @@ begin
 
   finally
    FreeAndNil(frmcadastrocaixa);
+  end;
+end;
+
+procedure TfrmPrincipal.imgconpagarClick(Sender: TObject);
+begin
+frm_cons_pagar := Tfrm_cons_pagar.Create(nil);
+  try
+   frm_cons_pagar.ShowModal;
+
+  finally
+   FreeAndNil(frm_cons_pagar);
+  end;
+end;
+
+procedure TfrmPrincipal.imgconreceberClick(Sender: TObject);
+begin
+frm_cons_receber := Tfrm_cons_receber.Create(nil);
+  try
+   frm_cons_receber.ShowModal;
+
+  finally
+   FreeAndNil(frm_cons_receber);
   end;
 end;
 

@@ -1,7 +1,7 @@
 object dmDados: TdmDados
   OldCreateOrder = False
-  Height = 423
-  Width = 673
+  Height = 535
+  Width = 676
   object SQLConnection: TSQLConnection
     ConnectionName = 'financeiro'
     DriverName = 'MySQL'
@@ -342,5 +342,24 @@ object dmDados: TdmDados
     SQLConnection = SQLConnection
     Left = 24
     Top = 272
+  end
+  object sqlconsultas: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQL.Strings = (
+      '')
+    SQLConnection = SQLConnection
+    Left = 384
+    Top = 24
+  end
+  object dspconsultar: TDataSetProvider
+    DataSet = sqlconsultas
+    Options = [poNoReset, poAllowCommandText, poUseQuoteChar]
+    Left = 464
+    Top = 24
+  end
+  object LocalConnection: TLocalConnection
+    Left = 568
+    Top = 24
   end
 end

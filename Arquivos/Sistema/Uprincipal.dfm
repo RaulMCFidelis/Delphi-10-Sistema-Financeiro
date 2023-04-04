@@ -915,6 +915,7 @@ object frmPrincipal: TfrmPrincipal
       33323A33362D30343A3030E420321B0000001974455874536F66747761726500
       41646F626520496D616765526561647971C9653C0000000049454E44AE426082}
     ShowHint = True
+    OnClick = imgconreceberClick
   end
   object imgconpagar: TImage
     Left = 568
@@ -1061,6 +1062,7 @@ object frmPrincipal: TfrmPrincipal
       5CCAF5EAA1FFB7E58F1EC0FF018D6B1145964B92B00000000049454E44AE4260
       82}
     ShowHint = True
+    OnClick = imgconpagarClick
   end
   object Label3: TLabel
     Left = 8

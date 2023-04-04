@@ -12,7 +12,9 @@ uses
   ufrmCadastroCaixa in 'view\ufrmCadastroCaixa.pas' {frmcadastrocaixa},
   ufrmCadastroPagar in 'view\ufrmCadastroPagar.pas' {frmcadastropagar},
   ufrmCadastroReceber in 'view\ufrmCadastroReceber.pas' {frmcadastroreceber},
-  udmRelatorios in 'datamodule\udmRelatorios.pas' {dmrelatorios: TDataModule};
+  udmRelatorios in 'datamodule\udmRelatorios.pas' {dmrelatorios: TDataModule},
+  ufrmConsReceber in 'view\ufrmConsReceber.pas' {frm_cons_receber},
+  ufrmConsPagar in 'view\ufrmConsPagar.pas' {frm_cons_pagar};
 
 {$R *.res}
 
