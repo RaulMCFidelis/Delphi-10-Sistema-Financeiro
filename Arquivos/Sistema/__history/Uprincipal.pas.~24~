@@ -31,6 +31,11 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn1Click(Sender: TObject);
     procedure imgusuariosClick(Sender: TObject);
+    procedure imgcaixaClick(Sender: TObject);
+    procedure imgpagarClick(Sender: TObject);
+    procedure imgreceberClick(Sender: TObject);
+    procedure imgconreceberClick(Sender: TObject);
+    procedure imgconpagarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,7 +49,9 @@ implementation
 
 {$R *.dfm}
 
-uses ufrmCadastroBasico, ufrmCadastroUsuarios;
+uses ufrmCadastroBasico, ufrmCadastroUsuarios, ufrmCadastroCaixa,
+  ufrmCadastroPagar, ufrmCadastroReceber, ufrmConsPagar, UFuncoes,
+  ufrmConsReceber, ModConexao;
 
 procedure TfrmPrincipal.BitBtn1Click(Sender: TObject);
 begin
@@ -64,6 +71,61 @@ Application.Terminate
 
 else
 Abort;
+end;
+
+procedure TfrmPrincipal.imgcaixaClick(Sender: TObject);
+begin
+ frmcadastrocaixa := Tfrmcadastrocaixa.Create(nil);
+ try
+    frmcadastrocaixa.ShowModal;
+
+  finally
+   FreeAndNil(frmcadastrocaixa);
+  end;
+end;
+
+procedure TfrmPrincipal.imgconpagarClick(Sender: TObject);
+begin
+frm_cons_pagar := Tfrm_cons_pagar.Create(nil);
+  try
+   frm_cons_pagar.ShowModal;
+
+  finally
+   FreeAndNil(frm_cons_pagar);
+  end;
+end;
+
+procedure TfrmPrincipal.imgconreceberClick(Sender: TObject);
+begin
+frm_cons_receber := Tfrm_cons_receber.Create(nil);
+  try
+   frm_cons_receber.ShowModal;
+
+  finally
+   FreeAndNil(frm_cons_receber);
+  end;
+end;
+
+procedure TfrmPrincipal.imgpagarClick(Sender: TObject);
+begin
+  frmcadastropagar := Tfrmcadastropagar.Create(nil);
+ try
+    frmcadastropagar.ShowModal;
+
+  finally
+   FreeAndNil(frmcadastropagar);
+  end;
+end;
+
+procedure TfrmPrincipal.imgreceberClick(Sender: TObject);
+begin
+frmcadastroreceber := Tfrmcadastroreceber.Create(nil);
+ try
+    frmcadastroreceber.ShowModal;
+
+  finally
+   FreeAndNil(frmcadastroreceber);
+  end;
 end;
 
 procedure TfrmPrincipal.imgusuariosClick(Sender: TObject);

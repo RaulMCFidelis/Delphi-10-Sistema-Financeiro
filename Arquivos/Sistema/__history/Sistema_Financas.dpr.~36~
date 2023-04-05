@@ -17,8 +17,7 @@ uses
   ufrmConsPagar in 'view\ufrmConsPagar.pas' {frm_cons_pagar},
   ufrmBaixarPagar in 'view\ufrmBaixarPagar.pas' {frmBaixarPagar},
   ufrmBaixarReceber in 'view\ufrmBaixarReceber.pas' {frmBaixarReceber},
-  ufrmDetalhesPagar in 'view\ufrmDetalhesPagar.pas' {frmDetalhesPagar},
-  ufrmLogin in 'view\ufrmLogin.pas' {frmLogin};
+  ufrmDetalhesPagar in 'view\ufrmDetalhesPagar.pas' {frmDetalhesPagar};
 
 {$R *.res}
 

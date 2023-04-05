@@ -19,9 +19,9 @@ object frmPrincipal: TfrmPrincipal
   object Label1: TLabel
     Left = 8
     Top = 8
-    Width = 81
+    Width = 170
     Height = 23
-    Caption = 'Cadastros'
+    Caption = 'Cadastros em Geral:'
     Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clHighlightText
@@ -346,6 +346,7 @@ object frmPrincipal: TfrmPrincipal
       343A303073BF23320000001974455874536F6674776172650041646F62652049
       6D616765526561647971C9653C0000000049454E44AE426082}
     ShowHint = True
+    OnClick = imgreceberClick
   end
   object imgpagar: TImage
     Left = 240
@@ -589,6 +590,7 @@ object frmPrincipal: TfrmPrincipal
       9F0000001974455874536F6674776172650041646F626520496D616765526561
       647971C9653C0000000049454E44AE426082}
     ShowHint = True
+    OnClick = imgpagarClick
   end
   object imgcaixa: TImage
     Left = 352
@@ -733,6 +735,7 @@ object frmPrincipal: TfrmPrincipal
       650041646F626520496D616765526561647971C9653C0000000049454E44AE42
       6082}
     ShowHint = True
+    OnClick = imgcaixaClick
   end
   object imgconreceber: TImage
     Left = 464
@@ -912,6 +915,7 @@ object frmPrincipal: TfrmPrincipal
       33323A33362D30343A3030E420321B0000001974455874536F66747761726500
       41646F626520496D616765526561647971C9653C0000000049454E44AE426082}
     ShowHint = True
+    OnClick = imgconreceberClick
   end
   object imgconpagar: TImage
     Left = 568
@@ -1058,13 +1062,14 @@ object frmPrincipal: TfrmPrincipal
       5CCAF5EAA1FFB7E58F1EC0FF018D6B1145964B92B00000000049454E44AE4260
       82}
     ShowHint = True
+    OnClick = imgconpagarClick
   end
   object Label3: TLabel
     Left = 8
     Top = 144
-    Width = 81
+    Width = 181
     Height = 23
-    Caption = 'Relat'#243'rios'
+    Caption = 'Relat'#243'rios Financeiros'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clHighlightText
     Font.Height = -19
@@ -1075,9 +1080,9 @@ object frmPrincipal: TfrmPrincipal
   object Label4: TLabel
     Left = 8
     Top = 280
-    Width = 65
+    Width = 216
     Height = 23
-    Caption = 'Sistema'
+    Caption = 'Configura'#231#245'es do Sistema'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clHighlightText
     Font.Height = -19
