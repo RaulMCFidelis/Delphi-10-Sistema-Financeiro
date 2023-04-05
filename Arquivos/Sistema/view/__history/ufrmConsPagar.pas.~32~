@@ -175,7 +175,6 @@ procedure Tfrm_cons_pagar.VisualizarHistrico1Click(Sender: TObject);
 begin
 frmDetalhesPagar := TfrmDetalhesPagar.Create(nil);
   try
-    frmDetalhesPagar.fId := cdsconsultasid.AsInteger;
     frmDetalhesPagar.ShowModal;
   finally
     FreeAndNil(frmDetalhesPagar);

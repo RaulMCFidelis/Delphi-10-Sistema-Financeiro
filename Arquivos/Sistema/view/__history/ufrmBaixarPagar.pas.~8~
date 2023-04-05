@@ -56,6 +56,7 @@ begin
     txt_Valor.SetFocus;
     Abort;
   end;
+
   try
     DmDados.cdsContas_pagar.Close;
     DmDados.cdsContas_pagar.CommandText := 'select * from contas_pagar where id = '+inttostr(fid);
@@ -63,15 +64,18 @@ begin
     DmDados.cdsContas_pagar.Edit;
     DmDados.cdsContas_pagarvlr_abatido.AsCurrency := DmDados.cdsContas_pagarvlr_abatido.AsCurrency
                                                        + StringParaFloat(txt_Valor.Text);
+
     if DmDados.cdsContas_pagarvlr_abatido.AsCurrency >=
        DmDados.cdsContas_pagarvlr_parcela.AsCurrency then
     begin
       DmDados.cdsContas_pagarstatus.AsString := 'B';
       DmDados.cdsContas_pagardt_pagamento.AsDateTime := date;
     end;
+
     DmDados.cdsContas_pagar.Post;
     DmDados.cdsContas_pagar.ApplyUpdates(0);
     DmDados.cdsContas_pagar.Close;
+
     //Histórico
     DmDados.cdsPagar_detalhes.Close;
     DmDados.cdsPagar_detalhes.Open;
@@ -84,6 +88,7 @@ begin
     DmDados.cdsPagar_detalhesusuario.AsString   := 'SISTEMA';
     DmDados.cdsPagar_detalhes.Post;
     DmDados.cdsPagar_detalhes.ApplyUpdates(0);
+
     Application.MessageBox('Baixa efetuada com sucesso!','Informação',64);
     ModalResult := mrOk;
   except on E: Exception do
@@ -113,11 +118,13 @@ try
     sql.Add('from contas_pagar where id = :prm');
     Params[0].AsInteger := fId;
     Open;
+
     lb_documento.Caption  := Fields[1].AsString;
     lb_parcela.Caption    := Fields[2].AsString;
     lb_VlrParcela.Caption := FormatFloat('R$ ,#0.00',Fields[3].AsCurrency);
     lb_VlrAbatido.Caption := FormatFloat('R$ ,#0.00',Fields[4].AsCurrency);
     lb_Vencimento.Caption := Fields[5].AsString;
+
     fValorParcela := Fields[3].AsCurrency;
     fValorAbatido := Fields[4].AsCurrency;
 

@@ -239,6 +239,7 @@ object frm_cons_pagar: Tfrm_cons_pagar
       Height = 185
       DataSource = dsconsulta
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      PopupMenu = PopupMenu1
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -293,7 +294,6 @@ object frm_cons_pagar: Tfrm_cons_pagar
     AggregatesActive = True
     Params = <>
     ProviderName = 'dspconsultar'
-    RemoteServer = dmDados.LocalConnection
     Left = 712
     Top = 112
     object cdsconsultasid: TIntegerField

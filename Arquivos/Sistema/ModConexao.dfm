@@ -58,7 +58,6 @@ object dmDados: TdmDados
     Top = 144
   end
   object cdscaixa: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspcaixa'
@@ -102,7 +101,6 @@ object dmDados: TdmDados
     end
   end
   object cdscontas_pagar: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspcontas_pagar'
@@ -199,7 +197,6 @@ object dmDados: TdmDados
     Top = 208
   end
   object cdscontas_receber: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspcontas_receber'
@@ -293,7 +290,6 @@ object dmDados: TdmDados
     Top = 272
   end
   object cdsusuarios: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspusuarios'
@@ -358,12 +354,7 @@ object dmDados: TdmDados
     Left = 464
     Top = 24
   end
-  object LocalConnection: TLocalConnection
-    Left = 568
-    Top = 24
-  end
   object sdsreceber_detalhes: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM RECEBER_DETALHES WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
@@ -372,7 +363,6 @@ object dmDados: TdmDados
     Top = 96
   end
   object cdsreceber_detalhes: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspreceber_detalhes'
@@ -415,7 +405,6 @@ object dmDados: TdmDados
     Top = 96
   end
   object sdspagar_detalhes: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM PAGAR_DETALHES WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
@@ -424,7 +413,6 @@ object dmDados: TdmDados
     Top = 160
   end
   object cdspagar_detalhes: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dsppagar_detalhes'

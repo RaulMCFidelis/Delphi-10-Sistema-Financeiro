@@ -26,5 +26,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmDados, dmDados);
+  Application.CreateForm(TfrmDetalhesPagar, frmDetalhesPagar);
   Application.Run;
 end.
