@@ -42,9 +42,11 @@ type
     Label4: TLabel;
     StatusBar1: TStatusBar;
     cdsconsultasTotal: TAggregateField;
+    btn_baixar: TBitBtn;
     procedure Button1Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure btn_baixarClick(Sender: TObject);
   private
   procedure Pesquisar;
     { Private declarations }
@@ -59,7 +61,34 @@ implementation
 
 {$R *.dfm}
 
-uses UFuncoes;
+uses UFuncoes, ufrmBaixarReceber;
+
+procedure Tfrm_cons_receber.btn_baixarClick(Sender: TObject);
+begin
+if (cdsconsultasstatus.AsString = 'B') then
+  begin
+    Application.MessageBox('Não é possível baixar um documento já baixado!','Atenção', MB_OK+MB_ICONWARNING);
+    Abort;
+  end;
+
+  if(cdsconsultasstatus.AsString = 'C') then
+  begin
+    Application.MessageBox('Não é possível baixar um documento cancelado!','Atenção', MB_OK+MB_ICONWARNING);
+    Abort;
+  end;
+frmBaixarReceber := TfrmBaixarReceber.Create(nil);
+  try
+  frmBaixarReceber.fId := cdsconsultasid.AsInteger;
+    frmBaixarReceber.ShowModal;
+
+  finally
+    FreeAndNil(frmBaixarReceber);
+
+  end;
+
+end;
+
+
 
 procedure Tfrm_cons_receber.Button1Click(Sender: TObject);
 begin
@@ -127,6 +156,7 @@ var Sql : TStringList;
 
       StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+IntToStr(cdsconsultas.RecordCount);
       StatusBar1.Panels[1].Text := 'Total a receber: ' +FormatFloat('R$ #,0.00', cdsconsultasTotal.AsVariant);
+      btn_baixar.Enabled := not cdsconsultas.IsEmpty;
 
   except on E: Exception do
     raise Exception.Create('Erro ao consultar contas a receber: ' +E.Message);

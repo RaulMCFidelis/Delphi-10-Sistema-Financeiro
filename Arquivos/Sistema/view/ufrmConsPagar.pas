@@ -1,3 +1,4 @@
+
 unit ufrmConsPagar;
 
 interface
@@ -5,7 +6,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons, tpEdit;
+  Vcl.DBGrids, Vcl.Buttons, tpEdit, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
+  Vcl.Menus;
 
 type
   Tfrm_cons_pagar = class(TForm)
@@ -29,8 +31,6 @@ type
     rdgPeriodo: TRadioGroup;
     Label2: TLabel;
     Label3: TLabel;
-    txt_dtinicio: TtpEdit;
-    txt_dtfinal: TtpEdit;
     Label4: TLabel;
     rdgStatus: TRadioGroup;
     SpeedButton1: TSpeedButton;
@@ -38,10 +38,19 @@ type
     DBGrid1: TDBGrid;
     Button1: TButton;
     Button2: TButton;
+    txt_dtfinal: TtpEdit;
+    txt_dtinicio: TtpEdit;
     txt_parcela: TEdit;
+    StatusBar1: TStatusBar;
+    cdsconsultasTotal: TAggregateField;
+    btn_baixar: TBitBtn;
+    PopupMenu1: TPopupMenu;
+    VisualizarHistrico1: TMenuItem;
     procedure Button1Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure btn_baixarClick(Sender: TObject);
+    procedure VisualizarHistrico1Click(Sender: TObject);
   private
   procedure Pesquisar;
     { Private declarations }
@@ -56,11 +65,37 @@ implementation
 
 {$R *.dfm}
 
-uses ModConexao, UFuncoes;
+uses ModConexao, UFuncoes, Uprincipal, ufrmBaixarPagar, ufrmDetalhesPagar;
+
+procedure Tfrm_cons_pagar.btn_baixarClick(Sender: TObject);
+begin
+
+if (cdsConsultasstatus.AsString = 'B') then
+  begin
+    Application.MessageBox('Não é possível baixar um documento baixado.','AtençãO',MB_OK+MB_ICONWARNING);
+    abort;
+  end;
+
+  if (cdsConsultasstatus.AsString = 'C') then
+  begin
+    Application.MessageBox('Não é possível baixar um documento cancelado.','AtençãO',MB_OK+MB_ICONWARNING);
+    abort;
+  end;
+
+frmBaixarPagar := TfrmBaixarPagar.Create(nil);
+   try
+    frmBaixarPagar.fId := cdsconsultasid.AsInteger;
+    frmBaixarPagar.ShowModal;
+      if frmBaixarPagar.ModalResult = mrOk then
+      cdsconsultas.Refresh;
+   finally
+    FreeAndNil(frmBaixarPagar);
+   end;
+end;
 
 procedure Tfrm_cons_pagar.Button1Click(Sender: TObject);
 begin
-   Close;
+Close;
 end;
 
 procedure Tfrm_cons_pagar.Button2Click(Sender: TObject);
@@ -70,6 +105,7 @@ rdgStatus.ItemIndex := -1;
 txt_doc.Clear;
 txt_dtfinal.Clear;
 txt_dtinicio.Clear;
+txt_parcela.Clear;
 cdsconsultas.Close;
 
 end;
@@ -77,56 +113,58 @@ end;
 procedure Tfrm_cons_pagar.Pesquisar;
 var Sql : TStringList;
 
-  begin
-   Sql := TStringList.Create;
-
-
+ begin
+  Sql := TStringList.Create;
   try
-    Sql.Add('SELECT * FROM CONTAS_PAGAR');
-    Sql.Add('where id > 0');
+   Sql.Add('select * from contas_pagar');
+   Sql.Add('where id > 0');
 
-    // Pesquisa por Data
+   //Pesquisar por data
 
-    if (rdgPeriodo.ItemIndex > -1) and (txt_dtinicio.Text <> '') and (txt_dtfinal.Text <> '') then
+ if (rdgPeriodo.ItemIndex > -1) and (txt_dtinicio.Text <> '') and (txt_dtfinal.Text <> '') then
 
-    begin
-      case rdgPeriodo.ItemIndex of
-        0 : Sql.Add('and dt_compra between'+QuotedStr(ReverterData(txt_dtinicio.Text))+'and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
-        1 : Sql.Add('and dt_pagamento between'+QuotedStr(ReverterData(txt_dtinicio.Text))+'and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
-        2 : Sql.Add('and dt_vencimento between'+QuotedStr(ReverterData(txt_dtinicio.Text))+'and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
-      end;
-    end;
+   begin
+     case rdgPeriodo.ItemIndex of
+        0 : sql.Add('and dt_compra between '+QuotedStr(ReverterData(txt_dtinicio.Text))+' and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
+        1 : sql.Add('and dt_pagamento between '+QuotedStr(ReverterData(txt_dtinicio.Text))+' and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
+        2 : sql.Add('and dt_vencimento between '+QuotedStr(ReverterData(txt_dtinicio.Text))+' and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
+
+     end;
+   end;
 
      //Pesquisar por documento
-     if txt_doc.Text <> '' then
-      Sql.Add('and numero_doc = '+QuotedStr(trim(txt_doc.Text)));
+    if txt_doc.Text <> '' then
+      sql.Add('and numero_doc = '+QuotedStr(trim(txt_doc.Text)));
 
-     //Pesquisa por parcela
-     if txt_parcela.Text <> '' then
-      Sql.Add('and parcela ='+txt_parcela.Text);
+    //Pesquisar por parcela
+    if txt_parcela.Text <> '' then
+      sql.Add('and parcela = '+txt_parcela.Text);
 
-     // Pesuisar por Status
-     if rdgStatus.ItemIndex > -1 then
-     begin
-       case rdgStatus.ItemIndex of
+    //Pesquisar por status
+    if rdgStatus.ItemIndex > -1 then
+    begin
+      case rdgStatus.ItemIndex of
         0 : sql.Add('and status = ''A''');
         1 : sql.Add('and status = ''C''');
         2 : sql.Add('and status = ''B''');
-       end;
-     end;
-  try
-    cdsconsultas.Close;
-    cdsconsultas.CommandText := Sql.Text;
-    cdsconsultas.Open;
+      end;
+    end;
 
-    if cdsconsultas.IsEmpty then
-      Application.MessageBox('Nenhum registro encontrado!', 'Atenção', MB_OK+MB_ICONWARNING);
+    try
+      cdsconsultas.Close;
+      cdsConsultas.CommandText := Sql.Text;
+      cdsConsultas.Open;
 
-  except on E: Exception do
-    raise Exception.Create('Erro ao consultar contas a pagar: ' +E.Message);
+      if cdsConsultas.IsEmpty then
+        Application.MessageBox('Nenhum registro encontrado.','Atenção',MB_OK+MB_ICONWARNING);
 
-  end;
+         StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+inttostr(cdsConsultas.RecordCount);
+        StatusBar1.Panels[1].Text := 'Total a receber: '+FormatFloat('R$ #,0.00',cdsConsultasTotal.AsVariant);
+        btn_baixar.Enabled := not cdsconsultas.IsEmpty;
 
+    except on E: Exception do
+      raise Exception.Create('Erro ao consultar contas a pagar: '+E.Message);
+    end;
   finally
     FreeAndNil(Sql);
   end;
@@ -134,9 +172,20 @@ var Sql : TStringList;
 
 
 
+
 procedure Tfrm_cons_pagar.SpeedButton1Click(Sender: TObject);
 begin
- Pesquisar;
+Pesquisar;
+end;
+
+procedure Tfrm_cons_pagar.VisualizarHistrico1Click(Sender: TObject);
+begin
+frmDetalhesPagar := TfrmDetalhesPagar.Create(nil);
+  try
+    frmDetalhesPagar.ShowModal;
+  finally
+    FreeAndNil(frmDetalhesPagar);
+  end;
 end;
 
 end.

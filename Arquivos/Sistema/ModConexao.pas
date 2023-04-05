@@ -60,6 +60,24 @@ type
     sqlconsultas: TSQLQuery;
     dspconsultar: TDataSetProvider;
     LocalConnection: TLocalConnection;
+    sdsreceber_detalhes: TSQLDataSet;
+    dspreceber_detalhes: TDataSetProvider;
+    sdspagar_detalhes: TSQLDataSet;
+    cdspagar_detalhes: TClientDataSet;
+    dsppagar_detalhes: TDataSetProvider;
+    cdsreceber_detalhes: TClientDataSet;
+    cdsreceber_detalhesid: TIntegerField;
+    cdsreceber_detalhesid_receber: TIntegerField;
+    cdsreceber_detalhesdetalhes: TStringField;
+    cdsreceber_detalhesvalor: TFMTBCDField;
+    cdsreceber_detalhesdate: TDateField;
+    cdsreceber_detalhesusuario: TStringField;
+    cdspagar_detalhesid: TIntegerField;
+    cdspagar_detalhesid_pagar: TIntegerField;
+    cdspagar_detalhesdetalhes: TStringField;
+    cdspagar_detalhesvalor: TFMTBCDField;
+    cdspagar_detalhesdata: TDateField;
+    cdspagar_detalhesusuario: TStringField;
   private
     { Private declarations }
   public

@@ -238,12 +238,26 @@ object frm_cons_pagar: Tfrm_cons_pagar
       Width = 805
       Height = 185
       DataSource = dsconsulta
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+    end
+    object StatusBar1: TStatusBar
+      Left = 2
+      Top = 188
+      Width = 807
+      Height = 19
+      Panels = <
+        item
+          Width = 220
+        end
+        item
+          Width = 50
+        end>
     end
   end
   object Button1: TButton
@@ -264,72 +278,120 @@ object frm_cons_pagar: Tfrm_cons_pagar
     TabOrder = 3
     OnClick = Button2Click
   end
+  object btn_baixar: TBitBtn
+    Left = 538
+    Top = 386
+    Width = 75
+    Height = 25
+    Caption = 'Baixar'
+    Enabled = False
+    TabOrder = 4
+    OnClick = btn_baixarClick
+  end
   object cdsconsultas: TClientDataSet
     Aggregates = <>
+    AggregatesActive = True
     Params = <>
     ProviderName = 'dspconsultar'
     RemoteServer = dmDados.LocalConnection
     Left = 712
     Top = 112
     object cdsconsultasid: TIntegerField
+      DisplayLabel = 'ID'
       FieldName = 'id'
       Required = True
     end
     object cdsconsultasnumero_doc: TStringField
+      DisplayLabel = 'Num. Doc.'
+      DisplayWidth = 15
       FieldName = 'numero_doc'
       Required = True
     end
     object cdsconsultasdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      DisplayWidth = 60
       FieldName = 'descricao'
       Size = 200
     end
     object cdsconsultasparcela: TIntegerField
+      DisplayLabel = 'Parcela'
       FieldName = 'parcela'
       Required = True
     end
     object cdsconsultasvlr_parcela: TFMTBCDField
+      DisplayLabel = 'Valor Parc'
+      DisplayWidth = 15
       FieldName = 'vlr_parcela'
       Required = True
       Precision = 20
       Size = 2
     end
     object cdsconsultasvlr_compra: TFMTBCDField
+      DisplayLabel = 'Valor Compra'
+      DisplayWidth = 15
       FieldName = 'vlr_compra'
       Required = True
       Precision = 20
       Size = 2
     end
     object cdsconsultasvlr_abatido: TFMTBCDField
+      DisplayLabel = 'Valor Abat'
+      DisplayWidth = 15
       FieldName = 'vlr_abatido'
       Required = True
       Precision = 20
       Size = 2
     end
     object cdsconsultasdt_compra: TDateField
+      DisplayLabel = 'DT Compra'
+      DisplayWidth = 15
       FieldName = 'dt_compra'
       Required = True
     end
     object cdsconsultasdt_cadastro: TDateField
+      DisplayLabel = 'DT Cadastro'
+      DisplayWidth = 15
       FieldName = 'dt_cadastro'
       Required = True
     end
     object cdsconsultasdt_vencimento: TDateField
+      DisplayLabel = 'DT Venc'
+      DisplayWidth = 15
       FieldName = 'dt_vencimento'
       Required = True
     end
     object cdsconsultasdt_pagamento: TDateField
+      DisplayLabel = 'DT PGTO'
+      DisplayWidth = 15
       FieldName = 'dt_pagamento'
     end
     object cdsconsultasstatus: TStringField
+      DisplayLabel = 'Status'
+      DisplayWidth = 5
       FieldName = 'status'
       Required = True
       FixedChar = True
       Size = 1
+    end
+    object cdsconsultasTotal: TAggregateField
+      FieldName = 'Total'
+      Active = True
+      currency = True
+      DisplayName = ''
+      Expression = 'SUM(vlr_parcela)'
     end
   end
   object dsconsulta: TDataSource
     DataSet = cdsconsultas
     Left = 768
     Top = 104
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 352
+    Top = 136
+    object VisualizarHistrico1: TMenuItem
+      Caption = 'Visualizar Hist'#243'rico'
+      OnClick = VisualizarHistrico1Click
+    end
   end
 end

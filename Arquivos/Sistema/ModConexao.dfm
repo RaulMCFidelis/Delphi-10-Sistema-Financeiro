@@ -44,7 +44,7 @@ object dmDados: TdmDados
   end
   object sdscaixa: TSQLDataSet
     Active = True
-    CommandText = 'SELECT * FROM CAIXA'
+    CommandText = 'SELECT * FROM CAIXA WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -185,7 +185,7 @@ object dmDados: TdmDados
   end
   object sdsconstas_pagar: TSQLDataSet
     Active = True
-    CommandText = 'SELECT * FROM CONTAS_PAGAR'
+    CommandText = 'SELECT * FROM CONTAS_PAGAR WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -279,7 +279,7 @@ object dmDados: TdmDados
   end
   object sdscontas_receber: TSQLDataSet
     Active = True
-    CommandText = 'SELECT * FROM CONTAS_RECEBER'
+    CommandText = 'SELECT * FROM CONTAS_RECEBER WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -336,7 +336,7 @@ object dmDados: TdmDados
   end
   object sdsusuarios: TSQLDataSet
     Active = True
-    CommandText = 'SELECT * FROM USUARIOS'
+    CommandText = 'SELECT * FROM USUARIOS WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -361,5 +361,109 @@ object dmDados: TdmDados
   object LocalConnection: TLocalConnection
     Left = 568
     Top = 24
+  end
+  object sdsreceber_detalhes: TSQLDataSet
+    Active = True
+    CommandText = 'SELECT * FROM RECEBER_DETALHES WHERE ID = 0'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection
+    Left = 344
+    Top = 96
+  end
+  object cdsreceber_detalhes: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspreceber_detalhes'
+    Left = 576
+    Top = 96
+    object cdsreceber_detalhesid: TIntegerField
+      FieldName = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cdsreceber_detalhesid_receber: TIntegerField
+      FieldName = 'id_receber'
+      Required = True
+    end
+    object cdsreceber_detalhesdetalhes: TStringField
+      FieldName = 'detalhes'
+      Required = True
+      Size = 250
+    end
+    object cdsreceber_detalhesvalor: TFMTBCDField
+      FieldName = 'valor'
+      Required = True
+      Precision = 20
+      Size = 2
+    end
+    object cdsreceber_detalhesdate: TDateField
+      FieldName = 'date'
+      Required = True
+    end
+    object cdsreceber_detalhesusuario: TStringField
+      FieldName = 'usuario'
+      Required = True
+      Size = 50
+    end
+  end
+  object dspreceber_detalhes: TDataSetProvider
+    DataSet = sdsreceber_detalhes
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 464
+    Top = 96
+  end
+  object sdspagar_detalhes: TSQLDataSet
+    Active = True
+    CommandText = 'SELECT * FROM PAGAR_DETALHES WHERE ID = 0'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection
+    Left = 344
+    Top = 160
+  end
+  object cdspagar_detalhes: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dsppagar_detalhes'
+    Left = 576
+    Top = 160
+    object cdspagar_detalhesid: TIntegerField
+      FieldName = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cdspagar_detalhesid_pagar: TIntegerField
+      FieldName = 'id_pagar'
+      Required = True
+    end
+    object cdspagar_detalhesdetalhes: TStringField
+      FieldName = 'detalhes'
+      Required = True
+      Size = 250
+    end
+    object cdspagar_detalhesvalor: TFMTBCDField
+      FieldName = 'valor'
+      Required = True
+      Precision = 20
+      Size = 2
+    end
+    object cdspagar_detalhesdata: TDateField
+      FieldName = 'data'
+      Required = True
+    end
+    object cdspagar_detalhesusuario: TStringField
+      FieldName = 'usuario'
+      Required = True
+      Size = 50
+    end
+  end
+  object dsppagar_detalhes: TDataSetProvider
+    DataSet = sdspagar_detalhes
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 464
+    Top = 160
   end
 end

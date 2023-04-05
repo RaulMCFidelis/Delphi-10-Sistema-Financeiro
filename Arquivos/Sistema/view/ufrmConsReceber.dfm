@@ -238,6 +238,7 @@ object frm_cons_receber: Tfrm_cons_receber
       Width = 808
       Height = 193
       DataSource = dsconsulta
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -257,9 +258,6 @@ object frm_cons_receber: Tfrm_cons_receber
         item
           Width = 350
         end>
-      ExplicitLeft = 0
-      ExplicitTop = 407
-      ExplicitWidth = 850
     end
   end
   object Button1: TButton
@@ -279,6 +277,16 @@ object frm_cons_receber: Tfrm_cons_receber
     Caption = 'Cancelar'
     TabOrder = 3
     OnClick = Button2Click
+  end
+  object btn_baixar: TBitBtn
+    Left = 536
+    Top = 376
+    Width = 75
+    Height = 25
+    Caption = 'Baixar'
+    Enabled = False
+    TabOrder = 4
+    OnClick = btn_baixarClick
   end
   object cdsconsultas: TClientDataSet
     Aggregates = <>
