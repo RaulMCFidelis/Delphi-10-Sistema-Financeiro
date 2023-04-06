@@ -43,7 +43,6 @@ object dmDados: TdmDados
     Top = 16
   end
   object sdscaixa: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM CAIXA WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
@@ -182,7 +181,6 @@ object dmDados: TdmDados
     Top = 80
   end
   object sdsconstas_pagar: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM CONTAS_PAGAR WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
@@ -275,7 +273,6 @@ object dmDados: TdmDados
     end
   end
   object sdscontas_receber: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM CONTAS_RECEBER WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
@@ -331,7 +328,6 @@ object dmDados: TdmDados
     end
   end
   object sdsusuarios: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM USUARIOS WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>
@@ -453,5 +449,113 @@ object dmDados: TdmDados
     Options = [poAllowCommandText, poUseQuoteChar]
     Left = 464
     Top = 160
+  end
+  object dspRecibos: TDataSetProvider
+    DataSet = sdsRecibos
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 464
+    Top = 240
+  end
+  object cdsRecibos: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspRecibos'
+    Left = 576
+    Top = 240
+    object cdsRecibosid: TIntegerField
+      DisplayLabel = 'ID'
+      DisplayWidth = 5
+      FieldName = 'id'
+      Required = True
+    end
+    object cdsRecibostipo_recebimento: TIntegerField
+      DisplayLabel = 'Tipo Recebimento'
+      DisplayWidth = 5
+      FieldName = 'tipo_recebimento'
+      Required = True
+    end
+    object cdsRecibosdt_emissao: TDateField
+      DisplayLabel = 'DT Emiss'#227'o'
+      FieldName = 'dt_emissao'
+      Required = True
+    end
+    object cdsRecibosvlr_recibo: TFMTBCDField
+      DisplayLabel = 'Valor Recibo'
+      DisplayWidth = 10
+      FieldName = 'vlr_recibo'
+      Required = True
+      Precision = 20
+      Size = 2
+    end
+    object cdsRecibosreferente: TStringField
+      DisplayLabel = 'Referente'
+      DisplayWidth = 10
+      FieldName = 'referente'
+      Required = True
+      Size = 30
+    end
+    object cdsRecibosobservacao: TStringField
+      DisplayLabel = 'Observa'#231#227'o'
+      DisplayWidth = 25
+      FieldName = 'observacao'
+      Size = 250
+    end
+    object cdsRecibosemitente: TStringField
+      DisplayLabel = 'Emitente'
+      DisplayWidth = 10
+      FieldName = 'emitente'
+      Required = True
+      Size = 100
+    end
+    object cdsRecibosendereco: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      DisplayWidth = 20
+      FieldName = 'endereco'
+      Size = 100
+    end
+    object cdsReciboscpf_cnpj: TStringField
+      DisplayLabel = 'CPF/CNPJ'
+      DisplayWidth = 10
+      FieldName = 'cpf_cnpj'
+      Required = True
+      Size = 30
+    end
+    object cdsReciboscidade: TStringField
+      DisplayLabel = 'Cidade'
+      DisplayWidth = 12
+      FieldName = 'cidade'
+      Required = True
+      Size = 50
+    end
+    object cdsRecibosdt_cadastro: TDateField
+      DisplayLabel = 'DT Cadastro'
+      FieldName = 'dt_cadastro'
+      Required = True
+    end
+    object cdsReciboshr_cadastro: TTimeField
+      DisplayLabel = 'Hr Cadastro'
+      FieldName = 'hr_cadastro'
+      Required = True
+    end
+    object cdsRecibosuser_cadastro: TStringField
+      DisplayLabel = 'Usu'#225'rio'
+      DisplayWidth = 10
+      FieldName = 'user_cadastro'
+      Required = True
+      Size = 50
+    end
+    object cdsRecibosnome: TDateField
+      DisplayLabel = 'Nome'
+      FieldName = 'nome'
+      Required = True
+    end
+  end
+  object sdsRecibos: TSQLDataSet
+    CommandText = 'SELECT * FROM RECIBOS WHERE ID = 0'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection
+    Left = 336
+    Top = 240
   end
 end

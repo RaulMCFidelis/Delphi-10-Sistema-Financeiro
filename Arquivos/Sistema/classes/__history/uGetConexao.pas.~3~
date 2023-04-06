@@ -1,0 +1,16 @@
+unit uGetConexao;
+
+interface
+
+uses ModConexao, Data.SqlExpr;
+
+type
+  TGetConexao = class
+  public
+    class function Conexao : TSQLConnection;
+  end;
+
+implementation
+
+uses uDmDados;
+end.

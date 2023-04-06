@@ -18,7 +18,14 @@ uses
   ufrmBaixarPagar in 'view\ufrmBaixarPagar.pas' {frmBaixarPagar},
   ufrmBaixarReceber in 'view\ufrmBaixarReceber.pas' {frmBaixarReceber},
   ufrmDetalhesPagar in 'view\ufrmDetalhesPagar.pas' {frmDetalhesPagar},
-  ufrmLogin in 'view\ufrmLogin.pas' {frmLogin};
+  ufrmLogin in 'view\ufrmLogin.pas' {frmLogin},
+  uUsuario in 'classes\uUsuario.pas',
+  uSistema in 'classes\uSistema.pas',
+  ufrmSaldoCaixa in 'view\ufrmSaldoCaixa.pas' {frmSaldoCaixa},
+  uGetConexao in 'classes\uGetConexao.pas',
+  uSQL in 'classes\uSQL.pas',
+  uCaixa in 'classes\uCaixa.pas',
+  ufrmEmitirRecibo in 'view\ufrmEmitirRecibo.pas' {frmEmitirRecibo};
 
 {$R *.res}
 
@@ -27,5 +34,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmDados, dmDados);
+  Application.CreateForm(TfrmEmitirRecibo, frmEmitirRecibo);
   Application.Run;
 end.

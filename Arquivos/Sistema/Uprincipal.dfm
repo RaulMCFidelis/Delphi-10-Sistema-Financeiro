@@ -14,7 +14,7 @@ object frmPrincipal: TfrmPrincipal
   KeyPreview = True
   OldCreateOrder = False
   OnClose = FormClose
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -1815,6 +1815,9 @@ object frmPrincipal: TfrmPrincipal
     Height = 19
     Panels = <
       item
+        Width = 200
+      end
+      item
         Width = 50
       end>
   end
@@ -1823,7 +1826,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 232
     Width = 75
     Height = 25
-    Caption = 'BitBtn1'
+    Caption = 'Saldo'
     TabOrder = 1
     OnClick = BitBtn1Click
   end

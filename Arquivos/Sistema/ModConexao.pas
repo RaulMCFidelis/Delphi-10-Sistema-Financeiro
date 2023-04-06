@@ -78,6 +78,23 @@ type
     cdspagar_detalhesvalor: TFMTBCDField;
     cdspagar_detalhesdata: TDateField;
     cdspagar_detalhesusuario: TStringField;
+    dspRecibos: TDataSetProvider;
+    cdsRecibos: TClientDataSet;
+    sdsRecibos: TSQLDataSet;
+    cdsRecibosid: TIntegerField;
+    cdsRecibostipo_recebimento: TIntegerField;
+    cdsRecibosdt_emissao: TDateField;
+    cdsRecibosvlr_recibo: TFMTBCDField;
+    cdsRecibosreferente: TStringField;
+    cdsRecibosobservacao: TStringField;
+    cdsRecibosemitente: TStringField;
+    cdsRecibosendereco: TStringField;
+    cdsReciboscpf_cnpj: TStringField;
+    cdsReciboscidade: TStringField;
+    cdsRecibosdt_cadastro: TDateField;
+    cdsReciboshr_cadastro: TTimeField;
+    cdsRecibosuser_cadastro: TStringField;
+    cdsRecibosnome: TDateField;
   private
     { Private declarations }
   public

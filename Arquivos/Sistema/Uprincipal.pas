@@ -36,7 +36,7 @@ type
     procedure imgreceberClick(Sender: TObject);
     procedure imgconreceberClick(Sender: TObject);
     procedure imgconpagarClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,17 +52,18 @@ implementation
 
 uses ufrmCadastroBasico, ufrmCadastroUsuarios, ufrmCadastroCaixa,
   ufrmCadastroPagar, ufrmCadastroReceber, ufrmConsPagar, UFuncoes,
-  ufrmConsReceber, ModConexao, ufrmLogin;
+  ufrmConsReceber, ModConexao, ufrmLogin, ufrmSaldoCaixa;
 
 procedure TfrmPrincipal.BitBtn1Click(Sender: TObject);
 begin
-  frmCadastroBasico := TfrmCadastroBasico.Create(nil);
+  frmSaldoCaixa := TfrmSaldoCaixa.Create(nil);
   try
-    frmCadastroBasico.ShowModal;
+    frmSaldoCaixa.ShowModal;
   finally
-   FreeAndNil (frmCadastroBasico);
+   FreeAndNil (frmSaldoCaixa);
   end;
 end;
+
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -74,16 +75,17 @@ else
 Abort;
 end;
 
-procedure TfrmPrincipal.FormCreate(Sender: TObject);
+procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
 frmLogin := TfrmLogin.Create(nil);
   try
     frmLogin.ShowModal;
+    if frmLogin.ModalResult = mrNo then
+      Application.Terminate;
 
   finally
     FreeAndNil(frmLogin);
   end;
-
 end;
 
 procedure TfrmPrincipal.imgcaixaClick(Sender: TObject);

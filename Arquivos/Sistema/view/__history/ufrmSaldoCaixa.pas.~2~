@@ -1,0 +1,29 @@
+unit ufrmSaldoCaixa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls;
+
+type
+  TfrmSaldoCaixa = class(TForm)
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    txt_dt_inicial: TDateTimePicker;
+    txt_dt_final: TDateTimePicker;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmSaldoCaixa: TfrmSaldoCaixa;
+
+implementation
+
+{$R *.dfm}
+
+end.

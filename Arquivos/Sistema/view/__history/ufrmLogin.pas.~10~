@@ -1,0 +1,90 @@
+unit ufrmLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TfrmLogin = class(TForm)
+    txt_senha: TEdit;
+    btn_entrar: TBitBtn;
+    txt_login: TComboBoxEx;
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    lblultimoAcesso: TLabel;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_entrarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmLogin: TfrmLogin;
+
+implementation
+
+{$R *.dfm}
+
+uses uUsuario, ModConexao, UFuncoes, Uprincipal, uSistema;
+
+procedure TfrmLogin.btn_entrarClick(Sender: TObject);
+var
+Usuario : TUsuario;
+
+begin
+  if txt_Login.Text = '' then
+  begin
+    Application.MessageBox('Informe seu Usuário!', 'Atenção', MB_OK+MB_ICONWARNING);
+    txt_login.SetFocus;
+    Abort;
+  end;
+  if txt_Senha.Text = '' then
+  begin
+    Application.MessageBox('Informe sua Senha!', 'Atenção', MB_OK+MB_ICONWARNING);
+    txt_Senha.SetFocus;
+    Abort;
+  end;
+
+  Usuario := TUsuario.Create;
+  try
+    Usuario.Login := trim(txt_login.Text);
+    Usuario.Senha := trim(txt_senha.Text);
+    if Usuario.Logar then
+    begin
+      TSistema.SetUltimoAcesso(Usuario.Login);
+      frmPrincipal.StatusBar1.Panels[1].Text := 'Usuário: '+Usuario.Login;
+    ModalResult := mrOk;
+    end
+    else
+    begin
+      Application.MessageBox('Usuário e/ou Senha inválido!', 'Atenção',MB_OK+MB_ICONWARNING);
+      txt_login.SetFocus;
+      Abort;
+
+    end;
+  finally
+
+  end;
+
+end;
+
+procedure TfrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+if ModalResult <> mrok then
+
+  ModalResult := mrNo;
+end;
+
+procedure TfrmLogin.FormShow(Sender: TObject);
+begin
+ TUsuario.CarregarLogin(txt_login);
+end;
+
+end.

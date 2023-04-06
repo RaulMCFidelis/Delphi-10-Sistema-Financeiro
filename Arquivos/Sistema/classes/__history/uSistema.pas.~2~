@@ -1,0 +1,39 @@
+unit uSistema;
+
+interface
+
+uses
+  System.IniFiles;
+
+type
+  TSistema = class
+  private
+    class var fIniSistema : TIniFile;
+  public
+    class procedure SetUltimoAcesso (Usuario : String);
+    class function GetUltimoAcesso : String;
+    class function GetUsuarioAcesso : String;
+  end;
+
+implementation
+
+uses
+  Vcl.Forms, System.SysUtils;
+
+{ TSistema}
+
+class function Tsistema.GetUltimoAcesso : String;
+begin
+  fIniSistema := TIniFile.Create((ExtractFilePath(Application.ExeName)+');
+  try
+    result := 'Último Acesso: '+fIniSistema.ReadString('ACESSO', 'DATA','');
+  finally
+    FreeAndNil(fIniSistema);
+  end;
+end;
+
+class function TSistema.GetUsuarioAcesso: String;
+begin
+
+end;
+end.
