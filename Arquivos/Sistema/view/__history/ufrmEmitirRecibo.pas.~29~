@@ -26,7 +26,6 @@ type
     txt_emitente: TEdit;
     txt_endereco: TEdit;
     txt_cidade: TEdit;
-    txt_cpf: TtpEdit;
     txt_emissao: TtpEdit;
     txt_valor: TtpEdit;
     btn_fechar: TBitBtn;
@@ -34,6 +33,7 @@ type
     btn_cancelar: TBitBtn;
     btn_salvar: TBitBtn;
     btn_novo: TBitBtn;
+    txt_cpf: TtpEdit;
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_fecharClick(Sender: TObject);
@@ -123,10 +123,11 @@ begin
   end;
 
 
-    try
+     try
 
     DmDados.cdsRecibos.Open;
     DmDados.cdsRecibos.Insert;
+
     DmDados.cdsRecibosid.AsInteger           := GetId('id','recibos');
     DmDados.cdsRecibostipo_recibo.AsInteger  := rdg_recibo.ItemIndex;
     DmDados.cdsRecibosdt_emissao.AsDateTime  := StrToDateTime(txt_Emissao.Text);
@@ -155,12 +156,12 @@ begin
    // DmDados.cdsRecibos.Close;
 
 
-    DmRelatorios := TDmRelatorios.Create(nil);
+    {DmRelatorios := TDmRelatorios.Create(nil);
     try
       DmRelatorios.ImprimirRecibo(DmDados.cdsRecibosid.AsInteger,DmDados.cdsRecibostipo_recibo.AsInteger);
     finally
       FreeAndNil(DmRelatorios);
-    end;
+    end;}
 
     DmDados.cdsRecibos.Close;
 
