@@ -59,7 +59,6 @@ type
     cdscaixadt_cadastro: TDateField;
     sqlconsultas: TSQLQuery;
     dspconsultar: TDataSetProvider;
-    LocalConnection: TLocalConnection;
     sdsreceber_detalhes: TSQLDataSet;
     dspreceber_detalhes: TDataSetProvider;
     sdspagar_detalhes: TSQLDataSet;
@@ -81,9 +80,11 @@ type
     dspRecibos: TDataSetProvider;
     cdsRecibos: TClientDataSet;
     sdsRecibos: TSQLDataSet;
+    LocalConnection: TLocalConnection;
     cdsRecibosid: TIntegerField;
-    cdsRecibostipo_recebimento: TIntegerField;
-    cdsRecibosdt_emissao: TDateField;
+    cdsRecibostipo_recibo: TIntegerField;
+    cdsRecibosdt_emissao: TStringField;
+    cdsRecibosnome: TStringField;
     cdsRecibosvlr_recibo: TFMTBCDField;
     cdsRecibosreferente: TStringField;
     cdsRecibosobservacao: TStringField;
@@ -94,7 +95,6 @@ type
     cdsRecibosdt_cadastro: TDateField;
     cdsReciboshr_cadastro: TTimeField;
     cdsRecibosuser_cadastro: TStringField;
-    cdsRecibosnome: TDateField;
   private
     { Private declarations }
   public

@@ -10,20 +10,17 @@ object dmrelatorios: Tdmrelatorios
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 45019.655195972220000000
-    ReportOptions.LastChange = 45019.666426284720000000
+    ReportOptions.CreateDate = 45026.709805879630000000
+    ReportOptions.LastChange = 45026.709877303240000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
+      ''
       'begin'
       ''
       'end.')
-    Left = 48
-    Top = 56
-    Datasets = <
-      item
-        DataSet = frxDBDsusuarios
-        DataSetName = 'frxDBDataset1'
-      end>
+    Left = 56
+    Top = 144
+    Datasets = <>
     Variables = <>
     Style = <>
     object Data: TfrxDataPage
@@ -38,173 +35,6 @@ object dmrelatorios: Tdmrelatorios
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
-      object ReportTitle1: TfrxReportTitle
-        FillType = ftBrush
-        Height = 41.574830000000000000
-        Top = 18.897650000000000000
-        Width = 718.110700000000000000
-        object Memo1: TfrxMemoView
-          Left = 215.433210000000000000
-          Top = 11.338590000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            'Relat'#243'rio de Usu'#225'rio')
-          ParentFont = False
-        end
-        object Date: TfrxMemoView
-          Left = 532.913730000000000000
-          Top = 15.118120000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = 'dd mmm yyyy'
-          DisplayFormat.Kind = fkDateTime
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Date]')
-          ParentFont = False
-        end
-        object Page: TfrxMemoView
-          Left = 634.961040000000000000
-          Top = 15.118120000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Page]')
-          ParentFont = False
-        end
-      end
-      object MasterData1: TfrxMasterData
-        FillType = ftBrush
-        Height = 60.472480000000000000
-        Top = 211.653680000000000000
-        Width = 718.110700000000000000
-        DataSet = frxDBDsusuarios
-        DataSetName = 'frxDBDataset1'
-        RowCount = 0
-        object frxDBDataset1id: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 11.338590000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'id'
-          DataSet = frxDBDsusuarios
-          DataSetName = 'frxDBDataset1'
-          Memo.UTF8W = (
-            '[frxDBDataset1."id"]')
-        end
-        object frxDBDataset1nome: TfrxMemoView
-          Left = 98.267780000000000000
-          Top = 11.338590000000000000
-          Width = 306.141930000000000000
-          Height = 18.897650000000000000
-          DataField = 'nome'
-          DataSet = frxDBDsusuarios
-          DataSetName = 'frxDBDataset1'
-          Memo.UTF8W = (
-            '[frxDBDataset1."nome"]')
-        end
-        object frxDBDataset1login: TfrxMemoView
-          Left = 415.748300000000000000
-          Top = 11.338590000000000000
-          Width = 158.740260000000000000
-          Height = 18.897650000000000000
-          DataField = 'login'
-          DataSet = frxDBDsusuarios
-          DataSetName = 'frxDBDataset1'
-          Memo.UTF8W = (
-            '[frxDBDataset1."login"]')
-        end
-        object frxDBDataset1dt_cadastro: TfrxMemoView
-          Left = 623.622450000000000000
-          Top = 18.897650000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'dt_cadastro'
-          DataSet = frxDBDsusuarios
-          DataSetName = 'frxDBDataset1'
-          Memo.UTF8W = (
-            '[frxDBDataset1."dt_cadastro"]')
-        end
-      end
-      object PageHeader1: TfrxPageHeader
-        FillType = ftBrush
-        Height = 68.031540000000000000
-        Top = 83.149660000000000000
-        Width = 718.110700000000000000
-        object Memo2: TfrxMemoView
-          Left = 7.559060000000000000
-          Top = 18.897650000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            'Id')
-          ParentFont = False
-        end
-        object Memo3: TfrxMemoView
-          Left = 120.944960000000000000
-          Top = 18.897650000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            'Nome')
-          ParentFont = False
-        end
-        object Memo4: TfrxMemoView
-          Left = 415.748300000000000000
-          Top = 18.897650000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            'Login')
-          ParentFont = False
-        end
-        object Memo5: TfrxMemoView
-          Left = 616.063390000000000000
-          Top = 18.897650000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            'Cadastro')
-          ParentFont = False
-        end
-      end
     end
   end
   object frxDBDsusuarios: TfrxDBDataset
@@ -219,8 +49,8 @@ object dmrelatorios: Tdmrelatorios
       'dt_cadastro=dt_cadastro')
     DataSet = dmDados.cdsusuarios
     BCDToCurrency = False
-    Left = 344
-    Top = 80
+    Left = 248
+    Top = 144
   end
   object frxPDFExport1: TfrxPDFExport
     UseFileCache = True
@@ -243,7 +73,7 @@ object dmrelatorios: Tdmrelatorios
     CenterWindow = False
     PrintScaling = False
     PdfA = False
-    Left = 184
+    Left = 64
     Top = 24
   end
   object frxSimpleTextExport1: TfrxSimpleTextExport
@@ -255,7 +85,106 @@ object dmrelatorios: Tdmrelatorios
     EmptyLines = False
     OEMCodepage = False
     DeleteEmptyColumns = True
-    Left = 272
-    Top = 24
+    Left = 240
+    Top = 64
+  end
+  object sqlRecibos: TSQLQuery
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    SQL.Strings = (
+      'select * from recibos where id = :prm')
+    SQLConnection = dmDados.SQLConnection
+    Left = 176
+    Top = 320
+    object sqlRecibosid: TIntegerField
+      FieldName = 'id'
+      Required = True
+    end
+    object sqlRecibostipo_recibo: TIntegerField
+      FieldName = 'tipo_recibo'
+      Required = True
+    end
+    object sqlRecibosdt_emissao: TStringField
+      FieldName = 'dt_emissao'
+      Required = True
+      Size = 50
+    end
+    object sqlRecibosnome: TStringField
+      FieldName = 'nome'
+      Required = True
+      Size = 50
+    end
+    object sqlRecibosvlr_recibo: TFMTBCDField
+      FieldName = 'vlr_recibo'
+      Required = True
+      Precision = 20
+      Size = 2
+    end
+    object sqlRecibosreferente: TStringField
+      FieldName = 'referente'
+      Required = True
+      Size = 30
+    end
+    object sqlRecibosobservacao: TStringField
+      FieldName = 'observacao'
+      Size = 250
+    end
+    object sqlRecibosemitente: TStringField
+      FieldName = 'emitente'
+      Required = True
+      Size = 100
+    end
+    object sqlRecibosendereco: TStringField
+      FieldName = 'endereco'
+      Size = 100
+    end
+    object sqlReciboscpf_cnpj: TStringField
+      FieldName = 'cpf_cnpj'
+      Size = 30
+    end
+    object sqlReciboscidade: TStringField
+      FieldName = 'cidade'
+      Size = 50
+    end
+    object sqlRecibosdt_cadastro: TDateField
+      FieldName = 'dt_cadastro'
+      Required = True
+    end
+    object sqlReciboshr_cadastro: TTimeField
+      FieldName = 'hr_cadastro'
+      Required = True
+    end
+    object sqlRecibosuser_cadastro: TStringField
+      FieldName = 'user_cadastro'
+      Required = True
+      Size = 50
+    end
+  end
+  object frxDBRecibos: TfrxDBDataset
+    UserName = 'frxDBRecibos'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'id=id'
+      'tipo_recibo=tipo_recibo'
+      'dt_emissao=dt_emissao'
+      'nome=nome'
+      'vlr_recibo=vlr_recibo'
+      'referente=referente'
+      'observacao=observacao'
+      'emitente=emitente'
+      'endereco=endereco'
+      'cpf_cnpj=cpf_cnpj'
+      'cidade=cidade'
+      'dt_cadastro=dt_cadastro'
+      'hr_cadastro=hr_cadastro'
+      'user_cadastro=user_cadastro')
+    DataSet = sqlRecibos
+    BCDToCurrency = False
+    Left = 344
+    Top = 304
   end
 end

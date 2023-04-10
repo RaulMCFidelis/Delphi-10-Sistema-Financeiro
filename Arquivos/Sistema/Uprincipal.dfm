@@ -1822,13 +1822,22 @@ object frmPrincipal: TfrmPrincipal
       end>
   end
   object BitBtn1: TBitBtn
-    Left = 600
-    Top = 232
+    Left = 120
+    Top = 416
     Width = 75
     Height = 25
     Caption = 'Saldo'
     TabOrder = 1
     OnClick = BitBtn1Click
+  end
+  object btn_recibo: TBitBtn
+    Left = 24
+    Top = 416
+    Width = 75
+    Height = 25
+    Caption = 'Recibo'
+    TabOrder = 2
+    OnClick = btn_reciboClick
   end
   object BalloonHint1: TBalloonHint
     Left = 712

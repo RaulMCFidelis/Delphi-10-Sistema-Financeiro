@@ -1,0 +1,30 @@
+unit ufrmConsRecibos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  Tfrm_ConsRecibos = class(TForm)
+    DBGrid1: TDBGrid;
+    cds: TClientDataSet;
+    ds: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_ConsRecibos: Tfrm_ConsRecibos;
+
+implementation
+
+{$R *.dfm}
+
+uses ModConexao;
+
+end.

@@ -25,7 +25,8 @@ uses
   uGetConexao in 'classes\uGetConexao.pas',
   uSQL in 'classes\uSQL.pas',
   uCaixa in 'classes\uCaixa.pas',
-  ufrmEmitirRecibo in 'view\ufrmEmitirRecibo.pas' {frmEmitirRecibo};
+  ufrmEmitirRecibo in 'view\ufrmEmitirRecibo.pas' {frmEmitirRecibo},
+  ufrmConsRecibos in 'view\ufrmConsRecibos.pas' {frmConsRecibos};
 
 {$R *.res}
 
@@ -34,6 +35,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmDados, dmDados);
-  Application.CreateForm(TfrmEmitirRecibo, frmEmitirRecibo);
   Application.Run;
 end.

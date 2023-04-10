@@ -1,0 +1,109 @@
+object frm_ConsRecibos: Tfrm_ConsRecibos
+  Left = 0
+  Top = 0
+  BorderStyle = bsSizeToolWin
+  Caption = 'Consultar Recibos '
+  ClientHeight = 315
+  ClientWidth = 569
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 24
+    Top = 56
+    Width = 320
+    Height = 120
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object cds: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspconsultar'
+    RemoteServer = dmDados.LocalConnection
+    Left = 264
+    Top = 232
+    object cdsid: TIntegerField
+      FieldName = 'id'
+      Required = True
+    end
+    object cdstipo_recebimento: TIntegerField
+      FieldName = 'tipo_recebimento'
+      Required = True
+    end
+    object cdsdt_emissao: TStringField
+      FieldName = 'dt_emissao'
+      Required = True
+      Size = 50
+    end
+    object cdsnome: TStringField
+      FieldName = 'nome'
+      Required = True
+      Size = 50
+    end
+    object cdsvlr_recibo: TFMTBCDField
+      FieldName = 'vlr_recibo'
+      Required = True
+      Precision = 20
+      Size = 2
+    end
+    object cdsreferente: TStringField
+      FieldName = 'referente'
+      Required = True
+      Size = 30
+    end
+    object cdsobservacao: TStringField
+      FieldName = 'observacao'
+      Size = 250
+    end
+    object cdsemitente: TStringField
+      FieldName = 'emitente'
+      Required = True
+      Size = 100
+    end
+    object cdsendereco: TStringField
+      FieldName = 'endereco'
+      Size = 100
+    end
+    object cdscpf_cnpj: TStringField
+      FieldName = 'cpf_cnpj'
+      Required = True
+      Size = 30
+    end
+    object cdscidade: TStringField
+      FieldName = 'cidade'
+      Required = True
+      Size = 50
+    end
+    object cdsdt_cadastro: TDateField
+      FieldName = 'dt_cadastro'
+      Required = True
+    end
+    object cdshr_cadastro: TTimeField
+      FieldName = 'hr_cadastro'
+      Required = True
+    end
+    object cdsuser_cadastro: TStringField
+      FieldName = 'user_cadastro'
+      Required = True
+      Size = 50
+    end
+  end
+  object ds: TDataSource
+    DataSet = cds
+    Left = 440
+    Top = 240
+  end
+end
