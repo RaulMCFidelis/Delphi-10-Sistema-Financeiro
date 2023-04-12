@@ -1,7 +1,6 @@
 inherited frmcadastropagar: Tfrmcadastropagar
   Caption = 'Cadastro de Contas a Pagar'
   ClientHeight = 516
-  ExplicitWidth = 320
   ExplicitHeight = 555
   PixelsPerInch = 96
   TextHeight = 13
@@ -214,10 +213,10 @@ inherited frmcadastropagar: Tfrmcadastropagar
       end
     end
     inherited tbspesquisa: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 701
+      ExplicitHeight = 418
       object Label10: TLabel [2]
         Left = 3
         Top = 116
@@ -314,7 +313,7 @@ inherited frmcadastropagar: Tfrmcadastropagar
     Left = 624
     Top = 136
     Bitmap = {
-      494C010110001800880020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100018008C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

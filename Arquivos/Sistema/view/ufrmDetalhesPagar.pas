@@ -31,19 +31,19 @@ uses ModConexao, ufrmBaixarPagar, ufrmConsPagar, UFuncoes;
 procedure TfrmDetalhesPagar.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  dmDados.cdspagar_detalhes.Close;
+DmDados.cdsPagar_detalhes.Close;
 end;
 
 procedure TfrmDetalhesPagar.FormShow(Sender: TObject);
 begin
 try
-  dmDados.cdspagar_detalhes.Close;
-  dmDados.cdspagar_detalhes.CommandText := 'SELECT * FROM PAGAR_DETALHES WHERE ID_PAGAR = ' +IntToStr(fid);
-  dmDados.cdspagar_detalhes.Open;
+    DmDados.cdsPagar_detalhes.Close;
+    DmDados.cdsPagar_detalhes.CommandText := 'select * from pagar_detalhes where id_pagar = '+inttostr(fid);
+    DmDados.cdsPagar_detalhes.Open;
   except on E: Exception do
-    raise Exception.Create('Error ao consultar o histórico a pagar: '+E.Message);
-
+    raise Exception.Create('Erro ao consultar histórico a pagar: '+E.Message);
   end;
 end;
+
 
 end.

@@ -15,7 +15,7 @@ object frmSaldoCaixa: TfrmSaldoCaixa
   OldCreateOrder = False
   Position = poScreenCenter
   OnDestroy = FormDestroy
-  OnShortCut = FormShortCut
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label3: TLabel

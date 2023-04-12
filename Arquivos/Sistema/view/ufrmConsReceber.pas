@@ -36,10 +36,10 @@ type
     cdsconsultasdt_compra: TDateField;
     cdsconsultasdt_vencimento: TDateField;
     cdsconsultasdt_cadastro: TDateField;
-    cdsconsultasdt_pagamento: TDateField;
     cdsconsultasstatus: TStringField;
-    txt_parcela: TEdit;
+    cdsconsultasdt_pagamento: TDateField;
     Label4: TLabel;
+    txt_parcela: TEdit;
     StatusBar1: TStatusBar;
     cdsconsultasTotal: TAggregateField;
     btn_baixar: TBitBtn;
@@ -49,6 +49,7 @@ type
     procedure btn_baixarClick(Sender: TObject);
   private
   procedure Pesquisar;
+
     { Private declarations }
   public
     { Public declarations }
@@ -65,35 +66,33 @@ uses UFuncoes, ufrmBaixarReceber;
 
 procedure Tfrm_cons_receber.btn_baixarClick(Sender: TObject);
 begin
-if (cdsconsultasstatus.AsString = 'B') then
+if (cdsConsultasstatus.AsString = 'B') then
   begin
-    Application.MessageBox('Não é possível baixar um documento já baixado!','Atenção', MB_OK+MB_ICONWARNING);
-    Abort;
+    Application.MessageBox('Não é possível baixar um documento baixado.','AtençãO',MB_OK+MB_ICONWARNING);
+    abort;
   end;
 
-  if(cdsconsultasstatus.AsString = 'C') then
+  if (cdsConsultasstatus.AsString = 'C') then
   begin
-    Application.MessageBox('Não é possível baixar um documento cancelado!','Atenção', MB_OK+MB_ICONWARNING);
-    Abort;
+    Application.MessageBox('Não é possível baixar um documento cancelado.','AtençãO',MB_OK+MB_ICONWARNING);
+    abort;
   end;
+
 frmBaixarReceber := TfrmBaixarReceber.Create(nil);
-  try
-  frmBaixarReceber.fId := cdsconsultasid.AsInteger;
+   try
+    frmBaixarReceber.fId := cdsconsultasid.AsInteger;
     frmBaixarReceber.ShowModal;
 
-  finally
+   finally
     FreeAndNil(frmBaixarReceber);
-
-  end;
-
+   end;
 end;
-
-
 
 procedure Tfrm_cons_receber.Button1Click(Sender: TObject);
 begin
-  Close;
+Close;
 end;
+
 
 procedure Tfrm_cons_receber.Button2Click(Sender: TObject);
 begin
@@ -102,77 +101,74 @@ rdgStatus.ItemIndex := -1;
 txt_doc.Clear;
 txt_dtfinal.Clear;
 txt_dtinicio.Clear;
+txt_parcela.Clear;
 cdsconsultas.Close;
-
 end;
 
 procedure Tfrm_cons_receber.Pesquisar;
 var Sql : TStringList;
 
-  begin
-   Sql := TStringList.Create;
-
-
+ begin
+  Sql := TStringList.Create;
   try
-    Sql.Add('SELECT * FROM CONTAS_RECEBER');
-    Sql.Add('where id > 0');
+   Sql.Add('select * from contas_receber');
+   Sql.Add('where id > 0');
 
-    // Pesquisa por Data
+   //Pesquisar por data
 
-    if (rdgPeriodo.ItemIndex > -1) and (txt_dtinicio.Text <> '') and (txt_dtfinal.Text <> '') then
+ if (rdgPeriodo.ItemIndex > -1) and (txt_dtinicio.Text <> '') and (txt_dtfinal.Text <> '') then
 
-    begin
-      case rdgPeriodo.ItemIndex of
-        0 : Sql.Add('and dt_compra between'+QuotedStr(ReverterData(txt_dtinicio.Text))+'and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
-        1 : Sql.Add('and dt_pagamento between'+QuotedStr(ReverterData(txt_dtinicio.Text))+'and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
-        2 : Sql.Add('and dt_vencimento between'+QuotedStr(ReverterData(txt_dtinicio.Text))+'and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
-      end;
-    end;
+   begin
+     case rdgPeriodo.ItemIndex of
+        0 : sql.Add('and dt_compra between '+QuotedStr(ReveterData(txt_dtinicio.Text))+' and '+QuotedStr(ReveterData(txt_dtfinal.Text)));
+        1 : sql.Add('and dt_pagamento between '+QuotedStr(ReveterData(txt_dtinicio.Text))+' and '+QuotedStr(ReveterData(txt_dtfinal.Text)));
+        2 : sql.Add('and dt_vencimento between '+QuotedStr(ReveterData(txt_dtinicio.Text))+' and '+QuotedStr(ReveterData(txt_dtfinal.Text)));
+
+     end;
+   end;
 
      //Pesquisar por documento
-     if txt_doc.Text <> '' then
-      Sql.Add('and documento = '+QuotedStr(trim(txt_doc.Text)));
+    if txt_doc.Text <> '' then
+      sql.Add('and documento = '+QuotedStr(trim(txt_doc.Text)));
 
-     //Pesquisa por parcela
-     if txt_parcela.Text <> '' then
-      Sql.Add('and parcela ='+txt_parcela.Text);
+    //Pesquisar por parcela
+    if txt_parcela.Text <> '' then
+      sql.Add('and parcela = '+txt_parcela.Text);
 
-     // Pesuisar por Status
-     if rdgStatus.ItemIndex > -1 then
-     begin
-       case rdgStatus.ItemIndex of
+    //Pesquisar por status
+    if rdgStatus.ItemIndex > -1 then
+    begin
+      case rdgStatus.ItemIndex of
         0 : sql.Add('and status = ''A''');
         1 : sql.Add('and status = ''C''');
         2 : sql.Add('and status = ''B''');
-       end;
-     end;
-  try
-    cdsconsultas.Close;
-    cdsconsultas.CommandText := Sql.Text;
-    cdsconsultas.Open;
+      end;
+    end;
 
-    if cdsconsultas.IsEmpty then
-      Application.MessageBox('Nenhum registro encontrado!', 'Atenção', MB_OK+MB_ICONWARNING);
+    try
+      cdsconsultas.Close;
+      cdsConsultas.CommandText := Sql.Text;
+      cdsConsultas.Open;
 
-      StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+IntToStr(cdsconsultas.RecordCount);
-      StatusBar1.Panels[1].Text := 'Total a receber: ' +FormatFloat('R$ #,0.00', cdsconsultasTotal.AsVariant);
-      btn_baixar.Enabled := not cdsconsultas.IsEmpty;
+      if cdsConsultas.IsEmpty then
+        Application.MessageBox('Nenhum registro encontrado.','Atenção',MB_OK+MB_ICONWARNING);
 
-  except on E: Exception do
-    raise Exception.Create('Erro ao consultar contas a receber: ' +E.Message);
+        StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+inttostr(cdsConsultas.RecordCount);
+        StatusBar1.Panels[1].Text := 'Total a receber: '+FormatFloat('R$ #,0.00',cdsConsultasTotal.AsVariant);
+        btn_baixar.Enabled := not cdsconsultas.IsEmpty;
 
-  end;
-
+    except on E: Exception do
+      raise Exception.Create('Erro ao consultar contas a receber: '+E.Message);
+    end;
   finally
     FreeAndNil(Sql);
   end;
-  end;
-
+end;
 
 
 procedure Tfrm_cons_receber.SpeedButton1Click(Sender: TObject);
 begin
- Pesquisar;
+Pesquisar;
 end;
 
 end.

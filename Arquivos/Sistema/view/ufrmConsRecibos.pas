@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, Vcl.Menus;
 
 type
   TfrmConsRecibos = class(TForm)
@@ -26,8 +26,11 @@ type
     cdsdt_cadastro: TDateField;
     cdshr_cadastro: TTimeField;
     cdsuser_cadastro: TStringField;
+    PopupMenu1: TPopupMenu;
+    AbrirRelatrio1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure AbrirRelatrio1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,7 +44,17 @@ implementation
 
 {$R *.dfm}
 
-uses ModConexao;
+uses ModConexao, udmRelatorios;
+
+procedure TfrmConsRecibos.AbrirRelatrio1Click(Sender: TObject);
+begin
+ DmRelatorios := TDmRelatorios.Create(nil);
+  try
+    DmRelatorios.ImprimirRecibo(cdsid.AsInteger,cdstipo_recibo.AsInteger);
+  finally
+    FreeAndNil(DmRelatorios);
+    end;
+end;
 
 procedure TfrmConsRecibos.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -53,6 +66,7 @@ begin
 cds.Close;
 cds.CommandText := 'select * from recibos';
 cds.Open;
+
 end;
 
 end.

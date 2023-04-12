@@ -1,0 +1,190 @@
+object dmrelatorios: Tdmrelatorios
+  OldCreateOrder = False
+  Height = 381
+  Width = 501
+  object frxReport: TfrxReport
+    Version = '5.1.5'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45026.709805879630000000
+    ReportOptions.LastChange = 45026.709877303240000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 56
+    Top = 144
+    Datasets = <>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+    end
+  end
+  object frxDBDsusuarios: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'id=id'
+      'nome=nome'
+      'login=login'
+      'senha=senha'
+      'status=status'
+      'dt_cadastro=dt_cadastro')
+    DataSet = dmDados.cdsusuarios
+    BCDToCurrency = False
+    Left = 248
+    Top = 144
+  end
+  object frxPDFExport1: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    Left = 64
+    Top = 24
+  end
+  object frxSimpleTextExport1: TfrxSimpleTextExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Frames = False
+    EmptyLines = False
+    OEMCodepage = False
+    DeleteEmptyColumns = True
+    Left = 240
+    Top = 64
+  end
+  object sqlRecibos: TSQLQuery
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    SQL.Strings = (
+      'select * from recibos where id = :prm')
+    SQLConnection = dmDados.SQLConnection
+    Left = 176
+    Top = 320
+    object sqlRecibosid: TIntegerField
+      FieldName = 'id'
+      Required = True
+    end
+    object sqlRecibostipo_recibo: TIntegerField
+      FieldName = 'tipo_recibo'
+      Required = True
+    end
+    object sqlRecibosdt_emissao: TStringField
+      FieldName = 'dt_emissao'
+      Required = True
+      Size = 50
+    end
+    object sqlRecibosnome: TStringField
+      FieldName = 'nome'
+      Required = True
+      Size = 50
+    end
+    object sqlRecibosvlr_recibo: TFMTBCDField
+      FieldName = 'vlr_recibo'
+      Required = True
+      Precision = 20
+      Size = 2
+    end
+    object sqlRecibosreferente: TStringField
+      FieldName = 'referente'
+      Required = True
+      Size = 30
+    end
+    object sqlRecibosobservacao: TStringField
+      FieldName = 'observacao'
+      Size = 250
+    end
+    object sqlRecibosemitente: TStringField
+      FieldName = 'emitente'
+      Required = True
+      Size = 100
+    end
+    object sqlRecibosendereco: TStringField
+      FieldName = 'endereco'
+      Size = 100
+    end
+    object sqlReciboscpf_cnpj: TStringField
+      FieldName = 'cpf_cnpj'
+      Size = 30
+    end
+    object sqlReciboscidade: TStringField
+      FieldName = 'cidade'
+      Size = 50
+    end
+    object sqlRecibosdt_cadastro: TDateField
+      FieldName = 'dt_cadastro'
+      Required = True
+    end
+    object sqlReciboshr_cadastro: TTimeField
+      FieldName = 'hr_cadastro'
+      Required = True
+    end
+    object sqlRecibosuser_cadastro: TStringField
+      FieldName = 'user_cadastro'
+      Required = True
+      Size = 50
+    end
+  end
+  object frxDBRecibos: TfrxDBDataset
+    UserName = 'frxDBRecibos'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'id=id'
+      'tipo_recibo=tipo_recibo'
+      'dt_emissao=dt_emissao'
+      'nome=nome'
+      'vlr_recibo=vlr_recibo'
+      'referente=referente'
+      'observacao=observacao'
+      'emitente=emitente'
+      'endereco=endereco'
+      'cpf_cnpj=cpf_cnpj'
+      'cidade=cidade'
+      'dt_cadastro=dt_cadastro'
+      'hr_cadastro=hr_cadastro'
+      'user_cadastro=user_cadastro')
+    DataSet = dmDados.cdsRecibos
+    BCDToCurrency = False
+    Left = 344
+    Top = 304
+  end
+end

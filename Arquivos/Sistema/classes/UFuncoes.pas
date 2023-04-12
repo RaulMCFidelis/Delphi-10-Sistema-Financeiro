@@ -4,24 +4,26 @@ unit UFuncoes;
 
 interface
 
+
 uses
-  Vcl.Forms, System.SysUtils, System.Classes, Data.DB,Data.SqlExpr,
-  Vcl.DBGrids, Vcl.Grids, System.Types, system.Generics.Collections;
+Vcl.Forms, System.SysUtils, System.Classes, Data.DB, Data.SqlExpr,
+  Vcl.DBGrids, Vcl.Grids, System.Types, System.Generics.Collections;
 
 function GetId(Campo, Tabela : String) : Integer;
 function GetLoginCadastrado(Login : String) : Boolean;
 procedure EditarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
 function StringParaFloat(s : string) : Extended;
-function ReverterData(S: string) : string;
+function  ReveterData(S: String) : String;
+
 implementation
 
 uses ModConexao, ufrmCadastroUsuarios;
 
-function reverterData(S: string) : string;
+function ReveterData(S: String) : String;
 begin
-  //Conversão de data em Delphi
   result := copy(S,7,4)+'-'+copy(S,4,2)+'-'+copy(S,1,2);
 end;
+
 
 function GetId(Campo, Tabela : String) : Integer;
    begin
@@ -41,24 +43,37 @@ function GetId(Campo, Tabela : String) : Integer;
    function GetLoginCadastrado(Login : String) : Boolean;
    begin
    result := false;
-    with
-    TSQLQuery.Create(nil) do
+        with
+        TSQLQuery.Create(nil) do
 
-      try
-      SQLConnection := DmDados.SQLConnection;
-      Sql.Add('SELECT ID FROM USUARIOS WHERE LOGIN = :LOGIN');
-      Params[0].AsString := Login;
-      Open;
+        try
+        SQLConnection := DmDados.SQLConnection;
+        Sql.Add('SELECT ID FROM USUARIOS WHERE LOGIN = :LOGIN');
+        Params[0].AsString := Login;
+        Open;
 
-      if not IsEmpty then
-        result := true;
+        if not IsEmpty then
+             result := true;
+             finally
+             Close;
+             Free;
 
-      finally
-      Close;
-      Free;
+     end;
+       end;
 
-      end;
-   end;
+       procedure EditarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
+       begin
+         if not odd(DataSource.DataSet.RecNo) then
+          begin
+            if not (gdSelected in state) then
+            begin
+              Sender.Canvas.Brush.Color := $00FFEFDF;
+              Sender.Canvas.FillRect(Rect);
+              Sender.DefaultDrawDataCell(Rect,Column.Field,State);
+            end;
+          end;
+       end;
+
 
        function StringParaFloat(s : string) : Extended;
 { Filtra uma string qualquer, convertendo as suas partes
@@ -75,6 +90,7 @@ begin
    {Percorre os caracteres da string:}
    for i := Length(s) downto 0 do
   {Filtra a string, aceitando somente números e separador decimal:}
+
      if (s[i] in ['0'..'9', '-','+',',']) then
      begin
         if (s[i] = ',') and (not SeenDecimal) then
@@ -94,17 +110,5 @@ begin
      end;
    Result := StrToFloat(t);
 end;
-         procedure EditarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
-   begin
-     if not odd(DataSource.DataSet.RecNo) then
-     begin
-        if not (gdSelected in state) then
-        begin
-         Sender.Canvas.Brush.Color := $00FFEFDF;
-         Sender.Canvas.FillRect(Rect);
-         Sender.DefaultDrawDataCell(Rect, Column.Field, State);
-        end;
-     end;
-   end;
 
 end.

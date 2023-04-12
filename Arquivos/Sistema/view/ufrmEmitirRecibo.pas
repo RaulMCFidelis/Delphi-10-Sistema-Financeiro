@@ -26,6 +26,7 @@ type
     txt_emitente: TEdit;
     txt_endereco: TEdit;
     txt_cidade: TEdit;
+    txt_cpf: TtpEdit;
     txt_emissao: TtpEdit;
     txt_valor: TtpEdit;
     btn_fechar: TBitBtn;
@@ -33,7 +34,6 @@ type
     btn_cancelar: TBitBtn;
     btn_salvar: TBitBtn;
     btn_novo: TBitBtn;
-    txt_cpf: TtpEdit;
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_fecharClick(Sender: TObject);
@@ -122,10 +122,12 @@ begin
     Abort;
   end;
 
+
      try
 
     DmDados.cdsRecibos.Open;
     DmDados.cdsRecibos.Insert;
+
     DmDados.cdsRecibosid.AsInteger           := GetId('id','recibos');
     DmDados.cdsRecibostipo_recibo.AsInteger  := rdg_recibo.ItemIndex;
     DmDados.cdsRecibosdt_emissao.AsDateTime  := StrToDateTime(txt_Emissao.Text);
@@ -136,17 +138,33 @@ begin
     DmDados.cdsRecibosdt_cadastro.AsDateTime := now;
     DmDados.cdsReciboshr_cadastro.AsDateTime := now;
     DmDados.cdsRecibosuser_cadastro.AsString := 'SISTEMA';
+
     if txt_Cidade.Text <> '' then
       DmDados.cdsReciboscidade.AsString := txt_Cidade.Text;
+
     if txt_cpf.Text <> '' then
       DmDados.cdsReciboscpf_cnpj.AsString := txt_cpf.Text;
+
     if txt_Endereco.Text <> '' then
       DmDados.cdsRecibosendereco.AsString := txt_Endereco.Text;
+
     if txt_Obs.Text <> '' then
       DmDados.cdsRecibosobservacao.AsString := txt_Obs.Text;
+
     DmDados.cdsRecibos.Post;
     DmDados.cdsRecibos.ApplyUpdates(0);
+   // DmDados.cdsRecibos.Close;
+
+
+    DmRelatorios := TDmRelatorios.Create(nil);
+    try
+      DmRelatorios.ImprimirRecibo(DmDados.cdsRecibosid.AsInteger,DmDados.cdsRecibostipo_recibo.AsInteger);
+    finally
+      FreeAndNil(DmRelatorios);
+    end;
+
     DmDados.cdsRecibos.Close;
+
 
      Application.MessageBox('Recibo gerado com sucesso!','Informação', 64);
     Limpar;
@@ -154,6 +172,7 @@ begin
     raise Exception.Create('Erro ao gerar recibo: '+E.Message);
   end;
 end;
+
 
 
 
@@ -176,6 +195,7 @@ begin
    if Components[i] is TCustomEdit then
      TCustomEdit(Components[I]).Clear;
   end;
+
   rdg_recibo.ItemIndex := 0;
   GroupBox1.Enabled := false;
   btn_Novo.Enabled := true;

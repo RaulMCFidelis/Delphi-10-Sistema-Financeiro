@@ -10,7 +10,7 @@ uses
   Datasnap.DBClient, tpEdit;
 
 type
-  Tfrmcadastropagar = class(TfrmCadastroBasico)
+  Tfrmcadastropagar = class(Tfrmcadastrobasico)
     edtdocumento: TEdit;
     Label3: TLabel;
     edtdescricao: TEdit;
@@ -30,11 +30,10 @@ type
     BitBtn2: TBitBtn;
     edtvariacao: TEdit;
     Label9: TLabel;
-    Label10: TLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
-    DataCol: Integer; Column: TColumn; State: TGridDrawState);
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure acsalvarExecute(Sender: TObject);
     procedure aceditarExecute(Sender: TObject);
     procedure btnfiltrarClick(Sender: TObject);
@@ -78,6 +77,9 @@ begin
       except on E : Exception do
 
       raise Exception.Create('Erro ao Excluir Registro: '+E.Message);
+
+
+
     end;
   end;
 end;
@@ -109,51 +111,51 @@ begin
 
 
 
-    cdsParcelas.First;
-    while not cdsParcelas.eof do
+cdsParcelas.First;
+ while not cdsParcelas.eof do
     if dsTabela.State in [dsBrowse, dsInsert] then
     begin
-    dmDados.cdscontas_pagar.Insert;
-    dmDados.cdscontas_pagarid.AsInteger := GetId('ID', 'CONTAS_PAGAR');
-    dmDados.cdscontas_pagarnumero_doc.AsString := trim(edtdocumento.Text);
-    dmDados.cdscontas_pagardescricao.AsString := trim(edtdescricao.Text);
-    dmDados.cdscontas_pagarParcela.AsInteger := cdsParcelasParcela.AsInteger;
-    dmDados.cdscontas_pagarvlr_parcela.AsCurrency := cdsParcelasValor.AsInteger;
-    dmDados.cdscontas_pagarvlr_compra.AsCurrency := StringParaFloat(edtVlrcompra.Text);
-    dmDados.cdscontas_pagardt_compra.AsDateTime := StrToDate(edtdtcompra.Text);
-    dmDados.cdscontas_pagardt_vencimento.AsDateTime := cdsParcelasVencimento.AsDateTime;
-    dmDados.cdscontas_pagardt_cadastro.AsDateTime := now;
-    dmDados.cdscontas_pagarstatus.AsString := 'A';
-    dmDados.cdscontas_pagarvlr_abatido.AsCurrency := 0;
-    DmDados.cdscontas_pagar.Post;
-    DmDados.cdscontas_pagar.ApplyUpdates(0);
-    cdsParcelas.Next;
-    end;
+   dmDados.cdscontas_pagar.Insert;
+   dmDados.cdscontas_pagarid.AsInteger := GetId('ID', 'CONTAS_PAGAR');
+   dmDados.cdscontas_pagarnumero_doc.AsString := trim(edtdocumento.Text);
+   dmDados.cdscontas_pagardescricao.AsString := trim(edtdescricao.Text);
+   dmDados.cdscontas_pagarParcela.AsInteger := cdsParcelasParcela.AsInteger;
+   dmDados.cdscontas_pagarvlr_parcela.AsCurrency := cdsParcelasValor.AsInteger;
+   dmDados.cdscontas_pagarvlr_compra.AsCurrency := StringParaFloat(edtVlrcompra.Text);
+   dmDados.cdscontas_pagardt_compra.AsDateTime := StrToDate(edtdtcompra.Text);
+   dmDados.cdscontas_pagardt_vencimento.AsDateTime := cdsParcelasVencimento.AsDateTime;
+   dmDados.cdscontas_pagardt_cadastro.AsDateTime := now;
+   dmDados.cdscontas_pagarstatus.AsString := 'A';
+   dmDados.cdscontas_pagarvlr_abatido.AsCurrency := 0;
+   DmDados.cdscontas_pagar.Post;
+   DmDados.cdscontas_pagar.ApplyUpdates(0);
+   cdsParcelas.Next;
+   end;
 
        Application.MessageBox('Registro Inserido com Sucesso!', 'Informação', MB_OK+MB_ICONINFORMATION);
        TClientDataSet(dsTabela.DataSet).Open;
 
        for i := 0 to ComponentCount -1 do
-    begin
-    if Components[i] is TCustomEdit then
-    TCustomEdit(Components[i]).Clear;
-    end;
-    if PageControl1.ActivePage = tbsCadastro  then
-      begin
-      tbsCadastro.TabVisible := false;
-      PageControl1.ActivePage := tbsPesquisa;
+ begin
+   if Components[i] is TCustomEdit then
+   TCustomEdit(Components[i]).Clear;
+ end;
+  if PageControl1.ActivePage = tbsCadastro  then
+  begin
+     tbsCadastro.TabVisible := false;
+     PageControl1.ActivePage := tbsPesquisa;
       end;
       edtpesquisar.setFocus;
 
-      cdsParcelas.EmptyDataSet;
+       cdsParcelas.EmptyDataSet;
 
 
 
 
-    except on E : Exception do
-    raise Exception.Create('Erro ao Salvar Registro: '+E.Message);
+except on E : Exception do
+raise Exception.Create('Erro ao Salvar Registro: '+E.Message);
 
-    end;
+end;
 
  // final do código do botão salvar
 

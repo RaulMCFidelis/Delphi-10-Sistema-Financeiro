@@ -124,9 +124,9 @@ var Sql : TStringList;
 
    begin
      case rdgPeriodo.ItemIndex of
-        0 : sql.Add('and dt_compra between '+QuotedStr(ReverterData(txt_dtinicio.Text))+' and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
-        1 : sql.Add('and dt_pagamento between '+QuotedStr(ReverterData(txt_dtinicio.Text))+' and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
-        2 : sql.Add('and dt_vencimento between '+QuotedStr(ReverterData(txt_dtinicio.Text))+' and '+QuotedStr(ReverterData(txt_dtfinal.Text)));
+        0 : sql.Add('and dt_compra between '+QuotedStr(ReveterData(txt_dtinicio.Text))+' and '+QuotedStr(ReveterData(txt_dtfinal.Text)));
+        1 : sql.Add('and dt_pagamento between '+QuotedStr(ReveterData(txt_dtinicio.Text))+' and '+QuotedStr(ReveterData(txt_dtfinal.Text)));
+        2 : sql.Add('and dt_vencimento between '+QuotedStr(ReveterData(txt_dtinicio.Text))+' and '+QuotedStr(ReveterData(txt_dtfinal.Text)));
 
      end;
    end;

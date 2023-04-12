@@ -17,10 +17,7 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
     ExplicitWidth = 693
     inherited tbscadastro: TTabSheet
       TabVisible = True
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 685
-      ExplicitHeight = 356
       object Label2: TLabel
         Left = 11
         Top = 24
@@ -234,6 +231,9 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
         Font.Style = []
         ParentFont = False
       end
+      inherited btnfiltrar: TButton
+        OnClick = btnfiltrarClick
+      end
       inherited DbgDados: TDBGrid
         Top = 128
         Width = 685
@@ -321,7 +321,7 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
     Left = 608
     Top = 136
     Bitmap = {
-      494C010110001800900020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800980020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2969,8 +2969,8 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
       000000000000}
   end
   inherited actacoes: TActionList
-    Left = 608
-    Top = 64
+    Left = 624
+    Top = 80
   end
   object cdsparcelas: TClientDataSet
     PersistDataPacket.Data = {

@@ -13,6 +13,7 @@ object frmConsRecibos: TfrmConsRecibos
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  PopupMenu = PopupMenu1
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
@@ -27,6 +28,7 @@ object frmConsRecibos: TfrmConsRecibos
     DataSource = ds
     DrawingStyle = gdsGradient
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    PopupMenu = PopupMenu1
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -135,5 +137,13 @@ object frmConsRecibos: TfrmConsRecibos
     DataSet = cds
     Left = 440
     Top = 240
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 448
+    Top = 128
+    object AbrirRelatrio1: TMenuItem
+      Caption = 'Abrir Relat'#243'rio'
+      OnClick = AbrirRelatrio1Click
+    end
   end
 end
