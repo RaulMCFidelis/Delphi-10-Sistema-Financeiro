@@ -28,6 +28,9 @@ type
     Timer1: TTimer;
     BitBtn1: TBitBtn;
     btn_recibo: TBitBtn;
+    Label2: TLabel;
+    Image1: TImage;
+    Image2: TImage;
     procedure Timer1Timer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn1Click(Sender: TObject);
