@@ -14,7 +14,7 @@ type
     cdscaixa: TClientDataSet;
     cdscontas_pagar: TClientDataSet;
     dspcaixa: TDataSetProvider;
-    sdsconstas_pagar: TSQLDataSet;
+    sdscontas_pagar: TSQLDataSet;
     dspcontas_receber: TDataSetProvider;
     cdscontas_receber: TClientDataSet;
     sdscontas_receber: TSQLDataSet;
@@ -51,12 +51,6 @@ type
     cdscontas_pagardt_vencimento: TDateField;
     cdscontas_pagardt_pagamento: TDateField;
     cdscontas_pagarstatus: TStringField;
-    cdscaixaid: TIntegerField;
-    cdscaixanumero_doc: TStringField;
-    cdscaixadescricao: TStringField;
-    cdscaixavalor: TFMTBCDField;
-    cdscaixatipo: TStringField;
-    cdscaixadt_cadastro: TDateField;
     sqlconsultas: TSQLQuery;
     dspconsultar: TDataSetProvider;
     sdsreceber_detalhes: TSQLDataSet;
@@ -95,6 +89,12 @@ type
     cdsRecibosdt_cadastro: TDateField;
     cdsReciboshr_cadastro: TTimeField;
     cdsRecibosuser_cadastro: TStringField;
+    cdscaixaid: TIntegerField;
+    cdscaixadocumento: TStringField;
+    cdscaixadescricao: TStringField;
+    cdscaixavalor: TFMTBCDField;
+    cdscaixatipo: TStringField;
+    cdscaixadt_cadastro: TDateField;
   private
     { Private declarations }
   public

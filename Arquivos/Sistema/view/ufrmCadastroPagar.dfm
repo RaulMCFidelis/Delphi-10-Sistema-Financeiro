@@ -14,6 +14,7 @@ inherited frmcadastropagar: Tfrmcadastropagar
     ExplicitHeight = 446
     inherited tbscadastro: TTabSheet
       TabVisible = True
+      ExplicitHeight = 418
       object Label2: TLabel
         Left = 11
         Top = 24
@@ -213,9 +214,6 @@ inherited frmcadastropagar: Tfrmcadastropagar
       end
     end
     inherited tbspesquisa: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 701
       ExplicitHeight = 418
       object Label10: TLabel [2]
         Left = 3
@@ -229,6 +227,9 @@ inherited frmcadastropagar: Tfrmcadastropagar
         Font.Name = 'Square721 BT'
         Font.Style = []
         ParentFont = False
+      end
+      inherited btnfiltrar: TButton
+        OnClick = btnfiltrarClick
       end
       inherited DbgDados: TDBGrid
         Top = 136
@@ -313,7 +314,7 @@ inherited frmcadastropagar: Tfrmcadastropagar
     Left = 624
     Top = 136
     Bitmap = {
-      494C0101100018008C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800980020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -3,8 +3,8 @@ object frm_cons_receber: Tfrm_cons_receber
   Top = 0
   BorderStyle = bsSizeToolWin
   Caption = 'Consultar Contas a Receber'
-  ClientHeight = 426
-  ClientWidth = 850
+  ClientHeight = 432
+  ClientWidth = 885
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object frm_cons_receber: Tfrm_cons_receber
   object GroupBox1: TGroupBox
     Left = 0
     Top = 8
-    Width = 761
+    Width = 877
     Height = 121
     Caption = 'Filtros'
     TabOrder = 0
@@ -45,9 +45,9 @@ object frm_cons_receber: Tfrm_cons_receber
       Caption = 'Data Final:'
     end
     object SpeedButton1: TSpeedButton
-      Left = 688
+      Left = 784
       Top = 16
-      Width = 57
+      Width = 73
       Height = 66
       Cursor = crHandPoint
       Flat = True
@@ -169,7 +169,7 @@ object frm_cons_receber: Tfrm_cons_receber
     object rdgPeriodo: TRadioGroup
       Left = 223
       Top = 16
-      Width = 201
+      Width = 298
       Height = 34
       Caption = 'Per'#237'odo'
       Columns = 3
@@ -204,7 +204,7 @@ object frm_cons_receber: Tfrm_cons_receber
       Caracter = tcNumeric
     end
     object rdgStatus: TRadioGroup
-      Left = 430
+      Left = 543
       Top = 16
       Width = 235
       Height = 34
@@ -227,7 +227,7 @@ object frm_cons_receber: Tfrm_cons_receber
   object GroupBox2: TGroupBox
     Left = 9
     Top = 152
-    Width = 811
+    Width = 870
     Height = 209
     Align = alCustom
     Caption = 'Registros'
@@ -235,8 +235,8 @@ object frm_cons_receber: Tfrm_cons_receber
     object DBGrid1: TDBGrid
       Left = 0
       Top = 16
-      Width = 808
-      Height = 193
+      Width = 873
+      Height = 166
       DataSource = dsconsulta
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
@@ -245,11 +245,80 @@ object frm_cons_receber: Tfrm_cons_receber
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'id'
+          Width = 50
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'documento'
+          Width = 80
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 160
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'parcela'
+          Width = 40
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'vlr_parcela'
+          Width = 60
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'vlr_compra'
+          Width = 70
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'vlr_abatido'
+          Width = 70
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'dt_compra'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'dt_vencimento'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'dt_cadastro'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'dt_pagamento'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'status'
+          Width = 40
+          Visible = True
+        end>
     end
     object StatusBar1: TStatusBar
       Left = 2
       Top = 188
-      Width = 807
+      Width = 866
       Height = 19
       Panels = <
         item

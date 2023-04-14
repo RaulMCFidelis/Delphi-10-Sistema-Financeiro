@@ -1,4 +1,3 @@
-
 unit ufrmConsPagar;
 
 interface
@@ -75,6 +74,7 @@ if (cdsConsultasstatus.AsString = 'B') then
     Application.MessageBox('Não é possível baixar um documento baixado.','AtençãO',MB_OK+MB_ICONWARNING);
     abort;
   end;
+
   if (cdsConsultasstatus.AsString = 'C') then
   begin
     Application.MessageBox('Não é possível baixar um documento cancelado.','AtençãO',MB_OK+MB_ICONWARNING);
@@ -85,8 +85,8 @@ frmBaixarPagar := TfrmBaixarPagar.Create(nil);
    try
     frmBaixarPagar.fId := cdsconsultasid.AsInteger;
     frmBaixarPagar.ShowModal;
-      if frmBaixarPagar.ModalResult = mrOk then
-      cdsconsultas.Refresh;
+     if frmBaixarPagar.ModalResult = mrOk then
+      cdsConsultas.Refresh;
    finally
     FreeAndNil(frmBaixarPagar);
    end;
@@ -134,9 +134,11 @@ var Sql : TStringList;
      //Pesquisar por documento
     if txt_doc.Text <> '' then
       sql.Add('and numero_doc = '+QuotedStr(trim(txt_doc.Text)));
+
     //Pesquisar por parcela
     if txt_parcela.Text <> '' then
       sql.Add('and parcela = '+txt_parcela.Text);
+
     //Pesquisar por status
     if rdgStatus.ItemIndex > -1 then
     begin
@@ -146,22 +148,26 @@ var Sql : TStringList;
         2 : sql.Add('and status = ''B''');
       end;
     end;
+
     try
       cdsconsultas.Close;
       cdsConsultas.CommandText := Sql.Text;
       cdsConsultas.Open;
+
       if cdsConsultas.IsEmpty then
         Application.MessageBox('Nenhum registro encontrado.','Atenção',MB_OK+MB_ICONWARNING);
+
          StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+inttostr(cdsConsultas.RecordCount);
         StatusBar1.Panels[1].Text := 'Total a receber: '+FormatFloat('R$ #,0.00',cdsConsultasTotal.AsVariant);
         btn_baixar.Enabled := not cdsconsultas.IsEmpty;
+
     except on E: Exception do
       raise Exception.Create('Erro ao consultar contas a pagar: '+E.Message);
     end;
   finally
     FreeAndNil(Sql);
   end;
-  end;
+end;
 
 
 
@@ -174,12 +180,13 @@ end;
 procedure Tfrm_cons_pagar.VisualizarHistrico1Click(Sender: TObject);
 begin
 frmDetalhesPagar := TfrmDetalhesPagar.Create(nil);
-  try
+   try
     frmDetalhesPagar.fId := cdsconsultasid.AsInteger;
     frmDetalhesPagar.ShowModal;
-  finally
+
+   finally
     FreeAndNil(frmDetalhesPagar);
-  end;
+   end;
 end;
 
 end.

@@ -37,7 +37,7 @@ uses ModConexao, UFuncoes, System.Math;
 procedure Tfrmcadastrocaixa.aceditarExecute(Sender: TObject);
 begin
   inherited;
-edtnumerodoc.Text := DmDados.cdsCaixanumero_doc.AsString;
+edtnumerodoc.Text := DmDados.cdscaixadocumento.AsString;
 edtdescricao.Text := DmDados.cdsCaixadescricao.AsString;
 edtvalor.Text := FormatFloat(',#0.00',dmdados.cdsCaixavalor.AsCurrency);
 radiogroup.ItemIndex := ifthen(DMdados.cdscaixatipo.AsString = 'C',0,1);
@@ -77,7 +77,7 @@ begin
     if dsTabela.State in [dsInsert] then
 
    dmDados.cdscaixaid.AsInteger := GetId('ID', 'CAIXA');
-   dmDados.cdscaixanumero_doc.AsString := trim(edtnumerodoc.Text);
+   dmDados.cdscaixadocumento.AsString := trim(edtnumerodoc.Text);
    dmDados.cdscaixadescricao.AsString := trim(edtdescricao.Text);
    dmDados.cdscaixavalor.AsCurrency := StringParaFloat(edtvalor.Text);
    dmDados.cdscaixadt_cadastro.AsDateTime := now;
@@ -110,7 +110,7 @@ if edtpesquisar.Text = '' then
    0 : DmDados.cdsCaixa.CommandText := 'SELECT * FROM CAIXA WHERE DOCUMENTO LIKE '+QuotedStr('%'+edtPesquisar.Text+'%');
    1 : DmDados.cdsCaixa.CommandText := 'SELECT * FROM CAIXA WHERE DESCRICAO LIKE '+QuotedStr('%'+edtPesquisar.Text+'%');
   end;
-  DmDados.cdsUsuarios.Open;
+  DmDados.cdscaixa.Open;
 
 end;
 

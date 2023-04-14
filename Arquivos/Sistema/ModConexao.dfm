@@ -5,6 +5,7 @@ object dmDados: TdmDados
   object SQLConnection: TSQLConnection
     ConnectionName = 'financeiro'
     DriverName = 'MySQL'
+    KeepConnection = False
     LoginPrompt = False
     Params.Strings = (
       'DriverName=MySQL'
@@ -38,6 +39,7 @@ object dmDados: TdmDados
       'Encrypted=False'
       'BlobSize=-1'
       'ErrorResourceFile=')
+    Connected = True
     Left = 24
     Top = 16
   end
@@ -50,7 +52,7 @@ object dmDados: TdmDados
     Top = 80
   end
   object dspcontas_pagar: TDataSetProvider
-    DataSet = sdsconstas_pagar
+    DataSet = sdscontas_pagar
     Options = [poAllowCommandText, poUseQuoteChar]
     Left = 120
     Top = 144
@@ -63,38 +65,32 @@ object dmDados: TdmDados
     Left = 224
     Top = 80
     object cdscaixaid: TIntegerField
-      DisplayLabel = 'Id'
       FieldName = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdscaixanumero_doc: TStringField
-      DisplayLabel = 'Numero Doc.'
-      FieldName = 'numero_doc'
+    object cdscaixadocumento: TStringField
+      FieldName = 'documento'
       Required = True
     end
     object cdscaixadescricao: TStringField
-      DisplayLabel = 'Descricao'
       FieldName = 'descricao'
+      Required = True
       Size = 200
     end
     object cdscaixavalor: TFMTBCDField
-      DisplayLabel = 'Valor'
       FieldName = 'valor'
       Required = True
-      currency = True
       Precision = 20
       Size = 2
     end
     object cdscaixatipo: TStringField
-      DisplayLabel = 'Tipo'
       FieldName = 'tipo'
       Required = True
       FixedChar = True
       Size = 1
     end
     object cdscaixadt_cadastro: TDateField
-      DisplayLabel = 'Data Cadastro'
       FieldName = 'dt_cadastro'
       Required = True
     end
@@ -181,7 +177,7 @@ object dmDados: TdmDados
     Left = 120
     Top = 80
   end
-  object sdsconstas_pagar: TSQLDataSet
+  object sdscontas_pagar: TSQLDataSet
     CommandText = 'SELECT * FROM CONTAS_PAGAR WHERE ID = 0'
     MaxBlobSize = -1
     Params = <>

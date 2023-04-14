@@ -14,6 +14,7 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
   end
   inherited PageControl1: TPageControl
     Width = 693
+    ActivePage = tbscadastro
     ExplicitWidth = 693
     inherited tbscadastro: TTabSheet
       TabVisible = True
@@ -219,8 +220,8 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
     inherited tbspesquisa: TTabSheet
       ExplicitWidth = 685
       object Label10: TLabel [2]
-        Left = 3
-        Top = 108
+        Left = 0
+        Top = 76
         Width = 197
         Height = 14
         Caption = 'Status: Cancelado, Ativo ou Baixado.'
@@ -321,7 +322,7 @@ inherited frmcadastroreceber: Tfrmcadastroreceber
     Left = 608
     Top = 136
     Bitmap = {
-      494C010110001800980020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001800A00020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000A000000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
