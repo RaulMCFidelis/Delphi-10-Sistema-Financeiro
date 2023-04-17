@@ -58,7 +58,7 @@ object frmSaldoCaixa: TfrmSaldoCaixa
     ParentFont = False
   end
   object Label5: TLabel
-    Left = 8
+    Left = 24
     Top = 170
     Width = 85
     Height = 21
@@ -98,7 +98,7 @@ object frmSaldoCaixa: TfrmSaldoCaixa
     Shape = bsTopLine
   end
   object lblEntradas: TLabel
-    Left = 164
+    Left = 212
     Top = 143
     Width = 5
     Height = 21
@@ -111,7 +111,7 @@ object frmSaldoCaixa: TfrmSaldoCaixa
     ParentFont = False
   end
   object lblSaidas: TLabel
-    Left = 165
+    Left = 213
     Top = 170
     Width = 5
     Height = 21
@@ -125,7 +125,7 @@ object frmSaldoCaixa: TfrmSaldoCaixa
   end
   object lblSaldo: TLabel
     Left = 164
-    Top = 233
+    Top = 242
     Width = 5
     Height = 21
     Alignment = taRightJustify

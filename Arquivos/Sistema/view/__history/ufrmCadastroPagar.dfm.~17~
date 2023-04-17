@@ -1,0 +1,350 @@
+inherited frmcadastropagar: Tfrmcadastropagar
+  Caption = 'Cadastro de Contas a Pagar'
+  ClientHeight = 516
+  ExplicitWidth = 725
+  ExplicitHeight = 555
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Top = 446
+    ExplicitTop = 446
+  end
+  inherited PageControl1: TPageControl
+    Height = 446
+    ExplicitHeight = 446
+    inherited tbscadastro: TTabSheet
+      TabVisible = True
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 701
+      ExplicitHeight = 418
+      object Label2: TLabel
+        Left = 11
+        Top = 24
+        Width = 69
+        Height = 16
+        Caption = 'Documento:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 11
+        Top = 64
+        Width = 60
+        Height = 16
+        Caption = 'Descri'#231#227'o:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 11
+        Top = 104
+        Width = 102
+        Height = 16
+        Caption = 'Qtde de Parcelas:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 11
+        Top = 144
+        Width = 102
+        Height = 16
+        Caption = 'Valor da Compra:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 9
+        Top = 184
+        Width = 98
+        Height = 16
+        Caption = 'Data da Compra:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 231
+        Top = 104
+        Width = 55
+        Height = 16
+        Caption = 'Varia'#231#227'o:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 392
+        Top = 108
+        Width = 27
+        Height = 16
+        Caption = 'dias.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object edtdocumento: TEdit
+        Left = 115
+        Top = 23
+        Width = 155
+        Height = 21
+        MaxLength = 20
+        TabOrder = 0
+      end
+      object edtdescricao: TEdit
+        Left = 115
+        Top = 63
+        Width = 333
+        Height = 21
+        MaxLength = 200
+        TabOrder = 1
+      end
+      object edtqtdeparcelas: TEdit
+        Left = 115
+        Top = 103
+        Width = 94
+        Height = 21
+        NumbersOnly = True
+        TabOrder = 2
+      end
+      object edtvlrcompra: TtpEdit
+        Left = 115
+        Top = 143
+        Width = 93
+        Height = 21
+        Alignment = taRightJustify
+        CharCase = ecUpperCase
+        TabOrder = 3
+        Text = '0,00'
+        Caracter = tcReal
+      end
+      object edtdtcompra: TtpEdit
+        Left = 115
+        Top = 183
+        Width = 93
+        Height = 21
+        Alignment = taRightJustify
+        CharCase = ecUpperCase
+        MaxLength = 8
+        TabOrder = 4
+        Check = ckDate
+        Caracter = tcNumeric
+      end
+      object edtvariacao: TEdit
+        Left = 292
+        Top = 103
+        Width = 94
+        Height = 21
+        NumbersOnly = True
+        TabOrder = 5
+      end
+      object DBGrid1: TDBGrid
+        Left = 115
+        Top = 264
+        Width = 212
+        Height = 89
+        DataSource = dsparcelas
+        DrawingStyle = gdsGradient
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick]
+        ParentColor = True
+        TabOrder = 6
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDrawColumnCell = DBGrid1DrawColumnCell
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'Parcela'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Valor'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Vencimento'
+            Visible = True
+          end>
+      end
+      object BitBtn1: TBitBtn
+        Left = 115
+        Top = 216
+        Width = 78
+        Height = 25
+        Caption = 'Gerar Parcelas'
+        TabOrder = 7
+        OnClick = BitBtn1Click
+      end
+      object BitBtn2: TBitBtn
+        Left = 231
+        Top = 216
+        Width = 82
+        Height = 25
+        Caption = 'Limpar Parcelas'
+        TabOrder = 8
+        OnClick = BitBtn2Click
+      end
+    end
+    inherited tbspesquisa: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 701
+      ExplicitHeight = 418
+      object Label10: TLabel [2]
+        Left = 3
+        Top = 116
+        Width = 197
+        Height = 14
+        Caption = 'Status: Cancelado, Ativo ou Baixado.'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Square721 BT'
+        Font.Style = []
+        ParentFont = False
+      end
+      inherited DbgDados: TDBGrid
+        Top = 136
+        Height = 282
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'id'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'numero_doc'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'descricao'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'parcela'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'vlr_parcela'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'vlr_compra'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'vlr_abatido'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'dt_compra'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'dt_cadastro'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'dt_vencimento'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'dt_pagamento'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'status'
+            Visible = True
+          end>
+      end
+      inherited cbxfiltros: TComboBoxEx
+        ItemsEx = <
+          item
+            Caption = 'Documento'
+          end
+          item
+            Caption = 'Descricao'
+          end>
+      end
+    end
+  end
+  inherited dsTabela: TDataSource
+    DataSet = dmDados.cdscontas_pagar
+  end
+  inherited ImageListcadastro: TImageList
+    Left = 624
+    Top = 136
+  end
+  inherited actacoes: TActionList
+    Left = 608
+    Top = 232
+  end
+  object dsparcelas: TDataSource
+    DataSet = cdsparcelas
+    Left = 624
+    Top = 304
+  end
+  object cdsparcelas: TClientDataSet
+    PersistDataPacket.Data = {
+      5F0000009619E0BD0100000018000000030000000000030000005F0007506172
+      63656C6104000100000000000556616C6F720800040000000100075355425459
+      50450200490006004D6F6E6579000A56656E63696D656E746F04000600000000
+      000000}
+    Active = True
+    Aggregates = <>
+    Params = <>
+    Left = 528
+    Top = 272
+    object cdsparcelasParcela: TIntegerField
+      FieldName = 'Parcela'
+    end
+    object cdsparcelasValor: TCurrencyField
+      FieldName = 'Valor'
+    end
+    object cdsparcelasVencimento: TDateField
+      FieldName = 'Vencimento'
+    end
+  end
+end

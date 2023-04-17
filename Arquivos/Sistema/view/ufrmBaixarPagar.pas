@@ -62,11 +62,9 @@ begin
     DmDados.cdsContas_pagar.CommandText := 'select * from contas_pagar where id = '+inttostr(fid);
     DmDados.cdsContas_pagar.Open;
     DmDados.cdsContas_pagar.Edit;
-    DmDados.cdsContas_pagarvlr_abatido.AsCurrency := DmDados.cdsContas_pagarvlr_abatido.AsCurrency
-                                                       + StringParaFloat(txt_Valor.Text);
+    DmDados.cdsContas_pagarvlr_abatido.AsCurrency := DmDados.cdsContas_pagarvlr_abatido.AsCurrency + StringParaFloat(txt_Valor.Text);
 
-    if DmDados.cdsContas_pagarvlr_abatido.AsCurrency >=
-       DmDados.cdsContas_pagarvlr_parcela.AsCurrency then
+    if DmDados.cdsContas_pagarvlr_abatido.AsCurrency >= DmDados.cdsContas_pagarvlr_parcela.AsCurrency then
     begin
       DmDados.cdsContas_pagarstatus.AsString := 'B';
       DmDados.cdsContas_pagardt_pagamento.AsDateTime := date;

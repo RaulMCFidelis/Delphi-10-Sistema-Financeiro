@@ -1,0 +1,86 @@
+unit ufrmConsReceber;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids, tpEdit, Vcl.ExtCtrls, Vcl.Buttons, Datasnap.DBClient;
+
+type
+  Tfrm_cons_receber = class(TForm)
+    cdsconsultas: TClientDataSet;
+    dsconsulta: TDataSource;
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    SpeedButton1: TSpeedButton;
+    txt_doc: TEdit;
+    rdgPeriodo: TRadioGroup;
+    txt_dtinicio: TtpEdit;
+    txt_dtfinal: TtpEdit;
+    txt_parcela: TtpEdit;
+    rdgStatus: TRadioGroup;
+    GroupBox2: TGroupBox;
+    DBGrid1: TDBGrid;
+    Button1: TButton;
+    Button2: TButton;
+    cdsconsultasid: TIntegerField;
+    cdsconsultasdocumento: TStringField;
+    cdsconsultasdescricao: TStringField;
+    cdsconsultasparcela: TIntegerField;
+    cdsconsultasvlr_parcela: TFMTBCDField;
+    cdsconsultasvlr_compra: TFMTBCDField;
+    cdsconsultasvlr_abatido: TFMTBCDField;
+    cdsconsultasdt_compra: TDateField;
+    cdsconsultasdt_vencimento: TDateField;
+    cdsconsultasdt_cadastro: TDateField;
+    cdsconsultasdt_pagamento: TDateField;
+    cdsconsultasstatus: TStringField;
+    procedure Button1Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+  procedure Pesquisar;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_cons_receber: Tfrm_cons_receber;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrm_cons_receber.Button1Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure Tfrm_cons_receber.Pesquisar;
+var Sql : TStringList;
+
+  begin
+   Sql := TStringList.Create;
+
+   try
+    Sql.Add('SELECT * FROM CONTAS_RECEBER');
+     cdsconsultas.Close;
+     cdsconsultas.CommandText := Sql.Text;
+     cdsconsultas.Open;
+
+   finally
+    FreeAndNil(Sql);
+    end;
+  end;
+
+
+procedure Tfrm_cons_receber.SpeedButton1Click(Sender: TObject);
+begin
+ Pesquisar;
+end;
+
+end.
