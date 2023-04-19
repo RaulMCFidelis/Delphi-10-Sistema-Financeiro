@@ -1,0 +1,61 @@
+unit ufrmCadastroReceber;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmCadastroBasico, Data.DB,
+  System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, Vcl.StdCtrls,
+  Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.ExtCtrls, tpEdit,
+  Datasnap.DBClient;
+
+type
+  Tfrmcadastroreceber = class(TfrmCadastroBasico)
+    Label10: TLabel;
+    Label2: TLabel;
+    edtdocumento: TEdit;
+    Label3: TLabel;
+    edtdescricao: TEdit;
+    Label5: TLabel;
+    edtqtdeparcelas: TEdit;
+    Label8: TLabel;
+    edtvariacao: TEdit;
+    Label9: TLabel;
+    Label6: TLabel;
+    edtvlrcompra: TtpEdit;
+    Label7: TLabel;
+    edtdtcompra: TtpEdit;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    DBGrid1: TDBGrid;
+    cdsparcelas: TClientDataSet;
+    cdsparcelasParcela: TIntegerField;
+    cdsparcelasValor: TCurrencyField;
+    cdsparcelasVencimento: TDateField;
+    dsparcelas: TDataSource;
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmcadastroreceber: Tfrmcadastroreceber;
+
+implementation
+
+{$R *.dfm}
+
+uses ModConexao, UFuncoes;
+
+procedure Tfrmcadastroreceber.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  inherited;
+  EditarDBGrid(dsParcelas, DBgrid1, State, Rect, Column);
+
+end;
+
+end.

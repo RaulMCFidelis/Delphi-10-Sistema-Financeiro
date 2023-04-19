@@ -1,9 +1,6 @@
 unit UFuncoes;
 
-
-
 interface
-
 
 uses
 Vcl.Forms, System.SysUtils, System.Classes, Data.DB, Data.SqlExpr,

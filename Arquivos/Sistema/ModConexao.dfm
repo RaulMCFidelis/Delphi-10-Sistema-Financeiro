@@ -1,5 +1,7 @@
 object dmDados: TdmDados
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
   Height = 535
   Width = 676
   object SQLConnection: TSQLConnection
@@ -540,5 +542,28 @@ object dmDados: TdmDados
   object LocalConnection: TLocalConnection
     Left = 552
     Top = 24
+  end
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'User_Name=root'
+      'Database=financeiro'
+      'Password=Pl276'
+      'Server=localhost'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 32
+    Top = 360
+  end
+  object MySQLDriverLink: TFDPhysMySQLDriverLink
+    VendorLib = 
+      'C:\Users\WINDOWS 10\Desktop\Curso de Delphi\Delphi-XE8\Delphi-XE' +
+      '8-Sistema-Financeiro\Arquivos\Sistema\Output\libmysql.dll'
+    Left = 136
+    Top = 360
+  end
+  object FDGUIxWaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 240
+    Top = 360
   end
 end

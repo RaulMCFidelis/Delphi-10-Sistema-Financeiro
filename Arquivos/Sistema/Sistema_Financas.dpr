@@ -26,7 +26,9 @@ uses
   uSQL in 'classes\uSQL.pas',
   uCaixa in 'classes\uCaixa.pas',
   ufrmEmitirRecibo in 'view\ufrmEmitirRecibo.pas' {frmEmitirRecibo},
-  ufrmConsRecibos in 'view\ufrmConsRecibos.pas' {frmConsRecibos};
+  ufrmConsRecibos in 'view\ufrmConsRecibos.pas' {frmConsRecibos},
+  unitfor_configurar_servidor in 'unitfor_configurar_servidor.pas' {form_configurar_servidor},
+  classe.conexao in 'classe.conexao.pas';
 
 {$R *.res}
 
@@ -35,5 +37,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmDados, dmDados);
+  Application.CreateForm(Tform_configurar_servidor, form_configurar_servidor);
   Application.Run;
 end.

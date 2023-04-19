@@ -4,7 +4,11 @@ interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, Data.SqlExpr, Data.DBXMySQL,
-  Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider, Datasnap.Win.TConnect;
+  Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider, Datasnap.Win.TConnect,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef, FireDAC.Comp.Client,
+  FireDAC.VCLUI.Wait, FireDAC.Comp.UI, classe.conexao;
 
 type
   TdmDados = class(TDataModule)
@@ -95,10 +99,16 @@ type
     cdscaixavalor: TFMTBCDField;
     cdscaixatipo: TStringField;
     cdscaixadt_cadastro: TDateField;
+    FDConnection: TFDConnection;
+    MySQLDriverLink: TFDPhysMySQLDriverLink;
+    FDGUIxWaitCursor: TFDGUIxWaitCursor;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    Conexao : TConexao;
   end;
 
 var
@@ -110,5 +120,15 @@ implementation
 
 uses UFuncoes, ufrmCadastroUsuarios;
 {$R *.dfm}
+
+procedure TdmDados.DataModuleCreate(Sender: TObject);
+begin
+   Conexao := Tconexao.Create(FDConnection);
+end;
+
+procedure TdmDados.DataModuleDestroy(Sender: TObject);
+begin
+   Conexao.Destroy;
+end;
 
 end.
